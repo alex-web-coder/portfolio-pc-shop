@@ -280,6 +280,26 @@ export const TRANSLATIONS = {
     de: 'Da dieser Shop ausschließlich zu Demonstrationszwecken dient, kommen keine Kaufverträge zustande und es gelten keine echten Geschäftsbedingungen. Alle Interaktionen sind simuliert.',
     en: 'Since this shop exists purely for demonstration purposes, no purchase contracts are ever formed and no real terms and conditions apply. All interactions are simulated.',
   },
+
+  'theme.switchToDark': { de: 'Dunkles Design aktivieren', en: 'Switch to dark theme' },
+  'theme.switchToLight': { de: 'Helles Design aktivieren', en: 'Switch to light theme' },
+
+  'compare.title': { de: 'Vergleich', en: 'Comparison' },
+  'compare.add': { de: 'Zum Vergleich hinzufügen', en: 'Add to comparison' },
+  'compare.remove': { de: 'Vom Vergleich entfernen', en: 'Remove from comparison' },
+  'compare.full': { de: 'Vergleich ist voll (max. 3)', en: 'Comparison is full (max. 3)' },
+  'compare.empty': {
+    de: 'Keine Produkte zum Vergleich ausgewählt.',
+    en: 'No products selected for comparison.',
+  },
+  'compare.clearAll': { de: 'Vergleich zurücksetzen', en: 'Clear comparison' },
+  'compare.viewComparison': { de: 'Vergleich ansehen', en: 'View comparison' },
+  'compare.browseProducts': { de: 'Produkte entdecken', en: 'Browse products' },
+
+  'search.title': { de: 'Suchergebnisse', en: 'Search results' },
+  'search.resultsFor': { de: 'Ergebnisse für', en: 'Results for' },
+  'search.noResults': { de: 'Keine Produkte gefunden für', en: 'No products found for' },
+  'search.viewAllResults': { de: 'Alle Ergebnisse anzeigen', en: 'View all results' },
 } as const satisfies Record<string, Record<Language, string>>;
 
 export type TranslationKey = keyof typeof TRANSLATIONS;

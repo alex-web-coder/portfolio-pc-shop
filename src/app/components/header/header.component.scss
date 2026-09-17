@@ -61,6 +61,10 @@
   align-items: center;
   gap: var(--space-1);
   flex-shrink: 0;
+
+  mat-icon {
+    color: var(--color-ink);
+  }
 }
 
 .language-switch {

@@ -33,10 +33,13 @@ html {
 }
 
 body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
+  // Follows the `data-theme` attribute ThemeService sets on <html>, so native
+  // form controls and scrollbars match whichever theme is actually active.
   color-scheme: light;
+
+  :root[data-theme='dark'] & {
+    color-scheme: dark;
+  }
 
   background-color: var(--color-bg);
   color: var(--color-ink);

@@ -16,3 +16,32 @@
   --space-5: 40px;
   --space-6: 48px;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-surface: #181d26;
+    --color-bg: #0f1319;
+    --color-ink: #dce2ea;
+    --color-accent: #6562f7;
+    --color-on-ink: #0f1319;
+    --color-border: #29313d;
+  }
+}
+
+:root[data-theme='dark'] {
+  --color-surface: #181d26;
+  --color-bg: #0f1319;
+  --color-ink: #dce2ea;
+  --color-accent: #6562f7;
+  --color-on-ink: #0f1319;
+  --color-border: #29313d;
+}
+
+:root[data-theme='light'] {
+  --color-surface: #ffffff;
+  --color-bg: #ebedf2;
+  --color-ink: #222732;
+  --color-accent: #4f46e5;
+  --color-on-ink: #ffffff;
+  --color-border: #2227321f;
+}

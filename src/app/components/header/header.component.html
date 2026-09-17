@@ -10,6 +10,15 @@
   </label>
 
   <div class="actions">
+    <button
+      type="button"
+      mat-icon-button
+      [attr.aria-label]="themeService.theme() === 'dark' ? i18n.t('theme.switchToLight') : i18n.t('theme.switchToDark')"
+      (click)="themeService.toggle()"
+    >
+      <mat-icon>{{ themeService.theme() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+
     <div class="language-switch">
       <button
         type="button"
