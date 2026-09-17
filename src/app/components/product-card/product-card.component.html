@@ -8,13 +8,13 @@
   <span class="name">{{ product().name }}</span>
 
   <span class="availability" [class.unavailable]="!product().available">
-    {{ product().available ? 'Auf Lager' : 'Nicht verfügbar' }}
+    {{ product().available ? i18n.t('product.inStock') : i18n.t('product.unavailable') }}
   </span>
 
   <div class="footer">
     <span class="price">{{ formattedPrice() }}</span>
     <button class="add" type="button" [disabled]="!product().available">
-      In den Warenkorb
+      {{ i18n.t('product.addToCart') }}
     </button>
   </div>
 </div>

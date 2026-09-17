@@ -1,6 +1,6 @@
 <div class="wrap">
-  <p class="code">404</p>
-  <h1>Seite nicht gefunden</h1>
-  <p class="lead">Diese Seite gibt es nicht oder ist nicht mehr verfügbar.</p>
-  <a routerLink="/" class="home-link">Zur Startseite</a>
+  <p class="code">{{ i18n.t('notFound.code') }}</p>
+  <h1>{{ i18n.t('notFound.title') }}</h1>
+  <p class="lead">{{ i18n.t('notFound.lead') }}</p>
+  <a routerLink="/" class="home-link">{{ i18n.t('notFound.homeLink') }}</a>
 </div>

@@ -1,25 +1,25 @@
 <div class="content">
   <div class="column brand-column">
     <span class="brand-shop">Alex Web Coder's PC Shop</span>
-    <p>Dein Partner für PC-Hardware. Zum Zocken. Zum Arbeiten. Für deine Ideen.</p>
+    <p>{{ i18n.t('footer.tagline') }}</p>
   </div>
 
   <div class="column">
-    <h3>Shop</h3>
+    <h3>{{ i18n.t('footer.shopHeading') }}</h3>
     @for (link of shopLinks; track link.path) {
-      <a class="link" [routerLink]="link.path">{{ link.label }}</a>
+      <a class="link" [routerLink]="link.path">{{ i18n.t(link.labelKey) }}</a>
     }
   </div>
 
   <div class="column">
-    <h3>Rechtliches</h3>
-    @for (link of legalLinks; track link) {
-      <span class="link-static">{{ link }}</span>
+    <h3>{{ i18n.t('footer.legalHeading') }}</h3>
+    @for (key of legalLinkKeys; track key) {
+      <span class="link-static">{{ i18n.t(key) }}</span>
     }
   </div>
 </div>
 
 <div class="bottom">
   <span>&copy; {{ year }} Alex Web Coder's PC Shop</span>
-  <span>Demo-Shop – keine echten Bestellungen</span>
+  <span>{{ i18n.t('footer.demoNotice') }}</span>
 </div>

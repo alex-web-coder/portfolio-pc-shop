@@ -1,4 +1,5 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   imports: [],
@@ -7,6 +8,8 @@ import { Component, input } from '@angular/core';
   templateUrl: './carousel.component.html',
 })
 export class Carousel {
+  protected readonly i18n = inject(TranslationService);
+
   readonly heading = input<string>();
 
   scrollBy(viewport: HTMLElement, direction: 1 | -1): void {

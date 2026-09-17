@@ -1,5 +1,7 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslationService } from '../../services/translation.service';
+import { TranslationKey } from '../../services/translations.data';
 
 @Component({
   imports: [RouterLink],
@@ -8,5 +10,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './coming-soon.component.html',
 })
 export class ComingSoon {
-  readonly title = input('Diese Seite');
+  protected readonly i18n = inject(TranslationService);
+
+  readonly titleKey = input.required<TranslationKey>();
 }

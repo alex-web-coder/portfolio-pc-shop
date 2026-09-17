@@ -1,20 +1,17 @@
 <section class="hero">
   <div class="hero-content">
-    <p class="eyebrow">Hardware für echte Möglichkeiten</p>
-    <h1>Dein PC. Deine Leistung.</h1>
-    <p class="lead">
-      Hochwertige Komponenten, faire Preise und alles, was du für deinen perfekten PC brauchst.
-      Zum Zocken. Zum Arbeiten. Für deine Ideen.
-    </p>
+    <p class="eyebrow">{{ i18n.t('home.hero.eyebrow') }}</p>
+    <h1>{{ i18n.t('home.hero.title') }}</h1>
+    <p class="lead">{{ i18n.t('home.hero.lead') }}</p>
     <div class="hero-actions">
-      <a routerLink="/configurator" class="primary">PC konfigurieren</a>
-      <a routerLink="/components" class="secondary">Komponenten entdecken</a>
+      <a routerLink="/configurator" class="primary">{{ i18n.t('home.hero.configure') }}</a>
+      <a routerLink="/components" class="secondary">{{ i18n.t('home.hero.discover') }}</a>
     </div>
   </div>
 </section>
 
 <section class="section">
-  <app-carousel heading="Kategorien">
+  <app-carousel [heading]="i18n.t('home.categoriesHeading')">
     @for (category of categories(); track category.id) {
       <app-category-tile [category]="category" />
     }
@@ -22,7 +19,7 @@
 </section>
 
 <section class="section">
-  <app-carousel heading="Ausgewählte Produkte">
+  <app-carousel [heading]="i18n.t('home.productsHeading')">
     @for (product of products(); track product.id) {
       <app-product-card [product]="product" />
     }

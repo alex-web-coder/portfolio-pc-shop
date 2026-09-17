@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   imports: [RouterLink],
@@ -7,4 +8,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './not-found.component.scss',
   templateUrl: './not-found.component.html',
 })
-export class NotFound {}
+export class NotFound {
+  protected readonly i18n = inject(TranslationService);
+}

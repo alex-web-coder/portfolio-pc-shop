@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
+import { TranslationService } from '../../services/translation.service';
+import { TranslationKey } from '../../services/translations.data';
 
 @Component({
   imports: [RouterLink, RouterLinkActive, MatIconModule, MatButtonModule, MatBadgeModule],
@@ -11,9 +13,11 @@ import { MatBadgeModule } from '@angular/material/badge';
   templateUrl: './header.component.html',
 })
 export class Header {
-  protected readonly navLinks: ReadonlyArray<{ label: string; path: string }> = [
-    { label: 'Komponenten', path: '/components' },
-    { label: 'Komplett-PCs', path: '/prebuilt-pcs' },
-    { label: 'PC-Konfigurator', path: '/configurator' },
+  protected readonly i18n = inject(TranslationService);
+
+  protected readonly navLinks: ReadonlyArray<{ labelKey: TranslationKey; path: string }> = [
+    { labelKey: 'nav.components', path: '/components' },
+    { labelKey: 'nav.prebuiltPcs', path: '/prebuilt-pcs' },
+    { labelKey: 'nav.configurator', path: '/configurator' },
   ];
 }

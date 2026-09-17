@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslationService } from '../../services/translation.service';
+import { TranslationKey } from '../../services/translations.data';
 
 @Component({
   imports: [RouterLink],
@@ -8,11 +10,20 @@ import { RouterLink } from '@angular/router';
   templateUrl: './footer.component.html',
 })
 export class Footer {
-  protected readonly shopLinks: ReadonlyArray<{ label: string; path: string }> = [
-    { label: 'Komponenten', path: '/components' },
-    { label: 'Komplett-PCs', path: '/prebuilt-pcs' },
-    { label: 'PC-Konfigurator', path: '/configurator' },
+  protected readonly i18n = inject(TranslationService);
+
+  protected readonly shopLinks: ReadonlyArray<{ labelKey: TranslationKey; path: string }> = [
+    { labelKey: 'nav.components', path: '/components' },
+    { labelKey: 'nav.prebuiltPcs', path: '/prebuilt-pcs' },
+    { labelKey: 'nav.configurator', path: '/configurator' },
   ];
-  protected readonly legalLinks = ['Impressum', 'AGB', 'Datenschutz', 'Kontakt'];
+
+  protected readonly legalLinkKeys: readonly TranslationKey[] = [
+    'footer.legal.imprint',
+    'footer.legal.terms',
+    'footer.legal.privacy',
+    'footer.legal.contact',
+  ];
+
   protected readonly year = new Date().getFullYear();
 }

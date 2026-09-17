@@ -6,14 +6,37 @@
 
   <label class="search">
     <mat-icon aria-hidden="true">search</mat-icon>
-    <input type="search" placeholder="Produkte suchen" />
+    <input type="search" [placeholder]="i18n.t('header.searchPlaceholder')" />
   </label>
 
   <div class="actions">
-    <a mat-icon-button routerLink="/profile" aria-label="Konto">
+    <div class="language-switch">
+      <button
+        type="button"
+        class="lang-btn"
+        [class.active]="i18n.language() === 'de'"
+        [attr.aria-pressed]="i18n.language() === 'de'"
+        [attr.aria-label]="i18n.t('language.switchToDe')"
+        (click)="i18n.setLanguage('de')"
+      >
+        DE
+      </button>
+      <button
+        type="button"
+        class="lang-btn"
+        [class.active]="i18n.language() === 'en'"
+        [attr.aria-pressed]="i18n.language() === 'en'"
+        [attr.aria-label]="i18n.t('language.switchToEn')"
+        (click)="i18n.setLanguage('en')"
+      >
+        EN
+      </button>
+    </div>
+
+    <a mat-icon-button routerLink="/profile" [attr.aria-label]="i18n.t('header.account')">
       <mat-icon>person_outline</mat-icon>
     </a>
-    <a mat-icon-button routerLink="/cart" aria-label="Warenkorb" matBadge="0" matBadgeSize="small">
+    <a mat-icon-button routerLink="/cart" [attr.aria-label]="i18n.t('header.cart')" matBadge="0" matBadgeSize="small">
       <mat-icon>shopping_cart</mat-icon>
     </a>
   </div>
@@ -21,6 +44,6 @@
 
 <nav class="nav" aria-label="Hauptnavigation">
   @for (link of navLinks; track link.path) {
-    <a class="nav-link" [routerLink]="link.path" routerLinkActive="active">{{ link.label }}</a>
+    <a class="nav-link" [routerLink]="link.path" routerLinkActive="active">{{ i18n.t(link.labelKey) }}</a>
   }
 </nav>
