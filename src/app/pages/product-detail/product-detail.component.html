@@ -5,7 +5,7 @@
     <div class="not-found">
       <h1>{{ i18n.t('product.notFound.title') }}</h1>
       <p>{{ i18n.t('product.notFound.lead') }}</p>
-      <a routerLink="/components">{{ i18n.t('comingSoon.homeLink') }}</a>
+      <a routerLink="/components">{{ i18n.t('common.backToHome') }}</a>
     </div>
   } @else {
     <a class="back" [routerLink]="categoryLink()">&#8249; {{ i18n.t('product.backToCategory') }}</a>

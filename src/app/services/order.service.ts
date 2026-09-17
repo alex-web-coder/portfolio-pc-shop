@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Order, OrderHistoryEntry, PlaceOrderRequest } from '../models/order.model';
 
@@ -10,15 +10,27 @@ const HISTORY_STORAGE_KEY = 'pc-shop.order-history';
 @Injectable({ providedIn: 'root' })
 export class OrderService {
   private readonly http = inject(HttpClient);
+  private readonly historySignal = signal<OrderHistoryEntry[]>(readHistory());
+
+  readonly history = this.historySignal.asReadonly();
 
   placeOrder(request: PlaceOrderRequest): Observable<Order> {
-    return this.http
-      .post<Order>('/api/orders', request)
-      .pipe(tap((order) => appendToHistory(order)));
+    return this.http.post<Order>('/api/orders', request).pipe(
+      tap((order) => {
+        this.historySignal.update((current) => [toHistoryEntry(order), ...current]);
+        persistHistory(this.historySignal());
+      }),
+    );
   }
 
-  getOrderHistory(): OrderHistoryEntry[] {
-    return readHistory();
+  /** Part of the profile page's "reset demo data" action. */
+  clearHistory(): void {
+    this.historySignal.set([]);
+    try {
+      localStorage.removeItem(HISTORY_STORAGE_KEY);
+    } catch {
+      // Nothing to clean up if storage was never available.
+    }
   }
 }
 
@@ -30,17 +42,20 @@ export function calculateShippingCents(subtotalCents: number): number {
 
 export { FLAT_SHIPPING_CENTS, FREE_SHIPPING_THRESHOLD_CENTS };
 
-function appendToHistory(order: Order): void {
+function toHistoryEntry(order: Order): OrderHistoryEntry {
+  return {
+    id: order.id,
+    createdAt: order.createdAt,
+    lines: order.lines,
+    subtotalCents: order.subtotalCents,
+    shippingCents: order.shippingCents,
+    totalCents: order.totalCents,
+  };
+}
+
+function persistHistory(entries: OrderHistoryEntry[]): void {
   try {
-    const entry: OrderHistoryEntry = {
-      id: order.id,
-      createdAt: order.createdAt,
-      lines: order.lines,
-      subtotalCents: order.subtotalCents,
-      shippingCents: order.shippingCents,
-      totalCents: order.totalCents,
-    };
-    localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify([entry, ...readHistory()]));
+    localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(entries));
   } catch {
     // Storage can be unavailable — the confirmation view still shows this session's order.
   }

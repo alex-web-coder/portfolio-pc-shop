@@ -1,0 +1,89 @@
+<div class="wrap">
+  <h1>{{ i18n.t('pages.profile.title') }}</h1>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <label>
+      {{ i18n.t('checkout.fullName') }}
+      <input type="text" formControlName="fullName" />
+      @if (fieldError('fullName'); as error) {
+        <span class="error">{{ error }}</span>
+      }
+    </label>
+
+    <label>
+      {{ i18n.t('checkout.email') }}
+      <input type="email" formControlName="email" />
+      @if (fieldError('email'); as error) {
+        <span class="error">{{ error }}</span>
+      }
+    </label>
+
+    <label>
+      {{ i18n.t('checkout.street') }}
+      <input type="text" formControlName="street" />
+      @if (fieldError('street'); as error) {
+        <span class="error">{{ error }}</span>
+      }
+    </label>
+
+    <div class="row">
+      <label>
+        {{ i18n.t('checkout.postalCode') }}
+        <input type="text" formControlName="postalCode" />
+        @if (fieldError('postalCode'); as error) {
+          <span class="error">{{ error }}</span>
+        }
+      </label>
+
+      <label>
+        {{ i18n.t('checkout.city') }}
+        <input type="text" formControlName="city" />
+        @if (fieldError('city'); as error) {
+          <span class="error">{{ error }}</span>
+        }
+      </label>
+    </div>
+
+    <label>
+      {{ i18n.t('checkout.country') }}
+      <select formControlName="country">
+        <option value="de">{{ i18n.t('checkout.country.de') }}</option>
+        <option value="at">{{ i18n.t('checkout.country.at') }}</option>
+        <option value="ch">{{ i18n.t('checkout.country.ch') }}</option>
+      </select>
+    </label>
+
+    <div class="actions">
+      <button type="submit" class="primary">{{ i18n.t('profile.save') }}</button>
+      @if (justSaved()) {
+        <span class="success">{{ i18n.t('profile.saved') }}</span>
+      }
+    </div>
+  </form>
+
+  <section class="history">
+    <h2>{{ i18n.t('profile.orderHistoryHeading') }}</h2>
+
+    @if (history().length === 0) {
+      <p class="muted">{{ i18n.t('profile.noOrders') }}</p>
+    } @else {
+      <ul class="orders">
+        @for (entry of history(); track entry.id) {
+          <li>
+            <span class="order-id">{{ entry.id }}</span>
+            <span class="order-date">{{ orderDate(entry) }}</span>
+            <span class="order-count">{{ orderItemCount(entry) }} {{ i18n.t('profile.items') }}</span>
+            <span class="order-total">{{ formatPrice(entry.totalCents) }}</span>
+          </li>
+        }
+      </ul>
+    }
+  </section>
+
+  <div class="reset-zone">
+    <button type="button" class="ghost" (click)="resetDemoData()">{{ i18n.t('profile.reset') }}</button>
+    @if (justReset()) {
+      <span class="success">{{ i18n.t('profile.resetDone') }}</span>
+    }
+  </div>
+</div>

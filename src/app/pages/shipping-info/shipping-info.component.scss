@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-4);
+}
+
+h1 {
+  margin: 0 0 var(--space-3);
+  color: var(--color-ink);
+}
+
+section {
+  margin-bottom: var(--space-4);
+}
+
+h2 {
+  font-size: 1rem;
+  margin: 0 0 var(--space-2);
+  color: var(--color-ink);
+}
+
+p {
+  margin: 0 0 var(--space-2);
+  color: color-mix(in srgb, var(--color-ink) 80%, transparent);
+}
+
+ul {
+  margin: 0;
+  padding-left: var(--space-3);
+  color: var(--color-ink);
+}

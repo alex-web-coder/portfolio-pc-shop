@@ -64,6 +64,16 @@ export class PcConfigurationStore {
     return Array.from(this.configurations.keys());
   }
 
+  /** Part of the profile page's "reset demo data" action. */
+  clear(): void {
+    this.configurations.clear();
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // Nothing to clean up if storage was never available.
+    }
+  }
+
   private persist(): void {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(this.configurations.values())));

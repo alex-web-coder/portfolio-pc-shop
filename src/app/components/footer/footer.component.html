@@ -12,9 +12,16 @@
   </div>
 
   <div class="column">
+    <h3>{{ i18n.t('footer.infoHeading') }}</h3>
+    @for (link of infoLinks; track link.path) {
+      <a class="link" [routerLink]="link.path">{{ i18n.t(link.labelKey) }}</a>
+    }
+  </div>
+
+  <div class="column">
     <h3>{{ i18n.t('footer.legalHeading') }}</h3>
-    @for (key of legalLinkKeys; track key) {
-      <span class="link-static">{{ i18n.t(key) }}</span>
+    @for (link of legalLinks; track link.path) {
+      <a class="link" [routerLink]="link.path">{{ i18n.t(link.labelKey) }}</a>
     }
   </div>
 </div>

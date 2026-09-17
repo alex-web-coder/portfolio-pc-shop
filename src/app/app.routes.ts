@@ -42,8 +42,34 @@ export const routes: Routes = [
   },
   {
     path: 'profile',
-    loadComponent: () => import('./pages/coming-soon/coming-soon.component').then((m) => m.ComingSoon),
-    data: { titleKey: 'pages.profile.title' },
+    loadComponent: () => import('./pages/profile/profile.component').then((m) => m.Profile),
+  },
+  {
+    path: 'about',
+    loadComponent: () => import('./pages/about/about.component').then((m) => m.About),
+  },
+  {
+    path: 'faq',
+    loadComponent: () => import('./pages/faq/faq.component').then((m) => m.Faq),
+  },
+  {
+    path: 'shipping',
+    loadComponent: () => import('./pages/shipping-info/shipping-info.component').then((m) => m.ShippingInfo),
+  },
+  {
+    path: 'imprint',
+    loadComponent: () => import('./pages/legal/legal.component').then((m) => m.Legal),
+    data: { kind: 'imprint' },
+  },
+  {
+    path: 'terms',
+    loadComponent: () => import('./pages/legal/legal.component').then((m) => m.Legal),
+    data: { kind: 'terms' },
+  },
+  {
+    path: 'privacy',
+    loadComponent: () => import('./pages/legal/legal.component').then((m) => m.Legal),
+    data: { kind: 'privacy' },
   },
   {
     path: '**',

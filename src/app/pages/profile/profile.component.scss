@@ -1,0 +1,143 @@
+:host {
+  display: block;
+}
+
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--space-4);
+}
+
+h1 {
+  margin: 0 0 var(--space-3);
+  color: var(--color-ink);
+}
+
+h2 {
+  font-size: 1rem;
+  margin: 0 0 var(--space-2);
+  color: var(--color-ink);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+input,
+select {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-2);
+  font: inherit;
+  font-weight: 400;
+}
+
+.row {
+  display: flex;
+  gap: var(--space-2);
+
+  label {
+    flex: 1;
+  }
+}
+
+.error {
+  color: #b3261e;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.success {
+  font-size: 0.8125rem;
+  color: #1a8a4a;
+}
+
+button {
+  border: 0;
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+
+  &.primary {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  &.ghost {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-ink);
+  }
+}
+
+.history {
+  margin-bottom: var(--space-5);
+}
+
+.muted {
+  color: color-mix(in srgb, var(--color-ink) 60%, transparent);
+}
+
+.orders {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-2);
+    font-size: 0.875rem;
+    color: var(--color-ink);
+  }
+}
+
+.order-id {
+  font-weight: 700;
+}
+
+.order-date,
+.order-count {
+  color: color-mix(in srgb, var(--color-ink) 60%, transparent);
+}
+
+.order-total {
+  margin-left: auto;
+  font-weight: 600;
+}
+
+.reset-zone {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}

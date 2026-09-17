@@ -1,0 +1,10 @@
+<div class="wrap">
+  <h1>{{ i18n.t('faq.title') }}</h1>
+
+  @for (item of items; track item.questionKey) {
+    <details>
+      <summary>{{ i18n.t(item.questionKey) }}</summary>
+      <p>{{ i18n.t(item.answerKey) }}</p>
+    </details>
+  }
+</div>

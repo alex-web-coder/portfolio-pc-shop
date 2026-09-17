@@ -1,0 +1,17 @@
+<div class="wrap">
+  <h1>{{ i18n.t('shipping.title') }}</h1>
+
+  <section>
+    <h2>{{ i18n.t('shipping.shippingHeading') }}</h2>
+    <p>{{ i18n.t('shipping.shippingIntro') }}</p>
+    <ul>
+      <li>{{ i18n.t('shipping.flatRateLabel') }}: {{ formatPrice(flatShippingCents) }}</li>
+      <li>{{ i18n.t('shipping.freeFromLabel') }} {{ formatPrice(freeShippingThresholdCents) }}</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>{{ i18n.t('shipping.paymentHeading') }}</h2>
+    <p>{{ i18n.t('shipping.paymentText') }}</p>
+  </section>
+</div>

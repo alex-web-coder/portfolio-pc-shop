@@ -28,11 +28,8 @@ export const TRANSLATIONS = {
     en: 'Your partner for PC hardware. For gaming. For work. For your ideas.',
   },
   'footer.shopHeading': { de: 'Shop', en: 'Shop' },
+  'footer.infoHeading': { de: 'Info', en: 'Info' },
   'footer.legalHeading': { de: 'Rechtliches', en: 'Legal' },
-  'footer.legal.imprint': { de: 'Impressum', en: 'Imprint' },
-  'footer.legal.terms': { de: 'AGB', en: 'Terms' },
-  'footer.legal.privacy': { de: 'Datenschutz', en: 'Privacy' },
-  'footer.legal.contact': { de: 'Kontakt', en: 'Contact' },
   'footer.demoNotice': { de: 'Demo-Shop – keine echten Bestellungen', en: 'Demo shop – no real orders' },
 
   'home.hero.eyebrow': { de: 'Hardware für echte Möglichkeiten', en: 'Hardware for real possibilities' },
@@ -54,12 +51,7 @@ export const TRANSLATIONS = {
   'carousel.next': { de: 'Weiter', en: 'Next' },
   'carousel.defaultLabel': { de: 'Karussell', en: 'Carousel' },
 
-  'comingSoon.eyebrow': { de: 'Demnächst verfügbar', en: 'Coming soon' },
-  'comingSoon.lead': {
-    de: 'Dieser Bereich ist Teil der Demo, aber noch nicht gebaut. Er kommt in einem der nächsten Arbeitsschritte.',
-    en: 'This section is part of the demo but not built yet. It is coming in one of the next steps.',
-  },
-  'comingSoon.homeLink': { de: 'Zur Startseite', en: 'Back to homepage' },
+  'common.backToHome': { de: 'Zur Startseite', en: 'Back to homepage' },
 
   'notFound.code': { de: '404', en: '404' },
   'notFound.title': { de: 'Seite nicht gefunden', en: 'Page not found' },
@@ -209,6 +201,84 @@ export const TRANSLATIONS = {
   'configurator.issue.psuInsufficient': {
     de: 'Das Netzteil liefert nicht genug Leistung für diese Komponenten.',
     en: 'The power supply does not provide enough wattage for these components.',
+  },
+
+  'profile.save': { de: 'Speichern', en: 'Save' },
+  'profile.saved': { de: 'Gespeichert.', en: 'Saved.' },
+  'profile.reset': { de: 'Demodaten zurücksetzen', en: 'Reset demo data' },
+  'profile.resetConfirm': {
+    de: 'Warenkorb, Bestellhistorie und Profil werden auf die Demo-Ausgangswerte zurückgesetzt. Fortfahren?',
+    en: 'Cart, order history, and profile will be reset to their demo defaults. Continue?',
+  },
+  'profile.resetDone': { de: 'Demodaten wurden zurückgesetzt.', en: 'Demo data has been reset.' },
+  'profile.orderHistoryHeading': { de: 'Bestellhistorie', en: 'Order history' },
+  'profile.noOrders': { de: 'Noch keine Demo-Bestellungen.', en: 'No demo orders yet.' },
+  'profile.items': { de: 'Positionen', en: 'items' },
+
+  'faq.title': { de: 'Häufige Fragen', en: 'Frequently asked questions' },
+  'about.title': { de: 'Über uns', en: 'About us' },
+  'shipping.title': { de: 'Versand & Zahlung', en: 'Shipping & payment' },
+  'imprint.title': { de: 'Impressum', en: 'Imprint' },
+  'terms.title': { de: 'AGB', en: 'Terms & conditions' },
+  'privacy.title': { de: 'Datenschutz', en: 'Privacy policy' },
+
+  'faq.q1.question': { de: 'Ist das ein echter Shop?', en: 'Is this a real shop?' },
+  'faq.q1.answer': {
+    de: 'Nein. Diese Seite ist eine Portfolio-Demo. Es werden keine echten Bestellungen oder Zahlungen verarbeitet.',
+    en: 'No. This site is a portfolio demo. No real orders or payments are ever processed.',
+  },
+  'faq.q2.question': { de: 'Wie funktioniert der PC-Konfigurator?', en: 'How does the PC configurator work?' },
+  'faq.q2.answer': {
+    de: 'Er prüft eine vereinfachte Auswahl an Kompatibilitätsregeln (Sockel, RAM-Typ, Formfaktor, Kühlerhöhe, Grafikkartenlänge, Netzteilleistung) anhand eines kleinen Beispieldatensatzes.',
+    en: 'It checks a simplified set of compatibility rules (socket, RAM type, form factor, cooler height, graphics card length, PSU wattage) against a small sample dataset.',
+  },
+  'faq.q3.question': { de: 'Werden meine Daten gespeichert?', en: 'Is my data stored anywhere?' },
+  'faq.q3.answer': {
+    de: 'Nur lokal in deinem Browser (Warenkorb, Demoprofil, Demo-Bestellhistorie). Es gibt kein echtes Backend und keine Übertragung an einen Server.',
+    en: 'Only locally in your browser (cart, demo profile, demo order history). There is no real backend and nothing is sent to a server.',
+  },
+  'faq.q4.question': { de: 'Kann ich eine echte Bestellung aufgeben?', en: 'Can I place a real order?' },
+  'faq.q4.answer': {
+    de: 'Nein, der gesamte Bestellvorgang ist simuliert und dient nur der Demonstration.',
+    en: 'No, the entire checkout flow is simulated and exists purely for demonstration.',
+  },
+  'faq.q5.question': { de: 'Wie kann ich alle Demodaten löschen?', en: 'How do I delete all demo data?' },
+  'faq.q5.answer': {
+    de: 'Im Demoprofil gibt es eine Schaltfläche, um alle lokal gespeicherten Demodaten zurückzusetzen.',
+    en: 'The demo profile page has a button to reset all locally stored demo data.',
+  },
+
+  'shipping.shippingHeading': { de: 'Versand', en: 'Shipping' },
+  'shipping.shippingIntro': {
+    de: 'Demo-Versandregel — es handelt sich um eine Simulation, es findet kein echter Versand statt:',
+    en: 'Demo shipping rule — this is a simulation, nothing is actually shipped:',
+  },
+  'shipping.flatRateLabel': { de: 'Pauschale Versandkosten', en: 'Flat shipping rate' },
+  'shipping.freeFromLabel': { de: 'Kostenlos ab einem Bestellwert von', en: 'Free from an order value of' },
+  'shipping.paymentHeading': { de: 'Zahlung', en: 'Payment' },
+  'shipping.paymentText': {
+    de: 'Beim simulierten Checkout stehen drei Demo-Zahlungsarten zur Auswahl: Kreditkarte, PayPal und Rechnung. Es werden zu keinem Zeitpunkt echte Zahlungsdaten abgefragt oder Zahlungen ausgelöst.',
+    en: 'The simulated checkout offers three demo payment methods: credit card, PayPal, and invoice. No real payment details are ever collected and no payment is ever taken.',
+  },
+
+  'about.shopHeading': { de: 'Über unseren (fiktiven) Shop', en: 'About our (fictional) shop' },
+  'about.shopText': {
+    de: 'Alex Web Coder\'s PC Shop ist ein erfundener Computer-Shop für Komponenten, Komplett-PCs und individuell konfigurierte PCs. Alle Produkte, Preise und Bestellungen sind Beispieldaten für diese Demo.',
+    en: 'Alex Web Coder\'s PC Shop is a fictional computer shop for components, prebuilt PCs, and custom-configured PCs. All products, prices, and orders are sample data for this demo.',
+  },
+  'about.portfolioHeading': { de: 'Über dieses Portfolio-Projekt', en: 'About this portfolio project' },
+  'about.portfolioText': {
+    de: 'Diese Website ist ein Portfolio-Projekt, das den Aufbau eines Angular-Shops von Grund auf demonstriert — inklusive Produktkatalog, Warenkorb, Checkout und PC-Konfigurator.',
+    en: 'This website is a portfolio project demonstrating an Angular shop built from scratch — including product catalog, cart, checkout, and PC configurator.',
+  },
+
+  'legal.placeholderNotice': {
+    de: 'Platzhalter — dieser Abschnitt wird vor einer echten Veröffentlichung noch mit den tatsächlichen Angaben ergänzt.',
+    en: 'Placeholder — this section will be filled in with real details before any real publication.',
+  },
+  'terms.body': {
+    de: 'Da dieser Shop ausschließlich zu Demonstrationszwecken dient, kommen keine Kaufverträge zustande und es gelten keine echten Geschäftsbedingungen. Alle Interaktionen sind simuliert.',
+    en: 'Since this shop exists purely for demonstration purposes, no purchase contracts are ever formed and no real terms and conditions apply. All interactions are simulated.',
   },
 } as const satisfies Record<string, Record<Language, string>>;
 

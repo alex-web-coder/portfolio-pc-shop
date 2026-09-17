@@ -18,11 +18,17 @@ export class Footer {
     { labelKey: 'nav.configurator', path: '/configurator' },
   ];
 
-  protected readonly legalLinkKeys: readonly TranslationKey[] = [
-    'footer.legal.imprint',
-    'footer.legal.terms',
-    'footer.legal.privacy',
-    'footer.legal.contact',
+  protected readonly infoLinks: ReadonlyArray<{ labelKey: TranslationKey; path: string }> = [
+    { labelKey: 'faq.title', path: '/faq' },
+    { labelKey: 'about.title', path: '/about' },
+    { labelKey: 'shipping.title', path: '/shipping' },
+    { labelKey: 'pages.profile.title', path: '/profile' },
+  ];
+
+  protected readonly legalLinks: ReadonlyArray<{ labelKey: TranslationKey; path: string }> = [
+    { labelKey: 'imprint.title', path: '/imprint' },
+    { labelKey: 'terms.title', path: '/terms' },
+    { labelKey: 'privacy.title', path: '/privacy' },
   ];
 
   protected readonly year = new Date().getFullYear();
