@@ -1,0 +1,63 @@
+:host {
+  display: block;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  margin-top: var(--space-6);
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: var(--space-5) var(--space-4);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 160px;
+}
+
+.brand-column {
+  flex: 2 1 240px;
+}
+
+.brand-shop {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--color-on-accent) 80%, transparent);
+}
+
+h3 {
+  margin: 0 0 var(--space-1);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--color-on-accent) 70%, transparent);
+}
+
+.link {
+  font-size: 0.9375rem;
+  cursor: default;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: var(--space-2) var(--space-4) var(--space-4);
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--color-on-accent) 70%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--color-on-accent) 20%, transparent);
+}

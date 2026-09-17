@@ -1,0 +1,26 @@
+<div class="bar">
+  <a class="brand" href="/">
+    <span class="brand-name">Alex Web Coder's</span>
+    <span class="brand-shop">PC Shop</span>
+  </a>
+
+  <label class="search">
+    <mat-icon aria-hidden="true">search</mat-icon>
+    <input type="search" placeholder="Produkte suchen" />
+  </label>
+
+  <div class="actions">
+    <button mat-icon-button aria-label="Konto">
+      <mat-icon>person_outline</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="Warenkorb" matBadge="0" matBadgeSize="small">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </div>
+</div>
+
+<nav class="nav" aria-label="Hauptnavigation">
+  @for (link of navLinks; track link) {
+    <span class="nav-link">{{ link }}</span>
+  }
+</nav>

@@ -1,0 +1,6 @@
+<span class="name">{{ category().name }}</span>
+<div class="image">
+  @if (category().imageUrl) {
+    <img [src]="category().imageUrl" [alt]="category().name" />
+  }
+</div>

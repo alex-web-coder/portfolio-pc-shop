@@ -1,0 +1,25 @@
+<div class="content">
+  <div class="column brand-column">
+    <span class="brand-shop">Alex Web Coder's PC Shop</span>
+    <p>Dein Partner für PC-Hardware. Zum Zocken. Zum Arbeiten. Für deine Ideen.</p>
+  </div>
+
+  <div class="column">
+    <h3>Shop</h3>
+    @for (link of shopLinks; track link) {
+      <span class="link">{{ link }}</span>
+    }
+  </div>
+
+  <div class="column">
+    <h3>Rechtliches</h3>
+    @for (link of legalLinks; track link) {
+      <span class="link">{{ link }}</span>
+    }
+  </div>
+</div>
+
+<div class="bottom">
+  <span>&copy; {{ year }} Alex Web Coder's PC Shop</span>
+  <span>Demo-Shop – keine echten Bestellungen</span>
+</div>
