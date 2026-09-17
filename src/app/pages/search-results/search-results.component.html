@@ -1,0 +1,16 @@
+<div class="wrap">
+  <h1>{{ i18n.t('search.title') }}</h1>
+
+  @if (searchService.isLoading()) {
+    <p class="status">{{ i18n.t('catalog.loading') }}</p>
+  } @else if (results().length === 0) {
+    <p class="status">{{ i18n.t('search.noResults') }} „{{ q() }}"</p>
+  } @else {
+    <p class="query-line">{{ i18n.t('search.resultsFor') }} „{{ q() }}"</p>
+    <div class="grid">
+      @for (product of results(); track product.id) {
+        <app-product-card [product]="product" />
+      }
+    </div>
+  }
+</div>

@@ -4,10 +4,28 @@
     <span class="brand-shop">PC Shop</span>
   </a>
 
-  <label class="search">
+  <form class="search" role="search" (ngSubmit)="onSubmit()">
     <mat-icon aria-hidden="true">search</mat-icon>
-    <input type="search" [placeholder]="i18n.t('header.searchPlaceholder')" />
-  </label>
+    <input
+      type="search"
+      [placeholder]="i18n.t('header.searchPlaceholder')"
+      [value]="query()"
+      (input)="onQueryInput($any($event.target).value)"
+      (focus)="onFocus()"
+    />
+
+    @if (isDropdownOpen() && suggestions().length > 0) {
+      <ul class="suggestions">
+        @for (product of suggestions(); track product.id) {
+          <li>
+            <a [routerLink]="productLink(product)" (click)="onSuggestionSelected()">
+              {{ productName(product) }}
+            </a>
+          </li>
+        }
+      </ul>
+    }
+  </form>
 
   <div class="actions">
     <button

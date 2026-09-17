@@ -33,6 +33,7 @@
 }
 
 .search {
+  position: relative;
   flex: 1;
   display: flex;
   align-items: center;
@@ -52,6 +53,34 @@
 
     &::placeholder {
       color: color-mix(in srgb, var(--color-ink) 45%, transparent);
+    }
+  }
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + var(--space-1));
+  left: 0;
+  right: 0;
+  z-index: 30;
+  margin: 0;
+  padding: var(--space-1);
+  list-style: none;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+
+  a {
+    display: block;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius);
+    color: var(--color-ink);
+    text-decoration: none;
+    font-size: 0.875rem;
+
+    &:hover {
+      background: var(--color-bg);
     }
   }
 }

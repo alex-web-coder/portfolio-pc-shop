@@ -1,12 +1,14 @@
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { App } from './app.component';
+import { mockApiInterceptor } from './interceptors/mock-api.interceptor';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideRouter([])],
+      providers: [provideRouter([]), provideHttpClient(withInterceptors([mockApiInterceptor]))],
     }).compileComponents();
   });
 

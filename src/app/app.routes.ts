@@ -40,6 +40,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/compare/compare.component').then((m) => m.Compare),
   },
   {
+    path: 'search',
+    loadComponent: () =>
+      import('./pages/search-results/search-results.component').then((m) => m.SearchResults),
+  },
+  {
     path: 'checkout',
     loadComponent: () => import('./pages/checkout/checkout.component').then((m) => m.Checkout),
     canActivate: [cartNotEmptyGuard],
