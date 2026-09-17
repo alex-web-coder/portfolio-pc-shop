@@ -70,12 +70,14 @@ configurator and catalog filter panel.
 **Done when:** the full purchase and configurator flow works end to end in both languages and on
 small screens.
 
-### Tests & acceptance — ⏳ in progress (step 10)
-Unit tests for cart totals/quantities (14), the shipping rule (3), and configurator compatibility
-rules (11) were written alongside the feature that introduced them, per plan. **Explicitly
-deferred to a dedicated closing pass, per user direction:** component/integration tests for catalog
-filters and checkout form validation/loading states, and service-level tests for the mock
-interceptor — this is intentional, not an oversight; see the final commit before hand-off.
+### Tests & acceptance — ✅ done (step 10)
+Unit tests for cart totals/quantities (12), the shipping rule (3), and configurator compatibility
+rules (12) were written alongside the feature that introduced them, per plan. The previously
+deferred component/integration coverage has since been closed: catalog filtering via
+`RouterTestingHarness` against the real interceptor (5), checkout form validation/back-navigation/
+happy-path/simulated-error/double-submit-guard driven through the rendered DOM (5), and
+service-level tests for the mock interceptor's HTTP paths incl. the simulated order failure (7).
+46 tests total.
 **Acceptance checklist:**
 - ✅ All agreed features work online, no login required.
 - ✅ German and English are complete.

@@ -98,20 +98,24 @@ it as a normal line item, with its full component breakdown carried through to o
 
 ## Testing
 
-29 unit tests, written alongside the feature that introduced them:
+46 unit/integration tests:
 
 | Area | File | Tests |
 | --- | --- | --- |
 | Cart (add/remove/clamp/clear, subtotal calc) | `cart.service.spec.ts` | 12 |
 | Shipping rule (flat rate, free threshold) | `order.service.spec.ts` | 3 |
 | Configurator compatibility rules + pricing | `pc-compatibility.spec.ts` | 12 |
+| Mock API interceptor (categories/products/404/orders/simulated failure) | `mock-api.interceptor.spec.ts` | 7 |
+| Catalog filtering via real routing + URL query params | `product-list.component.spec.ts` | 5 |
+| Checkout form validation, back-preserves-values, happy path, simulated error, double-submit guard | `checkout.component.spec.ts` | 5 |
 | App smoke test | `app.component.spec.ts` | 2 |
 
-**Deliberately not yet covered** (tracked, not forgotten): component/integration tests for catalog
-filter behavior and checkout form validation/loading states, and service-level tests for the mock
-interceptor's HTTP paths. Every one of those flows was verified by hand-driving the running app in
-a real browser during development — see the acceptance section of `docs/mvp.md` — but that's
-session verification, not a regression guard. Closing this gap is the next piece of work.
+The catalog and checkout specs are deliberately integration-style rather than isolated unit tests —
+`ProductList`'s behavior is inherently coupled to the router (query params *are* the filter state),
+so it's tested through `RouterTestingHarness` with the real mock interceptor rather than mocked
+dependencies; `Checkout` is driven through its rendered DOM (fill fields, click buttons, read the
+confirmation) rather than reaching into component internals, so the tests exercise it the same way
+a user would.
 
 ## How AI was used
 
