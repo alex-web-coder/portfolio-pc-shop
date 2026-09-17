@@ -45,22 +45,24 @@ h1 {
   flex-wrap: wrap;
 }
 
-button.primary,
-button.secondary {
+.primary,
+.secondary {
+  display: inline-block;
   border-radius: var(--radius);
   padding: var(--space-2) var(--space-3);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
 }
 
-button.primary {
+.primary {
   border: 0;
   background: var(--color-surface);
   color: var(--color-accent);
 }
 
-button.secondary {
+.secondary {
   border: 1px solid var(--color-on-accent);
   background: transparent;
   color: var(--color-on-accent);

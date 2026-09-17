@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { RouterLink } from '@angular/router';
 import { Carousel } from '../../components/carousel/carousel.component';
 import { CategoryTile } from '../../components/category-tile/category-tile.component';
 import { ProductCard } from '../../components/product-card/product-card.component';
@@ -7,7 +8,7 @@ import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
 
 @Component({
-  imports: [Carousel, CategoryTile, ProductCard],
+  imports: [RouterLink, Carousel, CategoryTile, ProductCard],
   selector: 'app-home',
   styleUrl: './home.component.scss',
   templateUrl: './home.component.html',

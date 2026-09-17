@@ -46,7 +46,16 @@ h3 {
 
 .link {
   font-size: 0.9375rem;
-  cursor: default;
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.link-static {
+  font-size: 0.9375rem;
 }
 
 .bottom {

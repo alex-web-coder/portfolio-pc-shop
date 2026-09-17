@@ -75,7 +75,16 @@
   font-size: 0.9375rem;
   font-weight: 500;
   color: var(--color-ink);
-  cursor: default;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+
+  &.active {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
 }
 
 @media (max-width: 720px) {

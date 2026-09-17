@@ -6,15 +6,15 @@
 
   <div class="column">
     <h3>Shop</h3>
-    @for (link of shopLinks; track link) {
-      <span class="link">{{ link }}</span>
+    @for (link of shopLinks; track link.path) {
+      <a class="link" [routerLink]="link.path">{{ link.label }}</a>
     }
   </div>
 
   <div class="column">
     <h3>Rechtliches</h3>
     @for (link of legalLinks; track link) {
-      <span class="link">{{ link }}</span>
+      <span class="link-static">{{ link }}</span>
     }
   </div>
 </div>

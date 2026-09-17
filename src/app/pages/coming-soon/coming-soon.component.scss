@@ -1,0 +1,39 @@
+:host {
+  display: block;
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: var(--space-6) auto;
+  padding: 0 var(--space-4);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-1);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--color-ink) 60%, transparent);
+}
+
+h1 {
+  margin: 0 0 var(--space-2);
+  color: var(--color-ink);
+}
+
+.lead {
+  margin: 0 auto var(--space-3);
+  max-width: 480px;
+  color: color-mix(in srgb, var(--color-ink) 70%, transparent);
+}
+
+.home-link {
+  display: inline-block;
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 600;
+  text-decoration: none;
+}

@@ -1,5 +1,5 @@
 <div class="bar">
-  <a class="brand" href="/">
+  <a class="brand" routerLink="/">
     <span class="brand-name">Alex Web Coder's</span>
     <span class="brand-shop">PC Shop</span>
   </a>
@@ -10,17 +10,17 @@
   </label>
 
   <div class="actions">
-    <button mat-icon-button aria-label="Konto">
+    <a mat-icon-button routerLink="/profile" aria-label="Konto">
       <mat-icon>person_outline</mat-icon>
-    </button>
-    <button mat-icon-button aria-label="Warenkorb" matBadge="0" matBadgeSize="small">
+    </a>
+    <a mat-icon-button routerLink="/cart" aria-label="Warenkorb" matBadge="0" matBadgeSize="small">
       <mat-icon>shopping_cart</mat-icon>
-    </button>
+    </a>
   </div>
 </div>
 
 <nav class="nav" aria-label="Hauptnavigation">
-  @for (link of navLinks; track link) {
-    <span class="nav-link">{{ link }}</span>
+  @for (link of navLinks; track link.path) {
+    <a class="nav-link" [routerLink]="link.path" routerLinkActive="active">{{ link.label }}</a>
   }
 </nav>
