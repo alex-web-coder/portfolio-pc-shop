@@ -1,6 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../models/product.model';
+import { CartService } from '../../services/cart.service';
 import { TranslationService } from '../../services/translation.service';
 
 const LOCALE_BY_LANGUAGE = { de: 'de-DE', en: 'en-GB' } as const;
@@ -13,6 +14,7 @@ const LOCALE_BY_LANGUAGE = { de: 'de-DE', en: 'en-GB' } as const;
 })
 export class ProductCard {
   protected readonly i18n = inject(TranslationService);
+  private readonly cartService = inject(CartService);
 
   readonly product = input.required<Product>();
 
@@ -30,4 +32,8 @@ export class ProductCard {
     const formatter = new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR' });
     return formatter.format(this.product().priceCents / 100);
   });
+
+  protected addToCart(): void {
+    this.cartService.add(this.product().id);
+  }
 }

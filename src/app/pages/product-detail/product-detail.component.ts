@@ -1,6 +1,7 @@
 import { Component, computed, effect, inject, input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../models/product.model';
+import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
 import { TranslationService } from '../../services/translation.service';
 
@@ -14,6 +15,7 @@ const LOCALE_BY_LANGUAGE = { de: 'de-DE', en: 'en-GB' } as const;
 })
 export class ProductDetail {
   private readonly productService = inject(ProductService);
+  private readonly cartService = inject(CartService);
   protected readonly i18n = inject(TranslationService);
 
   readonly productId = input.required<string>();
@@ -58,5 +60,12 @@ export class ProductDetail {
         },
       });
     });
+  }
+
+  protected addToCart(): void {
+    const product = this.product();
+    if (product) {
+      this.cartService.add(product.id);
+    }
   }
 }

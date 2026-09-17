@@ -1,0 +1,63 @@
+<div class="wrap">
+  <h1>{{ i18n.t('pages.cart.title') }}</h1>
+
+  @if (cartView.isLoading()) {
+    <p class="status">{{ i18n.t('catalog.loading') }}</p>
+  } @else if (cartView.hasError()) {
+    <p class="status error">{{ i18n.t('catalog.error') }}</p>
+  } @else if (cartView.lines().length === 0) {
+    <div class="empty">
+      <p>{{ i18n.t('cart.empty') }}</p>
+      <a routerLink="/components">{{ i18n.t('cart.browseProducts') }}</a>
+    </div>
+  } @else {
+    <div class="layout">
+      <ul class="lines">
+        @for (line of cartView.lines(); track line.product.id) {
+          <li class="line" [class.unavailable]="!line.product.available">
+            <div class="thumb"></div>
+
+            <div class="details">
+              <span class="name">{{ name(line) }}</span>
+              @if (!line.product.available) {
+                <span class="notice">{{ i18n.t('cart.unavailableNotice') }}</span>
+              }
+              <span class="unit-price">{{ formatPrice(line.product.priceCents) }}</span>
+            </div>
+
+            <label class="quantity">
+              {{ i18n.t('cart.quantity') }}
+              <input
+                type="number"
+                min="1"
+                max="10"
+                [value]="line.quantity"
+                (change)="onQuantityChange(line.product.id, $any($event.target).value)"
+              />
+            </label>
+
+            <span class="line-total">{{ formatPrice(line.product.priceCents * line.quantity) }}</span>
+
+            <button type="button" class="remove" (click)="remove(line.product.id)">
+              {{ i18n.t('cart.remove') }}
+            </button>
+          </li>
+        }
+      </ul>
+
+      <div class="summary">
+        <div class="subtotal">
+          <span>{{ i18n.t('cart.subtotal') }}</span>
+          <span>{{ formatPrice(cartView.subtotalCents()) }}</span>
+        </div>
+        @if (cartView.hasOrderableLine()) {
+          <a class="checkout" routerLink="/checkout">{{ i18n.t('cart.proceedToCheckout') }}</a>
+        } @else {
+          <button type="button" class="checkout" disabled>
+            {{ i18n.t('cart.proceedToCheckout') }}
+          </button>
+        }
+      </div>
+    </div>
+  }
+</div>

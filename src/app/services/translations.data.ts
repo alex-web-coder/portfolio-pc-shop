@@ -95,6 +95,17 @@ export const TRANSLATIONS = {
     en: 'This product does not exist or is no longer available.',
   },
   'product.backToCategory': { de: 'Zurück zur Übersicht', en: 'Back to overview' },
+
+  'cart.empty': { de: 'Dein Warenkorb ist leer.', en: 'Your cart is empty.' },
+  'cart.browseProducts': { de: 'Produkte entdecken', en: 'Browse products' },
+  'cart.quantity': { de: 'Menge', en: 'Quantity' },
+  'cart.remove': { de: 'Entfernen', en: 'Remove' },
+  'cart.subtotal': { de: 'Zwischensumme', en: 'Subtotal' },
+  'cart.proceedToCheckout': { de: 'Zur Kasse', en: 'Proceed to checkout' },
+  'cart.unavailableNotice': {
+    de: 'Nicht mehr verfügbar — wird beim Bestellen nicht berücksichtigt.',
+    en: 'No longer available — excluded from the order.',
+  },
 } as const satisfies Record<string, Record<Language, string>>;
 
 export type TranslationKey = keyof typeof TRANSLATIONS;

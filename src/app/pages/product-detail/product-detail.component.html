@@ -28,7 +28,7 @@
 
         <div class="purchase">
           <span class="price">{{ formattedPrice() }}</span>
-          <button class="add" type="button" [disabled]="!product()!.available">
+          <button class="add" type="button" [disabled]="!product()!.available" (click)="addToCart()">
             {{ i18n.t('product.addToCart') }}
           </button>
         </div>

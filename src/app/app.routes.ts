@@ -33,8 +33,7 @@ export const routes: Routes = [
   },
   {
     path: 'cart',
-    loadComponent: () => import('./pages/coming-soon/coming-soon.component').then((m) => m.ComingSoon),
-    data: { titleKey: 'pages.cart.title' },
+    loadComponent: () => import('./pages/cart/cart.component').then((m) => m.Cart),
   },
   {
     path: 'checkout',
