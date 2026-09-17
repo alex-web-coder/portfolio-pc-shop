@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { cartNotEmptyGuard } from './guards/cart-not-empty.guard';
 
 export const routes: Routes = [
   {
@@ -37,8 +38,8 @@ export const routes: Routes = [
   },
   {
     path: 'checkout',
-    loadComponent: () => import('./pages/coming-soon/coming-soon.component').then((m) => m.ComingSoon),
-    data: { titleKey: 'pages.checkout.title' },
+    loadComponent: () => import('./pages/checkout/checkout.component').then((m) => m.Checkout),
+    canActivate: [cartNotEmptyGuard],
   },
   {
     path: 'profile',

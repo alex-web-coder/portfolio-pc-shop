@@ -1,0 +1,192 @@
+<div class="wrap">
+  @if (placedOrder(); as order) {
+    <div class="confirmation">
+      <h1>{{ i18n.t('checkout.confirmation.title') }}</h1>
+      <p class="notice">{{ i18n.t('checkout.confirmation.notice') }}</p>
+      <p class="order-number">
+        {{ i18n.t('checkout.confirmation.orderNumber') }}: <strong>{{ order.id }}</strong>
+      </p>
+
+      <ul class="order-lines">
+        @for (line of order.lines; track line.productId) {
+          <li>
+            <span>{{ orderLineName(line) }} × {{ line.quantity }}</span>
+            <span>{{ formatPrice(line.priceCents * line.quantity) }}</span>
+          </li>
+        }
+      </ul>
+
+      <dl class="totals">
+        <dt>{{ i18n.t('checkout.subtotal') }}</dt>
+        <dd>{{ formatPrice(order.subtotalCents) }}</dd>
+        <dt>{{ i18n.t('checkout.shipping') }}</dt>
+        <dd>{{ formatPrice(order.shippingCents) }}</dd>
+        <dt>{{ i18n.t('checkout.total') }}</dt>
+        <dd>{{ formatPrice(order.totalCents) }}</dd>
+      </dl>
+
+      <a routerLink="/">{{ i18n.t('comingSoon.homeLink') }}</a>
+    </div>
+  } @else {
+    <h1 [id]="stepHeadingId" tabindex="-1">
+      {{ i18n.t(stepHeadingKey()) }}
+    </h1>
+    <p class="step-indicator">{{ currentStep() }} / 3</p>
+
+    @if (currentStep() === 1) {
+      <form [formGroup]="contactForm" (ngSubmit)="goToStep2()">
+        <label>
+          {{ i18n.t('checkout.fullName') }}
+          <input type="text" formControlName="fullName" />
+          @if (fieldError('fullName'); as error) {
+            <span class="error">{{ error }}</span>
+          }
+        </label>
+
+        <label>
+          {{ i18n.t('checkout.email') }}
+          <input type="email" formControlName="email" />
+          @if (fieldError('email'); as error) {
+            <span class="error">{{ error }}</span>
+          }
+        </label>
+
+        <label>
+          {{ i18n.t('checkout.street') }}
+          <input type="text" formControlName="street" />
+          @if (fieldError('street'); as error) {
+            <span class="error">{{ error }}</span>
+          }
+        </label>
+
+        <div class="row">
+          <label>
+            {{ i18n.t('checkout.postalCode') }}
+            <input type="text" formControlName="postalCode" />
+            @if (fieldError('postalCode'); as error) {
+              <span class="error">{{ error }}</span>
+            }
+          </label>
+
+          <label>
+            {{ i18n.t('checkout.city') }}
+            <input type="text" formControlName="city" />
+            @if (fieldError('city'); as error) {
+              <span class="error">{{ error }}</span>
+            }
+          </label>
+        </div>
+
+        <label>
+          {{ i18n.t('checkout.country') }}
+          <select formControlName="country">
+            <option value="de">{{ i18n.t('checkout.country.de') }}</option>
+            <option value="at">{{ i18n.t('checkout.country.at') }}</option>
+            <option value="ch">{{ i18n.t('checkout.country.ch') }}</option>
+          </select>
+        </label>
+
+        <div class="actions">
+          <button type="button" class="ghost" (click)="fillSampleData()">
+            {{ i18n.t('checkout.fillSampleData') }}
+          </button>
+          <button type="submit" class="primary">{{ i18n.t('checkout.continue') }}</button>
+        </div>
+      </form>
+    }
+
+    @if (currentStep() === 2) {
+      <div class="shipping-rule">
+        {{ i18n.t('checkout.shippingCostLabel') }}: {{ formatPrice(shippingCents()) }}
+        ({{ i18n.t('checkout.freeShippingFrom') }} {{ formatPrice(freeShippingThresholdCents) }})
+      </div>
+
+      <form [formGroup]="paymentForm" (ngSubmit)="goToStep3()">
+        <fieldset>
+          <legend>{{ i18n.t('checkout.paymentMethod') }}</legend>
+          <label class="radio">
+            <input type="radio" formControlName="paymentMethod" value="card" />
+            {{ i18n.t('checkout.payment.card') }}
+          </label>
+          <label class="radio">
+            <input type="radio" formControlName="paymentMethod" value="paypal" />
+            {{ i18n.t('checkout.payment.paypal') }}
+          </label>
+          <label class="radio">
+            <input type="radio" formControlName="paymentMethod" value="invoice" />
+            {{ i18n.t('checkout.payment.invoice') }}
+          </label>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" class="ghost" (click)="goBack(1)">{{ i18n.t('checkout.back') }}</button>
+          <button type="submit" class="primary">{{ i18n.t('checkout.continue') }}</button>
+        </div>
+      </form>
+    }
+
+    @if (currentStep() === 3) {
+      <div class="review">
+        <section>
+          <h2>{{ i18n.t('checkout.review.contact') }}</h2>
+          <p>{{ contactForm.controls.fullName.value }}</p>
+          <p>{{ contactForm.controls.email.value }}</p>
+        </section>
+
+        <section>
+          <h2>{{ i18n.t('checkout.review.address') }}</h2>
+          <p>{{ contactForm.controls.street.value }}</p>
+          <p>{{ contactForm.controls.postalCode.value }} {{ contactForm.controls.city.value }}</p>
+          <p>{{ countryLabel(contactForm.controls.country.value) }}</p>
+        </section>
+
+        <section>
+          <h2>{{ i18n.t('checkout.paymentMethod') }}</h2>
+          <p>{{ paymentLabel(paymentForm.controls.paymentMethod.value) }}</p>
+        </section>
+
+        <section>
+          <h2>{{ i18n.t('checkout.review.items') }}</h2>
+          <ul class="order-lines">
+            @for (line of cartView.lines(); track line.product.id) {
+              @if (line.product.available) {
+                <li>
+                  <span>{{ productName(line) }} × {{ line.quantity }}</span>
+                  <span>{{ formatPrice(line.product.priceCents * line.quantity) }}</span>
+                </li>
+              }
+            }
+          </ul>
+
+          <dl class="totals">
+            <dt>{{ i18n.t('checkout.subtotal') }}</dt>
+            <dd>{{ formatPrice(cartView.subtotalCents()) }}</dd>
+            <dt>{{ i18n.t('checkout.shipping') }}</dt>
+            <dd>{{ formatPrice(shippingCents()) }}</dd>
+            <dt>{{ i18n.t('checkout.total') }}</dt>
+            <dd>{{ formatPrice(totalCents()) }}</dd>
+          </dl>
+        </section>
+
+        @if (!cartView.hasOrderableLine()) {
+          <p class="error">{{ i18n.t('checkout.noOrderableItems') }}</p>
+        }
+        @if (submitError()) {
+          <p class="error">{{ i18n.t('checkout.submitError') }}</p>
+        }
+
+        <div class="actions">
+          <button type="button" class="ghost" (click)="goBack(2)">{{ i18n.t('checkout.back') }}</button>
+          <button
+            type="button"
+            class="primary"
+            [disabled]="isSubmitting() || !cartView.hasOrderableLine()"
+            (click)="placeOrder()"
+          >
+            {{ i18n.t('checkout.placeOrder') }}
+          </button>
+        </div>
+      </div>
+    }
+  }
+</div>
