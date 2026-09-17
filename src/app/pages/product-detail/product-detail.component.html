@@ -33,6 +33,18 @@
           </button>
         </div>
 
+        @if (product()!.categorySlug !== 'custom-configuration') {
+          <label class="compare">
+            <input
+              type="checkbox"
+              [checked]="compareService.isSelected(product()!.id)"
+              [disabled]="!compareService.isSelected(product()!.id) && compareService.isFull()"
+              (change)="toggleCompare()"
+            />
+            {{ i18n.t('compare.add') }}
+          </label>
+        }
+
         <h2>{{ i18n.t('product.specsHeading') }}</h2>
         <dl class="specs">
           @for (spec of product()!.specs; track spec.key) {

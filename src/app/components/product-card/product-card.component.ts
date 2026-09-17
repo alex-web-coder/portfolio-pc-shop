@@ -2,6 +2,7 @@ import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../models/product.model';
 import { CartService } from '../../services/cart.service';
+import { CompareService } from '../../services/compare.service';
 import { TranslationService } from '../../services/translation.service';
 
 const LOCALE_BY_LANGUAGE = { de: 'de-DE', en: 'en-GB' } as const;
@@ -15,8 +16,11 @@ const LOCALE_BY_LANGUAGE = { de: 'de-DE', en: 'en-GB' } as const;
 export class ProductCard {
   protected readonly i18n = inject(TranslationService);
   private readonly cartService = inject(CartService);
+  protected readonly compareService = inject(CompareService);
 
   readonly product = input.required<Product>();
+
+  protected readonly isComparable = computed(() => this.product().categorySlug !== 'custom-configuration');
 
   protected readonly name = computed(() => this.product().name[this.i18n.language()]);
 
@@ -35,5 +39,9 @@ export class ProductCard {
 
   protected addToCart(): void {
     this.cartService.add(this.product().id);
+  }
+
+  protected toggleCompare(): void {
+    this.compareService.toggle(this.product().id);
   }
 }

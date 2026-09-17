@@ -1,0 +1,9 @@
+@if (compareService.count() > 0) {
+  <div class="bar">
+    <span class="count">{{ compareService.count() }}</span>
+    <a routerLink="/compare">{{ i18n.t('compare.viewComparison') }}</a>
+    <button type="button" class="clear" (click)="compareService.clear()" [attr.aria-label]="i18n.t('compare.clearAll')">
+      &#10005;
+    </button>
+  </div>
+}

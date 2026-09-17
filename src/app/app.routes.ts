@@ -36,6 +36,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/cart/cart.component').then((m) => m.Cart),
   },
   {
+    path: 'compare',
+    loadComponent: () => import('./pages/compare/compare.component').then((m) => m.Compare),
+  },
+  {
     path: 'checkout',
     loadComponent: () => import('./pages/checkout/checkout.component').then((m) => m.Checkout),
     canActivate: [cartNotEmptyGuard],

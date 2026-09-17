@@ -1,0 +1,45 @@
+<div class="wrap">
+  <h1>{{ i18n.t('compare.title') }}</h1>
+
+  @if (isLoading()) {
+    <p class="status">{{ i18n.t('catalog.loading') }}</p>
+  } @else if (hasError()) {
+    <p class="status error">{{ i18n.t('catalog.error') }}</p>
+  } @else if (comparedProducts().length === 0) {
+    <div class="empty">
+      <p>{{ i18n.t('compare.empty') }}</p>
+      <a routerLink="/components">{{ i18n.t('compare.browseProducts') }}</a>
+    </div>
+  } @else {
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            @for (product of comparedProducts(); track product.id) {
+              <th>
+                <div class="product-head">
+                  <span class="name">{{ name(product) }}</span>
+                  <span class="price">{{ formatPrice(product.priceCents) }}</span>
+                  <button type="button" class="remove" (click)="remove(product.id)">
+                    {{ i18n.t('compare.remove') }}
+                  </button>
+                </div>
+              </th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of specRows(); track row.key) {
+            <tr>
+              <th>{{ row.label[i18n.language()] }}</th>
+              @for (product of comparedProducts(); track product.id) {
+                <td>{{ specValue(product, row.key) }}</td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
