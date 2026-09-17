@@ -1,0 +1,156 @@
+:host {
+  display: block;
+}
+
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space-4);
+}
+
+.status {
+  color: color-mix(in srgb, var(--color-ink) 70%, transparent);
+}
+
+.not-found {
+  text-align: center;
+  padding: var(--space-6) 0;
+
+  a {
+    display: inline-block;
+    margin-top: var(--space-2);
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: var(--space-3);
+  color: var(--color-ink);
+  text-decoration: none;
+  font-size: 0.875rem;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.layout {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.image {
+  flex: 0 0 320px;
+  height: 320px;
+  background: var(--color-bg);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &.unavailable {
+    opacity: 0.5;
+  }
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+}
+
+h1 {
+  margin: 0 0 var(--space-1);
+  color: var(--color-ink);
+}
+
+.manufacturer {
+  margin: 0 0 var(--space-2);
+  color: color-mix(in srgb, var(--color-ink) 60%, transparent);
+}
+
+.description {
+  margin: 0 0 var(--space-2);
+  color: var(--color-ink);
+}
+
+.availability {
+  display: inline-block;
+  font-size: 0.8125rem;
+  color: #1a8a4a;
+
+  &.unavailable {
+    color: color-mix(in srgb, var(--color-ink) 50%, transparent);
+  }
+}
+
+.purchase {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.add {
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  padding: var(--space-2) var(--space-3);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:disabled {
+    background: color-mix(in srgb, var(--color-ink) 25%, transparent);
+    cursor: not-allowed;
+  }
+}
+
+h2 {
+  font-size: 1rem;
+  margin: 0 0 var(--space-2);
+  color: var(--color-ink);
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+
+  dt {
+    color: color-mix(in srgb, var(--color-ink) 60%, transparent);
+  }
+
+  dd {
+    margin: 0;
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 720px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .image {
+    flex: 1;
+    width: 100%;
+  }
+}

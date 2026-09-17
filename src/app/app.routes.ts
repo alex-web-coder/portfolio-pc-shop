@@ -7,13 +7,24 @@ export const routes: Routes = [
   },
   {
     path: 'components',
-    loadComponent: () => import('./pages/coming-soon/coming-soon.component').then((m) => m.ComingSoon),
-    data: { titleKey: 'pages.components.title' },
+    loadComponent: () => import('./pages/category-grid/category-grid.component').then((m) => m.CategoryGrid),
+  },
+  {
+    path: 'components/:categorySlug',
+    loadComponent: () => import('./pages/product-list/product-list.component').then((m) => m.ProductList),
+  },
+  {
+    path: 'components/:categorySlug/:productId',
+    loadComponent: () => import('./pages/product-detail/product-detail.component').then((m) => m.ProductDetail),
   },
   {
     path: 'prebuilt-pcs',
-    loadComponent: () => import('./pages/coming-soon/coming-soon.component').then((m) => m.ComingSoon),
-    data: { titleKey: 'pages.prebuiltPcs.title' },
+    loadComponent: () => import('./pages/product-list/product-list.component').then((m) => m.ProductList),
+    data: { categorySlug: 'prebuilt-pcs' },
+  },
+  {
+    path: 'prebuilt-pcs/:productId',
+    loadComponent: () => import('./pages/product-detail/product-detail.component').then((m) => m.ProductDetail),
   },
   {
     path: 'configurator',

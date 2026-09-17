@@ -1,11 +1,11 @@
-<div class="image" [class.unavailable]="!product().available">
+<a class="image" [class.unavailable]="!product().available" [routerLink]="detailLink()">
   @if (product().imageUrl) {
-    <img [src]="product().imageUrl" [alt]="product().name" />
+    <img [src]="product().imageUrl" [alt]="name()" />
   }
-</div>
+</a>
 
 <div class="body">
-  <span class="name">{{ product().name }}</span>
+  <a class="name" [routerLink]="detailLink()">{{ name() }}</a>
 
   <span class="availability" [class.unavailable]="!product().available">
     {{ product().available ? i18n.t('product.inStock') : i18n.t('product.unavailable') }}

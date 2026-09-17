@@ -1,6 +1,4 @@
-<span class="name">{{ category().name }}</span>
-<div class="image">
-  @if (category().imageUrl) {
-    <img [src]="category().imageUrl" [alt]="category().name" />
-  }
-</div>
+<a class="tile" [routerLink]="link()">
+  <span class="name">{{ name() }}</span>
+  <div class="image"></div>
+</a>

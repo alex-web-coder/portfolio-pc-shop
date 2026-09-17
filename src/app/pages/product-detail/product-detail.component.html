@@ -1,0 +1,46 @@
+<div class="wrap">
+  @if (isLoading()) {
+    <p class="status">{{ i18n.t('catalog.loading') }}</p>
+  } @else if (hasError() || !product()) {
+    <div class="not-found">
+      <h1>{{ i18n.t('product.notFound.title') }}</h1>
+      <p>{{ i18n.t('product.notFound.lead') }}</p>
+      <a routerLink="/components">{{ i18n.t('comingSoon.homeLink') }}</a>
+    </div>
+  } @else {
+    <a class="back" [routerLink]="categoryLink()">&#8249; {{ i18n.t('product.backToCategory') }}</a>
+
+    <div class="layout">
+      <div class="image" [class.unavailable]="!product()!.available">
+        @if (product()!.imageUrl) {
+          <img [src]="product()!.imageUrl" [alt]="name()" />
+        }
+      </div>
+
+      <div class="info">
+        <h1>{{ name() }}</h1>
+        <p class="manufacturer">{{ product()!.manufacturer }}</p>
+        <p class="description">{{ description() }}</p>
+
+        <span class="availability" [class.unavailable]="!product()!.available">
+          {{ product()!.available ? i18n.t('product.inStock') : i18n.t('product.unavailable') }}
+        </span>
+
+        <div class="purchase">
+          <span class="price">{{ formattedPrice() }}</span>
+          <button class="add" type="button" [disabled]="!product()!.available">
+            {{ i18n.t('product.addToCart') }}
+          </button>
+        </div>
+
+        <h2>{{ i18n.t('product.specsHeading') }}</h2>
+        <dl class="specs">
+          @for (spec of product()!.specs; track spec.key) {
+            <dt>{{ spec.label[i18n.language()] }}</dt>
+            <dd>{{ spec.value }}</dd>
+          }
+        </dl>
+      </div>
+    </div>
+  }
+</div>

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { Carousel } from '../../components/carousel/carousel.component';
@@ -7,6 +7,8 @@ import { ProductCard } from '../../components/product-card/product-card.componen
 import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
 import { TranslationService } from '../../services/translation.service';
+
+const FEATURED_PRODUCT_COUNT = 8;
 
 @Component({
   imports: [RouterLink, Carousel, CategoryTile, ProductCard],
@@ -22,7 +24,10 @@ export class Home {
   protected readonly categories = toSignal(this.categoryService.getCategories(), {
     initialValue: [],
   });
-  protected readonly products = toSignal(this.productService.getFeaturedProducts(), {
+  private readonly products = toSignal(this.productService.getProducts(), {
     initialValue: [],
   });
+  protected readonly featuredProducts = computed(() =>
+    this.products().slice(0, FEATURED_PRODUCT_COUNT),
+  );
 }

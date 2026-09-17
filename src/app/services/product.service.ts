@@ -7,7 +7,13 @@ import { Product } from '../models/product.model';
 export class ProductService {
   private readonly http = inject(HttpClient);
 
-  getFeaturedProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>('/api/products');
+  getProducts(categorySlug?: string): Observable<Product[]> {
+    return this.http.get<Product[]>('/api/products', {
+      params: categorySlug ? { categorySlug } : {},
+    });
+  }
+
+  getProductById(id: string): Observable<Product> {
+    return this.http.get<Product>(`/api/products/${id}`);
   }
 }

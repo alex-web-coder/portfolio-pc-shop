@@ -1,0 +1,17 @@
+<div class="wrap">
+  <h1>{{ i18n.t('nav.components') }}</h1>
+
+  @if (isLoading()) {
+    <p class="status">{{ i18n.t('catalog.loading') }}</p>
+  } @else if (hasError()) {
+    <p class="status error">{{ i18n.t('catalog.error') }}</p>
+  } @else if (categories().length === 0) {
+    <p class="status">{{ i18n.t('catalog.empty') }}</p>
+  } @else {
+    <div class="grid">
+      @for (category of categories(); track category.id) {
+        <app-category-tile [category]="category" />
+      }
+    </div>
+  }
+</div>

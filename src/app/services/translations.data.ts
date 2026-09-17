@@ -71,6 +71,30 @@ export const TRANSLATIONS = {
 
   'language.switchToDe': { de: 'Zu Deutsch wechseln', en: 'Switch to German' },
   'language.switchToEn': { de: 'Zu Englisch wechseln', en: 'Switch to English' },
+
+  'catalog.loading': { de: 'Wird geladen …', en: 'Loading …' },
+  'catalog.error': { de: 'Die Daten konnten nicht geladen werden.', en: 'The data could not be loaded.' },
+  'catalog.empty': { de: 'Keine Produkte gefunden.', en: 'No products found.' },
+  'catalog.filtersHeading': { de: 'Filter', en: 'Filters' },
+  'catalog.resetFilters': { de: 'Filter zurücksetzen', en: 'Reset filters' },
+  'catalog.priceRange': { de: 'Preisbereich (€)', en: 'Price range (€)' },
+  'catalog.minPrice': { de: 'Mindestpreis in Euro', en: 'Minimum price in euros' },
+  'catalog.maxPrice': { de: 'Höchstpreis in Euro', en: 'Maximum price in euros' },
+  'catalog.manufacturer': { de: 'Hersteller', en: 'Manufacturer' },
+  'catalog.availableOnly': { de: 'Nur verfügbare Produkte', en: 'Only available products' },
+  'catalog.sortBy': { de: 'Sortieren nach', en: 'Sort by' },
+  'catalog.sort.nameAsc': { de: 'Name (A–Z)', en: 'Name (A–Z)' },
+  'catalog.sort.nameDesc': { de: 'Name (Z–A)', en: 'Name (Z–A)' },
+  'catalog.sort.priceAsc': { de: 'Preis aufsteigend', en: 'Price ascending' },
+  'catalog.sort.priceDesc': { de: 'Preis absteigend', en: 'Price descending' },
+
+  'product.specsHeading': { de: 'Technische Daten', en: 'Specifications' },
+  'product.notFound.title': { de: 'Produkt nicht gefunden', en: 'Product not found' },
+  'product.notFound.lead': {
+    de: 'Dieses Produkt existiert nicht oder ist nicht mehr verfügbar.',
+    en: 'This product does not exist or is no longer available.',
+  },
+  'product.backToCategory': { de: 'Zurück zur Übersicht', en: 'Back to overview' },
 } as const satisfies Record<string, Record<Language, string>>;
 
 export type TranslationKey = keyof typeof TRANSLATIONS;

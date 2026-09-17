@@ -20,7 +20,7 @@
 
 <section class="section">
   <app-carousel [heading]="i18n.t('home.productsHeading')">
-    @for (product of products(); track product.id) {
+    @for (product of featuredProducts(); track product.id) {
       <app-product-card [product]="product" />
     }
   </app-carousel>

@@ -1,0 +1,109 @@
+<div class="wrap">
+  <h1>{{ category()?.name?.[i18n.language()] ?? categorySlug() }}</h1>
+
+  @if (isLoading()) {
+    <p class="status">{{ i18n.t('catalog.loading') }}</p>
+  } @else if (hasError()) {
+    <p class="status error">{{ i18n.t('catalog.error') }}</p>
+  } @else {
+    <div class="layout">
+      <details class="filters" open>
+        <summary>{{ i18n.t('catalog.filtersHeading') }}</summary>
+
+        <div class="filter-group">
+          <span class="filter-heading">{{ i18n.t('catalog.priceRange') }}</span>
+          <div class="price-inputs">
+            <input
+              type="number"
+              min="0"
+              [attr.aria-label]="i18n.t('catalog.minPrice')"
+              [value]="minPrice()"
+              (change)="onMinPriceChange($any($event.target).value)"
+            />
+            <span>–</span>
+            <input
+              type="number"
+              min="0"
+              [attr.aria-label]="i18n.t('catalog.maxPrice')"
+              [value]="maxPrice()"
+              (change)="onMaxPriceChange($any($event.target).value)"
+            />
+          </div>
+        </div>
+
+        @if (manufacturers().length > 1) {
+          <div class="filter-group">
+            <span class="filter-heading">{{ i18n.t('catalog.manufacturer') }}</span>
+            @for (manufacturer of manufacturers(); track manufacturer) {
+              <label class="checkbox">
+                <input
+                  type="checkbox"
+                  [checked]="selectedManufacturers().includes(manufacturer)"
+                  (change)="toggleManufacturer(manufacturer, $any($event.target).checked)"
+                />
+                {{ manufacturer }}
+              </label>
+            }
+          </div>
+        }
+
+        @if (specFilterValues().length > 1) {
+          <div class="filter-group">
+            <span class="filter-heading">{{ specFilterLabel()?.[i18n.language()] }}</span>
+            @for (value of specFilterValues(); track value) {
+              <label class="checkbox">
+                <input
+                  type="checkbox"
+                  [checked]="selectedSpecValues().includes(value)"
+                  (change)="toggleSpecValue(value, $any($event.target).checked)"
+                />
+                {{ value }}
+              </label>
+            }
+          </div>
+        }
+
+        <div class="filter-group">
+          <label class="checkbox">
+            <input
+              type="checkbox"
+              [checked]="availableOnly()"
+              (change)="onAvailableOnlyChange($any($event.target).checked)"
+            />
+            {{ i18n.t('catalog.availableOnly') }}
+          </label>
+        </div>
+
+        @if (hasActiveFilters()) {
+          <button type="button" class="reset" (click)="resetFilters()">
+            {{ i18n.t('catalog.resetFilters') }}
+          </button>
+        }
+      </details>
+
+      <div class="results">
+        <div class="toolbar">
+          <label class="sort">
+            {{ i18n.t('catalog.sortBy') }}
+            <select [value]="sort()" (change)="onSortChange($any($event.target).value)">
+              <option value="name-asc">{{ i18n.t('catalog.sort.nameAsc') }}</option>
+              <option value="name-desc">{{ i18n.t('catalog.sort.nameDesc') }}</option>
+              <option value="price-asc">{{ i18n.t('catalog.sort.priceAsc') }}</option>
+              <option value="price-desc">{{ i18n.t('catalog.sort.priceDesc') }}</option>
+            </select>
+          </label>
+        </div>
+
+        @if (visibleProducts().length === 0) {
+          <p class="status">{{ i18n.t('catalog.empty') }}</p>
+        } @else {
+          <div class="grid">
+            @for (product of visibleProducts(); track product.id) {
+              <app-product-card [product]="product" />
+            }
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>
