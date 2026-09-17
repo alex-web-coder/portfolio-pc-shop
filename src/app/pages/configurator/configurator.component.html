@@ -1,0 +1,53 @@
+<div class="wrap">
+  <h1>{{ i18n.t('nav.configurator') }}</h1>
+  <p class="notice">{{ i18n.t('configurator.simplifiedNotice') }}</p>
+
+  @if (isLoading()) {
+    <p class="status">{{ i18n.t('catalog.loading') }}</p>
+  } @else if (hasError()) {
+    <p class="status error">{{ i18n.t('catalog.error') }}</p>
+  } @else {
+    <div class="layout">
+      <div class="slots">
+        @for (slot of slots; track slot) {
+          <div class="slot">
+            <label>
+              {{ i18n.t(slotLabelKeys[slot]) }}
+              <select [value]="selectedIdFor(slot)" (change)="onSelectChange(slot, $any($event.target).value)">
+                <option value="">{{ i18n.t('configurator.selectPlaceholder') }}</option>
+                @for (product of optionsFor(slot); track product.id) {
+                  <option [value]="product.id">
+                    {{ productName(product) }} — {{ formatPrice(product.priceCents) }}
+                  </option>
+                }
+              </select>
+            </label>
+
+            @for (issue of issuesForSlot(slot); track issue.messageKey) {
+              <p class="issue">{{ i18n.t(issue.messageKey) }}</p>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="summary">
+        @if (compatibility().missingSlots.length > 0) {
+          <p class="hint">{{ i18n.t('configurator.missingComponents') }}</p>
+        }
+
+        <div class="total">
+          <span>{{ i18n.t('configurator.totalPrice') }}</span>
+          <span>{{ formatPrice(totalCents()) }}</span>
+        </div>
+
+        <button type="button" class="primary" [disabled]="!compatibility().isValid" (click)="addToCart()">
+          {{ i18n.t('configurator.addToCart') }}
+        </button>
+
+        @if (justAdded()) {
+          <p class="success">{{ i18n.t('configurator.addedToCart') }}</p>
+        }
+      </div>
+    </div>
+  }
+</div>

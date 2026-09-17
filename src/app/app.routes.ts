@@ -29,8 +29,7 @@ export const routes: Routes = [
   },
   {
     path: 'configurator',
-    loadComponent: () => import('./pages/coming-soon/coming-soon.component').then((m) => m.ComingSoon),
-    data: { titleKey: 'pages.configurator.title' },
+    loadComponent: () => import('./pages/configurator/configurator.component').then((m) => m.Configurator),
   },
   {
     path: 'cart',

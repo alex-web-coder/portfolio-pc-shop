@@ -2,6 +2,22 @@ import { Category } from '../models/category.model';
 import { LocalizedText } from '../models/localized-text.model';
 import { Product } from '../models/product.model';
 
+/**
+ * The configurator-relevant fields here (socket, ddrType, formFactor, tdp,
+ * length, coolerHeight, maxGpuLength, maxCoolerHeight, wattage) are curated
+ * so every rule in pc-compatibility.ts has both a reachable valid pairing and
+ * a reachable invalid one:
+ * - Valid build #1: cpu-2 + mb-4 + ram-2 + gpu-3 + cooler-3 + case-4 + psu-2 + any storage
+ * - Valid build #2: cpu-5 + mb-5 + ram-3 + gpu-5 + cooler-4 + case-5 + psu-4 + any storage
+ * - Socket mismatch: cpu-4 (LGA1700) + mb-1 (AM5)
+ * - RAM/board DDR mismatch: mb-6 (DDR4) + ram-1 (DDR5), same socket (LGA1700)
+ * - Board/case form-factor mismatch: mb-1 (ATX) + case-3 (Mini-ITX)
+ * - Cooler/socket mismatch: cooler-3 (AM5-only) + cpu-5 (LGA1700)
+ * - Cooler height exceeded: case-3 (60 mm max) + cooler-4 (158 mm)
+ * - GPU length exceeded: case-3 (260 mm max) + gpu-1/2/4/5 (280-305 mm)
+ * - PSU headroom exceeded: psu-5 (550 W) + cpu-3 + gpu-4 (140 W + 320 W + 100 W reserve = 560 W)
+ */
+
 const SPEC_LABELS = {
   chipset: { de: 'Chipsatz', en: 'Chipset' },
   vram: { de: 'Grafikspeicher', en: 'Video memory' },
@@ -15,6 +31,11 @@ const SPEC_LABELS = {
   capacity: { de: 'Kapazität', en: 'Capacity' },
   wattage: { de: 'Leistung', en: 'Wattage' },
   efficiency: { de: 'Effizienz', en: 'Efficiency rating' },
+  tdp: { de: 'TDP', en: 'TDP' },
+  length: { de: 'Länge', en: 'Length' },
+  maxGpuLength: { de: 'Max. Grafikkartenlänge', en: 'Max. graphics card length' },
+  maxCoolerHeight: { de: 'Max. Kühlerhöhe', en: 'Max. cooler height' },
+  coolerHeight: { de: 'Kühlerhöhe', en: 'Cooler height' },
 } satisfies Record<string, LocalizedText>;
 
 function spec(key: keyof typeof SPEC_LABELS, value: string) {
@@ -60,6 +81,17 @@ export const CATEGORIES: Category[] = [
   },
   {
     id: 'cat-7',
+    slug: 'storage',
+    name: { de: 'Speicher', en: 'Storage' },
+    filterSpecKey: 'capacity',
+  },
+  {
+    id: 'cat-8',
+    slug: 'coolers',
+    name: { de: 'CPU-Kühler', en: 'CPU coolers' },
+  },
+  {
+    id: 'cat-9',
     slug: 'prebuilt-pcs',
     name: { de: 'Komplett-PCs', en: 'Prebuilt PCs' },
   },
@@ -78,7 +110,13 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'MSI',
     priceCents: 64900,
     available: true,
-    specs: [spec('chipset', 'NVIDIA'), spec('vram', '12 GB'), spec('interface', 'PCIe 4.0')],
+    specs: [
+      spec('chipset', 'NVIDIA'),
+      spec('vram', '12 GB'),
+      spec('interface', 'PCIe 4.0'),
+      spec('length', '305 mm'),
+      spec('tdp', '220 W'),
+    ],
   },
   {
     id: 'gpu-2',
@@ -91,7 +129,13 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'Sapphire',
     priceCents: 42900,
     available: true,
-    specs: [spec('chipset', 'AMD'), spec('vram', '12 GB'), spec('interface', 'PCIe 4.0')],
+    specs: [
+      spec('chipset', 'AMD'),
+      spec('vram', '12 GB'),
+      spec('interface', 'PCIe 4.0'),
+      spec('length', '280 mm'),
+      spec('tdp', '245 W'),
+    ],
   },
   {
     id: 'gpu-3',
@@ -104,7 +148,13 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'ASUS',
     priceCents: 29900,
     available: true,
-    specs: [spec('chipset', 'NVIDIA'), spec('vram', '8 GB'), spec('interface', 'PCIe 4.0')],
+    specs: [
+      spec('chipset', 'NVIDIA'),
+      spec('vram', '8 GB'),
+      spec('interface', 'PCIe 4.0'),
+      spec('length', '200 mm'),
+      spec('tdp', '115 W'),
+    ],
   },
   {
     id: 'gpu-4',
@@ -117,7 +167,13 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'Sapphire',
     priceCents: 74900,
     available: true,
-    specs: [spec('chipset', 'AMD'), spec('vram', '20 GB'), spec('interface', 'PCIe 4.0')],
+    specs: [
+      spec('chipset', 'AMD'),
+      spec('vram', '20 GB'),
+      spec('interface', 'PCIe 4.0'),
+      spec('length', '305 mm'),
+      spec('tdp', '320 W'),
+    ],
   },
   {
     id: 'gpu-5',
@@ -130,7 +186,13 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'MSI',
     priceCents: 84900,
     available: true,
-    specs: [spec('chipset', 'NVIDIA'), spec('vram', '16 GB'), spec('interface', 'PCIe 4.0')],
+    specs: [
+      spec('chipset', 'NVIDIA'),
+      spec('vram', '16 GB'),
+      spec('interface', 'PCIe 4.0'),
+      spec('length', '305 mm'),
+      spec('tdp', '285 W'),
+    ],
   },
 
   // Processors
@@ -145,7 +207,13 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'AMD',
     priceCents: 39900,
     available: true,
-    specs: [spec('socket', 'AM5'), spec('cores', '8'), spec('threads', '16'), spec('baseClock', '4.2 GHz')],
+    specs: [
+      spec('socket', 'AM5'),
+      spec('cores', '8'),
+      spec('threads', '16'),
+      spec('baseClock', '4.2 GHz'),
+      spec('tdp', '120 W'),
+    ],
   },
   {
     id: 'cpu-2',
@@ -158,7 +226,13 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'AMD',
     priceCents: 21900,
     available: true,
-    specs: [spec('socket', 'AM5'), spec('cores', '6'), spec('threads', '12'), spec('baseClock', '3.8 GHz')],
+    specs: [
+      spec('socket', 'AM5'),
+      spec('cores', '6'),
+      spec('threads', '12'),
+      spec('baseClock', '3.8 GHz'),
+      spec('tdp', '65 W'),
+    ],
   },
   {
     id: 'cpu-3',
@@ -171,7 +245,13 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'AMD',
     priceCents: 59900,
     available: true,
-    specs: [spec('socket', 'AM5'), spec('cores', '16'), spec('threads', '32'), spec('baseClock', '4.2 GHz')],
+    specs: [
+      spec('socket', 'AM5'),
+      spec('cores', '16'),
+      spec('threads', '32'),
+      spec('baseClock', '4.2 GHz'),
+      spec('tdp', '140 W'),
+    ],
   },
   {
     id: 'cpu-4',
@@ -184,7 +264,13 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'Intel',
     priceCents: 27900,
     available: true,
-    specs: [spec('socket', 'LGA1700'), spec('cores', '14'), spec('threads', '20'), spec('baseClock', '3.5 GHz')],
+    specs: [
+      spec('socket', 'LGA1700'),
+      spec('cores', '14'),
+      spec('threads', '20'),
+      spec('baseClock', '3.5 GHz'),
+      spec('tdp', '125 W'),
+    ],
   },
   {
     id: 'cpu-5',
@@ -197,7 +283,13 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'Intel',
     priceCents: 39900,
     available: true,
-    specs: [spec('socket', 'LGA1700'), spec('cores', '20'), spec('threads', '28'), spec('baseClock', '3.4 GHz')],
+    specs: [
+      spec('socket', 'LGA1700'),
+      spec('cores', '20'),
+      spec('threads', '28'),
+      spec('baseClock', '3.4 GHz'),
+      spec('tdp', '125 W'),
+    ],
   },
 
   // Mainboards
@@ -265,6 +357,19 @@ export const PRODUCTS: Product[] = [
     priceCents: 34900,
     available: true,
     specs: [spec('socket', 'LGA1700'), spec('formFactor', 'ATX'), spec('ddrType', 'DDR5')],
+  },
+  {
+    id: 'mb-6',
+    categorySlug: 'mainboards',
+    name: { de: 'PRO B760M-P DDR4', en: 'PRO B760M-P DDR4' },
+    description: {
+      de: 'Preisbewusstes Micro-ATX-Mainboard mit DDR4-Unterstützung für Intel-Prozessoren.',
+      en: 'Budget-friendly Micro-ATX mainboard with DDR4 support for Intel processors.',
+    },
+    manufacturer: 'MSI',
+    priceCents: 12900,
+    available: true,
+    specs: [spec('socket', 'LGA1700'), spec('formFactor', 'Micro-ATX'), spec('ddrType', 'DDR4')],
   },
 
   // Memory
@@ -413,7 +518,7 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'NZXT',
     priceCents: 6900,
     available: false,
-    specs: [spec('formFactor', 'ATX')],
+    specs: [spec('formFactor', 'ATX'), spec('maxGpuLength', '350 mm'), spec('maxCoolerHeight', '165 mm')],
   },
   {
     id: 'case-2',
@@ -426,7 +531,7 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'Corsair',
     priceCents: 8900,
     available: true,
-    specs: [spec('formFactor', 'ATX')],
+    specs: [spec('formFactor', 'ATX'), spec('maxGpuLength', '360 mm'), spec('maxCoolerHeight', '170 mm')],
   },
   {
     id: 'case-3',
@@ -439,7 +544,7 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'Fractal Design',
     priceCents: 7900,
     available: true,
-    specs: [spec('formFactor', 'Mini-ITX')],
+    specs: [spec('formFactor', 'Mini-ITX'), spec('maxGpuLength', '260 mm'), spec('maxCoolerHeight', '60 mm')],
   },
   {
     id: 'case-4',
@@ -452,7 +557,7 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'Cooler Master',
     priceCents: 5900,
     available: true,
-    specs: [spec('formFactor', 'Micro-ATX')],
+    specs: [spec('formFactor', 'Micro-ATX'), spec('maxGpuLength', '320 mm'), spec('maxCoolerHeight', '160 mm')],
   },
   {
     id: 'case-5',
@@ -465,7 +570,115 @@ export const PRODUCTS: Product[] = [
     manufacturer: 'Fractal Design',
     priceCents: 13900,
     available: true,
-    specs: [spec('formFactor', 'ATX')],
+    specs: [spec('formFactor', 'ATX'), spec('maxGpuLength', '370 mm'), spec('maxCoolerHeight', '185 mm')],
+  },
+
+  // Storage
+  {
+    id: 'ssd-1',
+    categorySlug: 'storage',
+    name: { de: 'NVMe SSD 1 TB (990 Pro)', en: 'NVMe SSD 1 TB (990 Pro)' },
+    description: {
+      de: 'Schnelle PCIe-4.0-SSD für Betriebssystem und Spiele.',
+      en: 'Fast PCIe 4.0 SSD for the OS and games.',
+    },
+    manufacturer: 'Samsung',
+    priceCents: 8900,
+    available: true,
+    specs: [spec('capacity', '1 TB'), spec('interface', 'PCIe 4.0')],
+  },
+  {
+    id: 'ssd-2',
+    categorySlug: 'storage',
+    name: { de: 'NVMe SSD 2 TB (990 Pro)', en: 'NVMe SSD 2 TB (990 Pro)' },
+    description: {
+      de: 'Viel Platz für eine große Spielebibliothek.',
+      en: 'Plenty of room for a large game library.',
+    },
+    manufacturer: 'Samsung',
+    priceCents: 16900,
+    available: true,
+    specs: [spec('capacity', '2 TB'), spec('interface', 'PCIe 4.0')],
+  },
+  {
+    id: 'ssd-3',
+    categorySlug: 'storage',
+    name: { de: 'NVMe SSD 500 GB (P3)', en: 'NVMe SSD 500 GB (P3)' },
+    description: {
+      de: 'Preisbewusste Einstiegs-SSD.',
+      en: 'Budget-friendly entry-level SSD.',
+    },
+    manufacturer: 'Crucial',
+    priceCents: 4900,
+    available: true,
+    specs: [spec('capacity', '500 GB'), spec('interface', 'PCIe 3.0')],
+  },
+  {
+    id: 'ssd-4',
+    categorySlug: 'storage',
+    name: { de: 'NVMe SSD 1 TB (SN850X)', en: 'NVMe SSD 1 TB (SN850X)' },
+    description: {
+      de: 'Sehr schnelle SSD für kurze Ladezeiten.',
+      en: 'Very fast SSD for short load times.',
+    },
+    manufacturer: 'WD Black',
+    priceCents: 9900,
+    available: true,
+    specs: [spec('capacity', '1 TB'), spec('interface', 'PCIe 4.0')],
+  },
+
+  // CPU coolers
+  {
+    id: 'cooler-1',
+    categorySlug: 'coolers',
+    name: { de: 'Dark Rock Pro 5', en: 'Dark Rock Pro 5' },
+    description: {
+      de: 'Großer Luftkühler für AM5 und LGA1700.',
+      en: 'Large air cooler for AM5 and LGA1700.',
+    },
+    manufacturer: 'be quiet!',
+    priceCents: 9900,
+    available: true,
+    specs: [spec('socket', 'AM5, LGA1700'), spec('coolerHeight', '162 mm')],
+  },
+  {
+    id: 'cooler-2',
+    categorySlug: 'coolers',
+    name: { de: 'Pure Rock 2', en: 'Pure Rock 2' },
+    description: {
+      de: 'Kompakter Luftkühler für AM5 und LGA1700.',
+      en: 'Compact air cooler for AM5 and LGA1700.',
+    },
+    manufacturer: 'be quiet!',
+    priceCents: 4900,
+    available: true,
+    specs: [spec('socket', 'AM5, LGA1700'), spec('coolerHeight', '155 mm')],
+  },
+  {
+    id: 'cooler-3',
+    categorySlug: 'coolers',
+    name: { de: 'Low-Profile Kühler (AM5)', en: 'Low-profile cooler (AM5)' },
+    description: {
+      de: 'Flacher Kühler für kompakte AM5-Gehäuse.',
+      en: 'Flat cooler for compact AM5 cases.',
+    },
+    manufacturer: 'AMD',
+    priceCents: 3900,
+    available: true,
+    specs: [spec('socket', 'AM5'), spec('coolerHeight', '58 mm')],
+  },
+  {
+    id: 'cooler-4',
+    categorySlug: 'coolers',
+    name: { de: 'NH-U12A', en: 'NH-U12A' },
+    description: {
+      de: 'Premium-Luftkühler für AM5 und LGA1700.',
+      en: 'Premium air cooler for AM5 and LGA1700.',
+    },
+    manufacturer: 'Noctua',
+    priceCents: 11900,
+    available: true,
+    specs: [spec('socket', 'AM5, LGA1700'), spec('coolerHeight', '158 mm')],
   },
 
   // Prebuilt PCs

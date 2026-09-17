@@ -1,10 +1,13 @@
 import { LocalizedText } from './localized-text.model';
+import { ProductSpec } from './product-spec.model';
 
 export interface OrderLineSnapshot {
   productId: string;
   name: LocalizedText;
   priceCents: number;
   quantity: number;
+  /** Carried through so a configured PC's component breakdown survives to order confirmation. */
+  specs: ProductSpec[];
 }
 
 export interface OrderContact {

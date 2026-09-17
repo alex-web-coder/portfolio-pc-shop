@@ -1,0 +1,133 @@
+:host {
+  display: block;
+}
+
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space-4);
+}
+
+h1 {
+  margin: 0 0 var(--space-1);
+  color: var(--color-ink);
+}
+
+.notice {
+  margin: 0 0 var(--space-3);
+  font-size: 0.8125rem;
+  color: color-mix(in srgb, var(--color-ink) 60%, transparent);
+}
+
+.status {
+  color: color-mix(in srgb, var(--color-ink) 70%, transparent);
+
+  &.error {
+    color: #b3261e;
+  }
+}
+
+.layout {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.slots {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.slot {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-2);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+select {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-2);
+  font: inherit;
+  font-weight: 400;
+}
+
+.issue {
+  margin: var(--space-1) 0 0;
+  font-size: 0.8125rem;
+  color: #b3261e;
+}
+
+.summary {
+  flex: 0 0 260px;
+  position: sticky;
+  top: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: color-mix(in srgb, var(--color-ink) 60%, transparent);
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.primary {
+  border: 0;
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:disabled {
+    background: color-mix(in srgb, var(--color-ink) 25%, transparent);
+    cursor: not-allowed;
+  }
+}
+
+.success {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: #1a8a4a;
+}
+
+@media (max-width: 780px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .summary {
+    flex: 1;
+    width: 100%;
+    position: static;
+  }
+}

@@ -151,14 +151,23 @@ button {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space-2);
+}
 
-  li {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9375rem;
-    color: var(--color-ink);
-  }
+.order-line-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9375rem;
+  color: var(--color-ink);
+}
+
+.config-specs {
+  list-style: none;
+  margin: var(--space-1) 0 0;
+  padding: var(--space-1) 0 0 var(--space-2);
+  border-left: 2px solid var(--color-border);
+  font-size: 0.8125rem;
+  color: color-mix(in srgb, var(--color-ink) 65%, transparent);
 }
 
 .totals {

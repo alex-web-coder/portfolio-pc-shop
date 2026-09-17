@@ -9,9 +9,18 @@
 
       <ul class="order-lines">
         @for (line of order.lines; track line.productId) {
-          <li>
-            <span>{{ orderLineName(line) }} × {{ line.quantity }}</span>
-            <span>{{ formatPrice(line.priceCents * line.quantity) }}</span>
+          <li class="order-line">
+            <div class="order-line-row">
+              <span>{{ orderLineName(line) }} × {{ line.quantity }}</span>
+              <span>{{ formatPrice(line.priceCents * line.quantity) }}</span>
+            </div>
+            @if (isConfigurationLine(line)) {
+              <ul class="config-specs">
+                @for (lineSpec of line.specs; track lineSpec.key) {
+                  <li>{{ lineSpec.label[i18n.language()] }}: {{ lineSpec.value }}</li>
+                }
+              </ul>
+            }
           </li>
         }
       </ul>
@@ -150,9 +159,18 @@
           <ul class="order-lines">
             @for (line of cartView.lines(); track line.product.id) {
               @if (line.product.available) {
-                <li>
-                  <span>{{ productName(line) }} × {{ line.quantity }}</span>
-                  <span>{{ formatPrice(line.product.priceCents * line.quantity) }}</span>
+                <li class="order-line">
+                  <div class="order-line-row">
+                    <span>{{ productName(line) }} × {{ line.quantity }}</span>
+                    <span>{{ formatPrice(line.product.priceCents * line.quantity) }}</span>
+                  </div>
+                  @if (line.product.categorySlug === 'custom-configuration') {
+                    <ul class="config-specs">
+                      @for (lineSpec of line.product.specs; track lineSpec.key) {
+                        <li>{{ lineSpec.label[i18n.language()] }}: {{ lineSpec.value }}</li>
+                      }
+                    </ul>
+                  }
                 </li>
               }
             }

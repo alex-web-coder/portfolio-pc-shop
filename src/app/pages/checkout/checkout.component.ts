@@ -84,6 +84,10 @@ export class Checkout {
     return line.name[this.i18n.language()];
   }
 
+  protected isConfigurationLine(line: OrderLineSnapshot): boolean {
+    return line.productId.startsWith('config-');
+  }
+
   protected countryLabel(code: string): string {
     return this.i18n.t(COUNTRY_LABEL_KEYS[code] ?? 'checkout.country.de');
   }
@@ -148,6 +152,7 @@ export class Checkout {
         name: line.product.name,
         priceCents: line.product.priceCents,
         quantity: line.quantity,
+        specs: line.product.specs,
       }));
 
     const contact = this.contactForm.getRawValue();

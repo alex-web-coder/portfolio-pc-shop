@@ -161,6 +161,55 @@ export const TRANSLATIONS = {
     en: 'This is a simulation — no real order was placed and no payment was taken.',
   },
   'checkout.confirmation.orderNumber': { de: 'Bestellnummer', en: 'Order number' },
+
+  'configurator.slot.cpu': { de: 'Prozessor', en: 'Processor' },
+  'configurator.slot.mainboard': { de: 'Mainboard', en: 'Mainboard' },
+  'configurator.slot.ram': { de: 'Arbeitsspeicher', en: 'Memory' },
+  'configurator.slot.gpu': { de: 'Grafikkarte', en: 'Graphics card' },
+  'configurator.slot.storage': { de: 'Speicher', en: 'Storage' },
+  'configurator.slot.psu': { de: 'Netzteil', en: 'Power supply' },
+  'configurator.slot.case': { de: 'Gehäuse', en: 'Case' },
+  'configurator.slot.cooler': { de: 'CPU-Kühler', en: 'CPU cooler' },
+  'configurator.selectPlaceholder': { de: 'Bitte auswählen', en: 'Please select' },
+  'configurator.totalPrice': { de: 'Gesamtpreis', en: 'Total price' },
+  'configurator.simplifiedNotice': {
+    de: 'Vereinfachte Kompatibilitätsprüfung — deckt nicht jede reale Kombination ab.',
+    en: 'Simplified compatibility check — does not cover every real-world combination.',
+  },
+  'configurator.missingComponents': {
+    de: 'Bitte wähle noch fehlende Komponenten aus.',
+    en: 'Please select the remaining components.',
+  },
+  'configurator.addToCart': { de: 'Konfiguration in den Warenkorb', en: 'Add configuration to cart' },
+  'configurator.addedToCart': { de: 'Konfiguration wurde in den Warenkorb gelegt.', en: 'Configuration added to cart.' },
+  'configurator.issue.socketMismatch': {
+    de: 'Prozessor und Mainboard haben unterschiedliche Sockel.',
+    en: 'The processor and mainboard use different sockets.',
+  },
+  'configurator.issue.ramMismatch': {
+    de: 'Arbeitsspeicher und Mainboard unterstützen unterschiedliche RAM-Typen.',
+    en: 'The memory and mainboard support different RAM types.',
+  },
+  'configurator.issue.formFactorMismatch': {
+    de: 'Das Mainboard passt nicht in das gewählte Gehäuse.',
+    en: 'The mainboard does not fit the selected case.',
+  },
+  'configurator.issue.coolerSocketMismatch': {
+    de: 'Der CPU-Kühler unterstützt den gewählten Sockel nicht.',
+    en: 'The CPU cooler does not support the selected socket.',
+  },
+  'configurator.issue.coolerHeightExceeded': {
+    de: 'Der CPU-Kühler ist zu hoch für das gewählte Gehäuse.',
+    en: 'The CPU cooler is too tall for the selected case.',
+  },
+  'configurator.issue.gpuLengthExceeded': {
+    de: 'Die Grafikkarte ist zu lang für das gewählte Gehäuse.',
+    en: 'The graphics card is too long for the selected case.',
+  },
+  'configurator.issue.psuInsufficient': {
+    de: 'Das Netzteil liefert nicht genug Leistung für diese Komponenten.',
+    en: 'The power supply does not provide enough wattage for these components.',
+  },
 } as const satisfies Record<string, Record<Language, string>>;
 
 export type TranslationKey = keyof typeof TRANSLATIONS;
