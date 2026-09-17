@@ -28,6 +28,9 @@ decision, tracked in [`docs/mvp.md`](docs/mvp.md). Everything below runs locally
 - A demo profile with editable fields, order history, and a one-click reset of all local demo data.
 - Full DE/EN support via a small custom translation service, not `@angular/localize` (see
   *Architecture* below for why).
+- Three extras beyond the original MVP scope, picked specifically because they're buildable
+  without a backend: a dark/light theme toggle, product comparison (up to 3, even across
+  categories), and client-side search with autocomplete.
 
 ## Getting started
 
@@ -85,6 +88,26 @@ A finished, valid configuration is stored as a synthetic `Product`-shaped entry
 about "product or configuration" — the entire existing cart/checkout/order-history pipeline handles
 it as a normal line item, with its full component breakdown carried through to order confirmation.
 
+## Beyond the MVP: three FE-only extras
+
+Picked from the backlog specifically because they need no backend — everything else in the
+backlog (auth, real payments, address validation, server-side search indexing) genuinely does:
+
+- **Dark/light theme** — `ThemeService` (signal + localStorage, defaults to
+  `prefers-color-scheme`) toggles a `data-theme` attribute; `_tokens.scss` overrides the neutral
+  tokens and swaps the accent to a brighter indigo for the dark palette, since the light-mode
+  accent read muddy against a near-black background.
+- **Product comparison** — `CompareService` is deliberately session-only (not persisted, unlike
+  cart/profile — a comparison tray is a transient aid). Compared products are stored as plain ids,
+  capped at 3; the `/compare` page builds its spec table from the union of every compared
+  product's spec keys, so comparing across categories works and just shows `—` for specs that
+  don't apply.
+- **Search + autocomplete** — `SearchService` filters the already-loaded mock catalog client-side;
+  the header's search box got a live suggestions dropdown (closes on outside click) and Enter
+  navigates to a full `/search` results page. This is explicitly the FE-only stand-in for the
+  backlog's "indexed search with server-side autocomplete" — true server-side indexing is still
+  backlog, once there's a real backend to index against.
+
 ## Known limitations (by design, not oversights)
 
 - **No real backend.** Auth, server-side validation, a real database, real payments (Stripe/Payone)
@@ -98,7 +121,7 @@ it as a normal line item, with its full component breakdown carried through to o
 
 ## Testing
 
-46 unit/integration tests:
+57 unit/integration tests:
 
 | Area | File | Tests |
 | --- | --- | --- |
@@ -108,6 +131,8 @@ it as a normal line item, with its full component breakdown carried through to o
 | Mock API interceptor (categories/products/404/orders/simulated failure) | `mock-api.interceptor.spec.ts` | 7 |
 | Catalog filtering via real routing + URL query params | `product-list.component.spec.ts` | 5 |
 | Checkout form validation, back-preserves-values, happy path, simulated error, double-submit guard | `checkout.component.spec.ts` | 5 |
+| Product comparison (toggle, cap at 3, remove, clear) | `compare.service.spec.ts` | 6 |
+| Client-side search (name/manufacturer match, suggestion cap) | `search.service.spec.ts` | 5 |
 | App smoke test | `app.component.spec.ts` | 2 |
 
 The catalog and checkout specs are deliberately integration-style rather than isolated unit tests —
@@ -128,9 +153,9 @@ glossed over.
 
 ## Outlook
 
-Beyond this MVP: a real Spring Boot + Docker backend, authentication, a backoffice, address
-validation, indexed search with server-side autocomplete, product comparison, real test payments,
-and closing the test-coverage gap noted above. Full backlog in `docs/mvp.md`.
+Still backend-dependent, and still backlog: a real Spring Boot + Docker backend, authentication,
+a backoffice, address validation/autocomplete, true server-side search indexing, real test
+payments (Stripe/Payone), and captcha. Full backlog in `docs/mvp.md`.
 
 ## Demo script (~3 minutes)
 
@@ -143,3 +168,7 @@ and closing the test-coverage gap noted above. Full backlog in `docs/mvp.md`.
 6. **PC-Konfigurator**: pick incompatible parts first (e.g. an Intel CPU with an AM5 board) to show
    the conflict message, then build a valid combination and add it to the cart.
 7. Switch language (DE ⇄ EN) mid-flow to show it doesn't lose cart or form state.
+8. **Extras**: toggle dark mode in the header; check "Zum Vergleich hinzufügen" on 2–3 products
+   (even from different categories) and open the floating compare bar; type a product name into
+   the header search to show the live suggestions dropdown, then press Enter for the full results
+   page.

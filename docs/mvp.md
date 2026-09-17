@@ -97,9 +97,13 @@ Rehearsed 3-minute demo: category → filter → product detail → cart → dem
 buildable, compatible PC configurations matter more than product count.
 
 ## Out of scope for the MVP (backlog, after MVP acceptance)
-Real backend, authentication, server-side validation, address autocomplete, indexed/server-side
-search, SSO, product comparison, captcha, real test payments (Stripe/Payone), dark/light mode
-toggle.
+Real backend, authentication, server-side validation, address autocomplete, SSO, captcha, real
+test payments (Stripe/Payone).
+
+**Done post-MVP as FE-only extras** (no backend needed, see README's "Beyond the MVP" section):
+dark/light mode toggle, product comparison, client-side search/autocomplete. True server-side
+search indexing (vs. the client-side stand-in built here) stays backlog until there's a real
+backend to index against.
 
 ## Architecture notes
 
