@@ -42,6 +42,7 @@ h1 {
 }
 
 .slot {
+  min-width: 0;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
@@ -52,12 +53,16 @@ label {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
+  min-width: 0;
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--color-ink);
 }
 
 select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: var(--space-2);

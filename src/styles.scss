@@ -6,6 +6,12 @@
 @use '@angular/material' as mat;
 @use './styles/tokens';
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
   @include mat.theme(
