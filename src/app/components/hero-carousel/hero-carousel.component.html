@@ -1,0 +1,40 @@
+<section
+  class="hero"
+  tabindex="0"
+  role="region"
+  [attr.aria-label]="i18n.t('hero.slideLabel')"
+  (keydown)="onKeydown($event)"
+>
+  <div class="hero-content">
+    <p class="eyebrow">{{ i18n.t(currentSlide().eyebrowKey) }}</p>
+    <h1>{{ i18n.t(currentSlide().titleKey) }}</h1>
+    <p class="lead">{{ i18n.t(currentSlide().leadKey) }}</p>
+    <a [routerLink]="currentSlide().ctaLink" class="cta">{{ i18n.t(currentSlide().ctaLabelKey) }}</a>
+  </div>
+
+  <div class="hero-image">
+    <img [src]="currentSlide().imageUrl" alt="" />
+  </div>
+
+  <div class="hero-nav">
+    <button type="button" class="arrow" [attr.aria-label]="i18n.t('carousel.previous')" (click)="previous()">
+      &#8249;
+    </button>
+
+    <div class="dots">
+      @for (slide of slides(); track $index) {
+        <button
+          type="button"
+          class="dot"
+          [class.active]="$index === currentIndex()"
+          [attr.aria-label]="dotLabel($index)"
+          (click)="goTo($index)"
+        ></button>
+      }
+    </div>
+
+    <button type="button" class="arrow" [attr.aria-label]="i18n.t('carousel.next')" (click)="next()">
+      &#8250;
+    </button>
+  </div>
+</section>

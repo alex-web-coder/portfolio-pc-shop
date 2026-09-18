@@ -1,14 +1,4 @@
-<section class="hero">
-  <div class="hero-content">
-    <p class="eyebrow">{{ i18n.t('home.hero.eyebrow') }}</p>
-    <h1>{{ i18n.t('home.hero.title') }}</h1>
-    <p class="lead">{{ i18n.t('home.hero.lead') }}</p>
-    <div class="hero-actions">
-      <a routerLink="/configurator" class="primary">{{ i18n.t('home.hero.configure') }}</a>
-      <a routerLink="/components" class="secondary">{{ i18n.t('home.hero.discover') }}</a>
-    </div>
-  </div>
-</section>
+<app-hero-carousel [slides]="heroSlides" />
 
 <section class="section">
   <app-carousel [heading]="i18n.t('home.categoriesHeading')">

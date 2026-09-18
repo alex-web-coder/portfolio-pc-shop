@@ -32,14 +32,32 @@ export const TRANSLATIONS = {
   'footer.legalHeading': { de: 'Rechtliches', en: 'Legal' },
   'footer.demoNotice': { de: 'Demo-Shop – keine echten Bestellungen', en: 'Demo shop – no real orders' },
 
-  'home.hero.eyebrow': { de: 'Hardware für echte Möglichkeiten', en: 'Hardware for real possibilities' },
-  'home.hero.title': { de: 'Dein PC. Deine Leistung.', en: 'Your PC. Your performance.' },
-  'home.hero.lead': {
+  'hero.slideLabel': { de: 'Folie', en: 'Slide' },
+
+  'hero.slide1.eyebrow': { de: 'Hardware für echte Möglichkeiten', en: 'Hardware for real possibilities' },
+  'hero.slide1.title': { de: 'Dein PC. Deine Leistung.', en: 'Your PC. Your performance.' },
+  'hero.slide1.lead': {
     de: 'Hochwertige Komponenten, faire Preise und alles, was du für deinen perfekten PC brauchst. Zum Zocken. Zum Arbeiten. Für deine Ideen.',
     en: 'High-quality components, fair prices, and everything you need for your perfect PC. For gaming. For work. For your ideas.',
   },
-  'home.hero.configure': { de: 'PC konfigurieren', en: 'Configure PC' },
-  'home.hero.discover': { de: 'Komponenten entdecken', en: 'Discover components' },
+  'hero.slide1.cta': { de: 'PC konfigurieren', en: 'Configure PC' },
+
+  'hero.slide2.eyebrow': { de: 'Maximale Leistung', en: 'Maximum performance' },
+  'hero.slide2.title': { de: 'Grafikkarten für jedes Setup', en: 'Graphics cards for every setup' },
+  'hero.slide2.lead': {
+    de: 'Von Einsteiger- bis High-End-Karten – finde die passende Grafikkarte für dein nächstes Upgrade.',
+    en: 'From entry-level to high-end — find the right graphics card for your next upgrade.',
+  },
+  'hero.slide2.cta': { de: 'Grafikkarten entdecken', en: 'Discover graphics cards' },
+
+  'hero.slide3.eyebrow': { de: 'Sofort einsatzbereit', en: 'Ready to go' },
+  'hero.slide3.title': { de: 'Komplett-PCs für jeden Anspruch', en: 'Prebuilt PCs for every need' },
+  'hero.slide3.lead': {
+    de: 'Sorgfältig zusammengestellte Systeme – abgestimmt, getestet, direkt einsatzbereit.',
+    en: 'Carefully assembled systems — matched, tested, ready to go.',
+  },
+  'hero.slide3.cta': { de: 'Komplett-PCs ansehen', en: 'View prebuilt PCs' },
+
   'home.categoriesHeading': { de: 'Kategorien', en: 'Categories' },
   'home.productsHeading': { de: 'Ausgewählte Produkte', en: 'Featured products' },
 
