@@ -42,62 +42,83 @@ function spec(key: keyof typeof SPEC_LABELS, value: string) {
   return { key, label: SPEC_LABELS[key], value };
 }
 
+/**
+ * Placeholder artwork until real product photography exists — one flat icon
+ * per category, reused for every product in it. Swapping to real photos
+ * later is a pure asset change: point this at a .png with the same name (or
+ * per-product paths) without touching any component code, since consumers
+ * just render whatever `imageUrl` string they're given inside a fixed-size,
+ * `object-fit: contain` box.
+ */
+function categoryImage(slug: string): string {
+  return `/images/categories/${slug}.svg`;
+}
+
 export const CATEGORIES: Category[] = [
   {
     id: 'cat-1',
     slug: 'graphics-cards',
     name: { de: 'Grafikkarten', en: 'Graphics cards' },
     filterSpecKey: 'vram',
+    imageUrl: categoryImage('graphics-cards'),
   },
   {
     id: 'cat-2',
     slug: 'processors',
     name: { de: 'Prozessoren', en: 'Processors' },
     filterSpecKey: 'cores',
+    imageUrl: categoryImage('processors'),
   },
   {
     id: 'cat-3',
     slug: 'mainboards',
     name: { de: 'Mainboards', en: 'Mainboards' },
     filterSpecKey: 'formFactor',
+    imageUrl: categoryImage('mainboards'),
   },
   {
     id: 'cat-4',
     slug: 'memory',
     name: { de: 'Arbeitsspeicher', en: 'Memory' },
     filterSpecKey: 'capacity',
+    imageUrl: categoryImage('memory'),
   },
   {
     id: 'cat-5',
     slug: 'power-supplies',
     name: { de: 'Netzteile', en: 'Power supplies' },
     filterSpecKey: 'wattage',
+    imageUrl: categoryImage('power-supplies'),
   },
   {
     id: 'cat-6',
     slug: 'cases',
     name: { de: 'Gehäuse', en: 'Cases' },
     filterSpecKey: 'formFactor',
+    imageUrl: categoryImage('cases'),
   },
   {
     id: 'cat-7',
     slug: 'storage',
     name: { de: 'Speicher', en: 'Storage' },
     filterSpecKey: 'capacity',
+    imageUrl: categoryImage('storage'),
   },
   {
     id: 'cat-8',
     slug: 'coolers',
     name: { de: 'CPU-Kühler', en: 'CPU coolers' },
+    imageUrl: categoryImage('coolers'),
   },
   {
     id: 'cat-9',
     slug: 'prebuilt-pcs',
     name: { de: 'Komplett-PCs', en: 'Prebuilt PCs' },
+    imageUrl: categoryImage('prebuilt-pcs'),
   },
 ];
 
-export const PRODUCTS: Product[] = [
+const RAW_PRODUCTS: Product[] = [
   // Graphics cards
   {
     id: 'gpu-1',
@@ -737,3 +758,8 @@ export const PRODUCTS: Product[] = [
     ],
   },
 ];
+
+export const PRODUCTS: Product[] = RAW_PRODUCTS.map((product) => ({
+  ...product,
+  imageUrl: categoryImage(product.categorySlug),
+}));

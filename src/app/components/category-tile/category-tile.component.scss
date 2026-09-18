@@ -28,4 +28,13 @@
   height: 80px;
   background: var(--color-bg);
   border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: contain;
+  }
 }

@@ -44,6 +44,7 @@ export class PcConfigurationStore {
       },
       manufacturer: "Alex Web Coder's PC Shop",
       priceCents: calculateConfigurationTotalCents(selection),
+      imageUrl: `/images/categories/${CUSTOM_CONFIGURATION_CATEGORY_SLUG}.svg`,
       available: true,
       specs: REQUIRED_SLOTS.map((slot) => ({
         key: slot,

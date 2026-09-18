@@ -6,4 +6,5 @@ export interface Category {
   name: LocalizedText;
   /** Spec key rendered as this category's one extra filter on its product list page. */
   filterSpecKey?: string;
+  imageUrl?: string;
 }
