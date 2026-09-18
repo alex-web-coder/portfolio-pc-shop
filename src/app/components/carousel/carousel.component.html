@@ -12,15 +12,21 @@
   </div>
 </div>
 
-<div
-  class="viewport"
-  #viewport
-  tabindex="0"
-  role="region"
-  [attr.aria-label]="heading() ?? i18n.t('carousel.defaultLabel')"
-  (keydown)="onKeydown($event, viewport)"
->
-  <div class="track">
-    <ng-content></ng-content>
+<div class="viewport-wrap">
+  <div
+    class="viewport"
+    #viewport
+    tabindex="0"
+    role="region"
+    [attr.aria-label]="heading() ?? i18n.t('carousel.defaultLabel')"
+    (keydown)="onKeydown($event, viewport)"
+    (scroll)="updateEdges(viewport)"
+  >
+    <div class="track" #track>
+      <ng-content></ng-content>
+    </div>
   </div>
+
+  <div class="fade fade-left" [class.visible]="!atStart()" aria-hidden="true"></div>
+  <div class="fade fade-right" [class.visible]="!atEnd()" aria-hidden="true"></div>
 </div>

@@ -2,6 +2,12 @@
   display: block;
 }
 
+.wrap {
+  max-width: 1200px;
+  margin: var(--space-4) auto 0;
+  padding: 0 var(--space-4);
+}
+
 .hero {
   position: relative;
   display: flex;
@@ -9,12 +15,11 @@
   justify-content: space-between;
   gap: var(--space-4);
   min-height: 360px;
+  width: 100%;
   background: var(--color-accent);
   color: var(--color-on-accent);
   border-radius: var(--radius);
-  max-width: 1200px;
-  margin: var(--space-4) auto 0;
-  padding: var(--space-5) var(--space-4) var(--space-6);
+  padding: var(--space-5) var(--space-5) var(--space-6);
 
   &:focus-visible {
     outline: 2px solid var(--color-on-accent);
