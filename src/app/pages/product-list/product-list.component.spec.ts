@@ -41,9 +41,9 @@ describe('ProductList', () => {
   });
 
   it('narrows results via a minPrice query param', async () => {
-    const harness = await navigate('/components/graphics-cards?minPrice=700');
+    const harness = await navigate('/components/graphics-cards?minPrice=800');
     const cards = harness.routeNativeElement!.querySelectorAll('app-product-card');
-    expect(cards.length).toBe(2); // gpu-4 (749) and gpu-5 (849)
+    expect(cards.length).toBe(2); // gpu-4 (849) and gpu-5 (1249)
   });
 
   it('shows the empty state when filters exclude every product', async () => {
