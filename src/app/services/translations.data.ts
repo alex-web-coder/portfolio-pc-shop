@@ -33,6 +33,10 @@ export const TRANSLATIONS = {
   'footer.infoHeading': { de: 'Info', en: 'Info' },
   'footer.legalHeading': { de: 'Rechtliches', en: 'Legal' },
   'footer.demoNotice': { de: 'Demo-Shop – keine echten Bestellungen', en: 'Demo shop – no real orders' },
+  'footer.trademarkNotice': {
+    de: 'Alle genannten Marken-, Produkt- und Firmennamen sind Eigentum der jeweiligen Rechteinhaber und werden hier nur zu Demonstrationszwecken verwendet.',
+    en: 'All mentioned brand, product, and company names are the property of their respective owners and are used here for demonstration purposes only.',
+  },
 
   'hero.slideLabel': { de: 'Folie', en: 'Slide' },
 
