@@ -39,6 +39,17 @@
     object-fit: contain;
   }
 
+  // Feathers the box edge so a thin letterbox gap (a few px on a wide photo
+  // in a short card) reads as a soft vignette instead of a hard seam.
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    box-shadow: inset 0 0 10px 6px var(--color-media-bg);
+    pointer-events: none;
+  }
+
   &.unavailable {
     opacity: 0.5;
   }
