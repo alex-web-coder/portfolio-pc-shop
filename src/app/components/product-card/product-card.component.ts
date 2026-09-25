@@ -4,6 +4,7 @@ import { Product } from '../../models/product.model';
 import { CartService } from '../../services/cart.service';
 import { CompareService } from '../../services/compare.service';
 import { TranslationService } from '../../services/translation.service';
+import { categoryImagePath } from '../../utils/image-paths';
 
 const LOCALE_BY_LANGUAGE = { de: 'de-DE', en: 'en-GB' } as const;
 
@@ -43,5 +44,11 @@ export class ProductCard {
 
   protected toggleCompare(): void {
     this.compareService.toggle(this.product().id);
+  }
+
+  // Falls back to the category icon when no per-product photo has been
+  // added yet at /images/products/{id}.png.
+  protected onImageError(event: Event): void {
+    (event.target as HTMLImageElement).src = categoryImagePath(this.product().categorySlug);
   }
 }

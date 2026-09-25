@@ -1,6 +1,6 @@
 <a class="image" [class.unavailable]="!product().available" [routerLink]="detailLink()">
   @if (product().imageUrl) {
-    <img [src]="product().imageUrl" [alt]="name()" />
+    <img [src]="product().imageUrl" [alt]="name()" (error)="onImageError($event)" />
   }
 </a>
 

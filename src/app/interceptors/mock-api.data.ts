@@ -1,6 +1,7 @@
 import { Category } from '../models/category.model';
 import { LocalizedText } from '../models/localized-text.model';
 import { Product } from '../models/product.model';
+import { categoryImagePath, productImagePath } from '../utils/image-paths';
 
 /**
  * The configurator-relevant fields here (socket, ddrType, formFactor, tdp,
@@ -42,79 +43,67 @@ function spec(key: keyof typeof SPEC_LABELS, value: string) {
   return { key, label: SPEC_LABELS[key], value };
 }
 
-/**
- * Placeholder artwork until real product photography exists — one flat icon
- * per category, reused for every product in it. Swapping to real photos
- * later is a pure asset change: point this at a .png with the same name (or
- * per-product paths) without touching any component code, since consumers
- * just render whatever `imageUrl` string they're given inside a fixed-size,
- * `object-fit: contain` box.
- */
-function categoryImage(slug: string): string {
-  return `/images/categories/${slug}.svg`;
-}
-
 export const CATEGORIES: Category[] = [
   {
     id: 'cat-1',
     slug: 'graphics-cards',
     name: { de: 'Grafikkarten', en: 'Graphics cards' },
     filterSpecKey: 'vram',
-    imageUrl: categoryImage('graphics-cards'),
+    imageUrl: categoryImagePath('graphics-cards'),
   },
   {
     id: 'cat-2',
     slug: 'processors',
     name: { de: 'Prozessoren', en: 'Processors' },
     filterSpecKey: 'cores',
-    imageUrl: categoryImage('processors'),
+    imageUrl: categoryImagePath('processors'),
   },
   {
     id: 'cat-3',
     slug: 'mainboards',
     name: { de: 'Mainboards', en: 'Mainboards' },
     filterSpecKey: 'formFactor',
-    imageUrl: categoryImage('mainboards'),
+    imageUrl: categoryImagePath('mainboards'),
   },
   {
     id: 'cat-4',
     slug: 'memory',
     name: { de: 'Arbeitsspeicher', en: 'Memory' },
     filterSpecKey: 'capacity',
-    imageUrl: categoryImage('memory'),
+    imageUrl: categoryImagePath('memory'),
   },
   {
     id: 'cat-5',
     slug: 'power-supplies',
     name: { de: 'Netzteile', en: 'Power supplies' },
     filterSpecKey: 'wattage',
-    imageUrl: categoryImage('power-supplies'),
+    imageUrl: categoryImagePath('power-supplies'),
   },
   {
     id: 'cat-6',
     slug: 'cases',
     name: { de: 'Gehäuse', en: 'Cases' },
     filterSpecKey: 'formFactor',
-    imageUrl: categoryImage('cases'),
+    imageUrl: categoryImagePath('cases'),
   },
   {
     id: 'cat-7',
     slug: 'storage',
     name: { de: 'Speicher', en: 'Storage' },
     filterSpecKey: 'capacity',
-    imageUrl: categoryImage('storage'),
+    imageUrl: categoryImagePath('storage'),
   },
   {
     id: 'cat-8',
     slug: 'coolers',
     name: { de: 'CPU-Kühler', en: 'CPU coolers' },
-    imageUrl: categoryImage('coolers'),
+    imageUrl: categoryImagePath('coolers'),
   },
   {
     id: 'cat-9',
     slug: 'prebuilt-pcs',
     name: { de: 'Komplett-PCs', en: 'Prebuilt PCs' },
-    imageUrl: categoryImage('prebuilt-pcs'),
+    imageUrl: categoryImagePath('prebuilt-pcs'),
   },
 ];
 
@@ -894,5 +883,5 @@ const RAW_PRODUCTS: Product[] = [
 
 export const PRODUCTS: Product[] = RAW_PRODUCTS.map((product) => ({
   ...product,
-  imageUrl: categoryImage(product.categorySlug),
+  imageUrl: productImagePath(product.id),
 }));
