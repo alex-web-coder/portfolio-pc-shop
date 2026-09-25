@@ -81,6 +81,19 @@
 
 <nav class="nav" aria-label="Hauptnavigation">
   @for (link of navLinks; track link.path) {
-    <a class="nav-link" [routerLink]="link.path" routerLinkActive="active">{{ i18n.t(link.labelKey) }}</a>
+    @if (link.path === '/components') {
+      <div class="nav-item has-submenu">
+        <a class="nav-link" [routerLink]="link.path" routerLinkActive="active">{{ i18n.t(link.labelKey) }}</a>
+        <div class="submenu">
+          @for (category of componentCategories(); track category.id) {
+            <a class="submenu-link" [routerLink]="['/components', category.slug]">
+              {{ category.name[i18n.language()] }}
+            </a>
+          }
+        </div>
+      </div>
+    } @else {
+      <a class="nav-link" [routerLink]="link.path" routerLinkActive="active">{{ i18n.t(link.labelKey) }}</a>
+    }
   }
 </nav>

@@ -1,10 +1,13 @@
 import { Component, ElementRef, HostListener, computed, inject, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
+import { Category } from '../../models/category.model';
 import { CartService } from '../../services/cart.service';
+import { CategoryService } from '../../services/category.service';
 import { SearchService } from '../../services/search.service';
 import { ThemeService } from '../../services/theme.service';
 import { TranslationService } from '../../services/translation.service';
@@ -21,6 +24,7 @@ export class Header {
   protected readonly cartService = inject(CartService);
   protected readonly themeService = inject(ThemeService);
   private readonly searchService = inject(SearchService);
+  private readonly categoryService = inject(CategoryService);
   private readonly router = inject(Router);
   private readonly elementRef = inject(ElementRef<HTMLElement>);
 
@@ -29,6 +33,13 @@ export class Header {
     { labelKey: 'nav.prebuiltPcs', path: '/prebuilt-pcs' },
     { labelKey: 'nav.configurator', path: '/configurator' },
   ];
+
+  private readonly allCategories = toSignal(this.categoryService.getCategories(), {
+    initialValue: [] as Category[],
+  });
+  protected readonly componentCategories = computed(() =>
+    this.allCategories().filter((category) => category.slug !== 'prebuilt-pcs'),
+  );
 
   protected readonly query = signal('');
   protected readonly isDropdownOpen = signal(false);
