@@ -3,9 +3,6 @@
 }
 
 .head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-bottom: var(--space-2);
 }
 
@@ -15,29 +12,45 @@ h2 {
   color: var(--color-ink);
 }
 
-.controls {
-  display: flex;
-  gap: var(--space-1);
+.viewport-wrap {
+  position: relative;
 }
 
 .nav-btn {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  transform: translateY(-50%);
   width: 36px;
   height: 36px;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  border-radius: 999px;
   background: var(--color-surface);
   color: var(--color-ink);
   font-size: 1.25rem;
   line-height: 1;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
 
   &:hover {
     background: var(--color-bg);
   }
 }
 
-.viewport-wrap {
-  position: relative;
+.nav-prev {
+  left: var(--space-1);
+}
+
+.nav-next {
+  right: var(--space-1);
 }
 
 .viewport {
