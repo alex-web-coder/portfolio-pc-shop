@@ -2,6 +2,7 @@ import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Category } from '../../models/category.model';
 import { TranslationService } from '../../services/translation.service';
+import { handleCategoryImageError } from '../../utils/image-paths';
 
 @Component({
   imports: [RouterLink],
@@ -20,4 +21,8 @@ export class CategoryTile {
     const slug = this.category().slug;
     return slug === 'prebuilt-pcs' ? ['/prebuilt-pcs'] : ['/components', slug];
   });
+
+  protected onImageError(event: Event): void {
+    handleCategoryImageError(event, this.category().slug);
+  }
 }

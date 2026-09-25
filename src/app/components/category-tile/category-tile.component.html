@@ -2,7 +2,7 @@
   <span class="name">{{ name() }}</span>
   <div class="image">
     @if (category().imageUrl) {
-      <img [src]="category().imageUrl" [alt]="name()" />
+      <img [src]="category().imageUrl" [alt]="name()" (error)="onImageError($event)" />
     }
   </div>
 </a>

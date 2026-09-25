@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Language } from '../models/language.model';
 import { ComponentSlot, ComponentSelection } from '../models/pc-configuration.model';
 import { Product } from '../models/product.model';
-import { categoryImagePath } from '../utils/image-paths';
+import { productImagePath } from '../utils/image-paths';
 import { TRANSLATIONS, TranslationKey } from './translations.data';
 import { calculateConfigurationTotalCents, REQUIRED_SLOTS } from './pc-compatibility';
 
@@ -45,7 +45,11 @@ export class PcConfigurationStore {
       },
       manufacturer: "Alex Web Coder's PC Shop",
       priceCents: calculateConfigurationTotalCents(selection),
-      imageUrl: categoryImagePath(CUSTOM_CONFIGURATION_CATEGORY_SLUG),
+      // Routed through the normal per-product path (falling through to the
+      // custom-configuration category icon via handleProductImageError,
+      // since a generated build obviously never has a dedicated photo) so
+      // it goes through the same fallback chain as every other product.
+      imageUrl: productImagePath(id),
       available: true,
       specs: REQUIRED_SLOTS.map((slot) => ({
         key: slot,
