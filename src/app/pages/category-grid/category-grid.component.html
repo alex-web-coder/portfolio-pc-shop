@@ -1,4 +1,5 @@
 <div class="wrap">
+  <app-breadcrumb [items]="breadcrumbItems()" />
   <h1>{{ i18n.t('nav.components') }}</h1>
 
   @if (isLoading()) {

@@ -8,6 +8,7 @@
       <a routerLink="/components">{{ i18n.t('common.backToHome') }}</a>
     </div>
   } @else {
+    <app-breadcrumb [items]="breadcrumbItems()" />
     <a class="back" [routerLink]="categoryLink()">&#8249; {{ i18n.t('product.backToCategory') }}</a>
 
     <div class="layout">

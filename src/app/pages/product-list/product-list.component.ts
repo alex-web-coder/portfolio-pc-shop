@@ -1,7 +1,9 @@
 import { Component, computed, effect, inject, input, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Breadcrumb } from '../../components/breadcrumb/breadcrumb.component';
 import { ProductCard } from '../../components/product-card/product-card.component';
+import { BreadcrumbItem } from '../../models/breadcrumb-item.model';
 import { Category } from '../../models/category.model';
 import { LocalizedText } from '../../models/localized-text.model';
 import { Product } from '../../models/product.model';
@@ -12,7 +14,7 @@ import { TranslationService } from '../../services/translation.service';
 type SortOption = 'name-asc' | 'name-desc' | 'price-asc' | 'price-desc';
 
 @Component({
-  imports: [ProductCard],
+  imports: [Breadcrumb, ProductCard],
   selector: 'app-product-list',
   styleUrl: './product-list.component.scss',
   templateUrl: './product-list.component.html',
@@ -36,6 +38,18 @@ export class ProductList {
   protected readonly category = computed(() =>
     this.categories().find((category) => category.slug === this.categorySlug()),
   );
+
+  protected readonly breadcrumbItems = computed<BreadcrumbItem[]>(() => {
+    const home = { label: this.i18n.t('breadcrumb.home'), link: ['/'] };
+    if (this.categorySlug() === 'prebuilt-pcs') {
+      return [home, { label: this.i18n.t('nav.prebuiltPcs') }];
+    }
+    return [
+      home,
+      { label: this.i18n.t('nav.components'), link: ['/components'] },
+      { label: this.category()?.name[this.i18n.language()] ?? this.categorySlug() },
+    ];
+  });
 
   private readonly queryParamMap = toSignal(this.route.queryParamMap, { requireSync: true });
 

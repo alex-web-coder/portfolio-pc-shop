@@ -1,4 +1,5 @@
 <div class="wrap">
+  <app-breadcrumb [items]="breadcrumbItems()" />
   <h1>{{ category()?.name?.[i18n.language()] ?? categorySlug() }}</h1>
 
   @if (isLoading()) {

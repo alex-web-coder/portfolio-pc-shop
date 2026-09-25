@@ -6,6 +6,8 @@ import { Language } from '../models/language.model';
  * the real catalog models land (step 4), not here.
  */
 export const TRANSLATIONS = {
+  'breadcrumb.home': { de: 'Start', en: 'Home' },
+
   'nav.components': { de: 'Komponenten', en: 'Components' },
   'nav.prebuiltPcs': { de: 'Komplett-PCs', en: 'Prebuilt PCs' },
   'nav.configurator': { de: 'PC-Konfigurator', en: 'PC Configurator' },
