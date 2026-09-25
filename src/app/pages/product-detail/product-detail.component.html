@@ -12,7 +12,13 @@
     <a class="back" [routerLink]="categoryLink()">&#8249; {{ i18n.t('product.backToCategory') }}</a>
 
     <div class="layout">
-      <div class="image" [class.unavailable]="!product()!.available">
+      <button
+        type="button"
+        class="image"
+        [class.unavailable]="!product()!.available"
+        [attr.aria-label]="i18n.t('product.viewLargeImage')"
+        (click)="openLightbox()"
+      >
         @if (product()!.imageUrl) {
           <img class="backdrop" [src]="product()!.imageUrl" alt="" aria-hidden="true" (error)="onImageError($event)" />
           <img
@@ -23,7 +29,7 @@
             (load)="onPhotoLoad($event)"
           />
         }
-      </div>
+      </button>
 
       <div class="info">
         <h1>{{ name() }}</h1>
@@ -62,5 +68,30 @@
         </dl>
       </div>
     </div>
+
+    @if (lightboxOpen()) {
+      <div
+        class="lightbox"
+        role="dialog"
+        aria-modal="true"
+        [attr.aria-label]="name()"
+        (click)="closeLightbox()"
+      >
+        <button
+          type="button"
+          class="lightbox-close"
+          [attr.aria-label]="i18n.t('common.close')"
+          (click)="closeLightbox()"
+        >
+          &times;
+        </button>
+        <img
+          [src]="product()!.imageUrl"
+          [alt]="name()"
+          (click)="$event.stopPropagation()"
+          (error)="onImageError($event)"
+        />
+      </div>
+    }
   }
 </div>

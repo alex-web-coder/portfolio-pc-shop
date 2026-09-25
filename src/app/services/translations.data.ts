@@ -72,6 +72,7 @@ export const TRANSLATIONS = {
   'carousel.defaultLabel': { de: 'Karussell', en: 'Carousel' },
 
   'common.backToHome': { de: 'Zur Startseite', en: 'Back to homepage' },
+  'common.close': { de: 'Schließen', en: 'Close' },
 
   'notFound.code': { de: '404', en: '404' },
   'notFound.title': { de: 'Seite nicht gefunden', en: 'Page not found' },
@@ -107,6 +108,7 @@ export const TRANSLATIONS = {
     en: 'This product does not exist or is no longer available.',
   },
   'product.backToCategory': { de: 'Zurück zur Übersicht', en: 'Back to overview' },
+  'product.viewLargeImage': { de: 'Bild groß anzeigen', en: 'View larger image' },
 
   'cart.empty': { de: 'Dein Warenkorb ist leer.', en: 'Your cart is empty.' },
   'cart.browseProducts': { de: 'Produkte entdecken', en: 'Browse products' },

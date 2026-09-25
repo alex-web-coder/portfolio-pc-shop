@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input, signal } from '@angular/core';
+import { Component, HostListener, computed, effect, inject, input, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { Breadcrumb } from '../../components/breadcrumb/breadcrumb.component';
@@ -32,6 +32,7 @@ export class ProductDetail {
   protected readonly isLoading = signal(true);
   protected readonly hasError = signal(false);
   protected readonly product = signal<Product | null>(null);
+  protected readonly lightboxOpen = signal(false);
 
   protected readonly name = computed(() => this.product()?.name[this.i18n.language()] ?? '');
   protected readonly description = computed(
@@ -119,5 +120,20 @@ export class ProductDetail {
 
   protected onPhotoLoad(event: Event): void {
     hideBackdropIfPlaceholder(event);
+  }
+
+  protected openLightbox(): void {
+    this.lightboxOpen.set(true);
+  }
+
+  protected closeLightbox(): void {
+    this.lightboxOpen.set(false);
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  protected onDocumentKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Escape' && this.lightboxOpen()) {
+      this.closeLightbox();
+    }
   }
 }

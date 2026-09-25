@@ -47,11 +47,15 @@
   flex: 0 0 320px;
   height: 320px;
   background: var(--color-media-bg);
+  border: 0;
   border-radius: var(--radius);
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  cursor: pointer;
+  font: inherit;
 
   // A blurred, oversized copy of the same image fills the letterboxing that
   // object-fit: contain leaves around photos whose aspect ratio doesn't
@@ -180,6 +184,43 @@ h2 {
     font-family: var(--font-mono);
     color: var(--color-ink);
     font-weight: 600;
+  }
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  padding: var(--space-4);
+
+  img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: var(--radius);
+  }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.22);
   }
 }
 
