@@ -10,7 +10,7 @@ import { CategoryService } from '../../services/category.service';
 import { CompareService } from '../../services/compare.service';
 import { ProductService } from '../../services/product.service';
 import { TranslationService } from '../../services/translation.service';
-import { categoryImagePath } from '../../utils/image-paths';
+import { handleProductImageError } from '../../utils/image-paths';
 
 const LOCALE_BY_LANGUAGE = { de: 'de-DE', en: 'en-GB' } as const;
 
@@ -110,12 +110,10 @@ export class ProductDetail {
     }
   }
 
-  // Falls back to the category icon when no per-product photo has been
-  // added yet at /images/products/{id}.png.
   protected onImageError(event: Event): void {
     const product = this.product();
     if (product) {
-      (event.target as HTMLImageElement).src = categoryImagePath(product.categorySlug);
+      handleProductImageError(event, product.id, product.categorySlug);
     }
   }
 }
