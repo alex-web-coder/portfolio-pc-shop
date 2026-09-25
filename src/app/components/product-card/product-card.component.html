@@ -1,13 +1,6 @@
 <a class="image" [class.unavailable]="!product().available" [routerLink]="detailLink()">
   @if (product().imageUrl) {
-    <img class="backdrop" [src]="product().imageUrl" alt="" aria-hidden="true" (error)="onImageError($event)" />
-    <img
-      class="photo"
-      [src]="product().imageUrl"
-      [alt]="name()"
-      (error)="onImageError($event)"
-      (load)="onPhotoLoad($event)"
-    />
+    <img [src]="product().imageUrl" [alt]="name()" (error)="onImageError($event)" />
   }
 </a>
 

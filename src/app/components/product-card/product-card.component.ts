@@ -4,7 +4,7 @@ import { Product } from '../../models/product.model';
 import { CartService } from '../../services/cart.service';
 import { CompareService } from '../../services/compare.service';
 import { TranslationService } from '../../services/translation.service';
-import { handleProductImageError, hideBackdropIfPlaceholder } from '../../utils/image-paths';
+import { handleProductImageError } from '../../utils/image-paths';
 
 const LOCALE_BY_LANGUAGE = { de: 'de-DE', en: 'en-GB' } as const;
 
@@ -49,9 +49,5 @@ export class ProductCard {
   protected onImageError(event: Event): void {
     const product = this.product();
     handleProductImageError(event, product.id, product.categorySlug);
-  }
-
-  protected onPhotoLoad(event: Event): void {
-    hideBackdropIfPlaceholder(event);
   }
 }
