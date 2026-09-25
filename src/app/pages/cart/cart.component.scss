@@ -17,7 +17,7 @@ h1 {
   color: color-mix(in srgb, var(--color-ink) 70%, transparent);
 
   &.error {
-    color: #b3261e;
+    color: var(--color-status-error);
   }
 }
 
@@ -28,7 +28,7 @@ h1 {
   a {
     display: inline-block;
     margin-top: var(--space-2);
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     font-weight: 600;
   }
 }
@@ -78,10 +78,11 @@ h1 {
 
 .notice {
   font-size: 0.75rem;
-  color: #b3261e;
+  color: var(--color-status-error);
 }
 
 .unit-price {
+  font-family: var(--font-mono);
   font-size: 0.8125rem;
   color: color-mix(in srgb, var(--color-ink) 60%, transparent);
 }
@@ -106,6 +107,7 @@ h1 {
   flex: 0 0 auto;
   min-width: 80px;
   text-align: right;
+  font-family: var(--font-mono);
   font-weight: 700;
   color: var(--color-ink);
 }
@@ -120,7 +122,7 @@ h1 {
   cursor: pointer;
 
   &:hover {
-    color: #b3261e;
+    color: var(--color-status-error);
   }
 }
 
@@ -140,6 +142,10 @@ h1 {
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--color-ink);
+
+  span:last-child {
+    font-family: var(--font-mono);
+  }
 }
 
 .checkout {

@@ -58,7 +58,7 @@ select {
 }
 
 .error {
-  color: #b3261e;
+  color: var(--color-status-error);
   font-size: 0.75rem;
   font-weight: 500;
 }
@@ -159,6 +159,10 @@ button {
   justify-content: space-between;
   font-size: 0.9375rem;
   color: var(--color-ink);
+
+  span:last-child {
+    font-family: var(--font-mono);
+  }
 }
 
 .config-specs {
@@ -185,6 +189,7 @@ button {
   dd {
     margin: 0;
     text-align: right;
+    font-family: var(--font-mono);
     font-weight: 600;
     color: var(--color-ink);
   }
@@ -210,7 +215,7 @@ button {
   a {
     display: inline-block;
     margin-top: var(--space-4);
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     font-weight: 600;
   }
 }

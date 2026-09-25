@@ -17,7 +17,7 @@ h1 {
   color: color-mix(in srgb, var(--color-ink) 70%, transparent);
 
   &.error {
-    color: #b3261e;
+    color: var(--color-status-error);
   }
 }
 
@@ -28,7 +28,7 @@ h1 {
   a {
     display: inline-block;
     margin-top: var(--space-2);
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     font-weight: 600;
   }
 }
@@ -72,8 +72,9 @@ tbody th {
 }
 
 .product-head .price {
+  font-family: var(--font-mono);
   font-weight: 600;
-  color: var(--color-accent);
+  color: var(--color-ink);
 }
 
 .remove {

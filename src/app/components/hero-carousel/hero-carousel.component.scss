@@ -16,13 +16,13 @@
   gap: var(--space-4);
   min-height: 360px;
   width: 100%;
-  background: var(--color-accent);
-  color: var(--color-on-accent);
+  background: var(--color-accent-soft-bg);
+  color: var(--color-accent-soft-ink);
   border-radius: var(--radius);
   padding: var(--space-5) var(--space-5) var(--space-6);
 
   &:focus-visible {
-    outline: 2px solid var(--color-on-accent);
+    outline: 2px solid var(--color-accent);
     outline-offset: 4px;
   }
 }
@@ -41,7 +41,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.75rem;
-  color: color-mix(in srgb, var(--color-on-accent) 80%, transparent);
+  color: color-mix(in srgb, var(--color-accent-soft-ink) 80%, transparent);
 }
 
 h1 {
@@ -53,7 +53,7 @@ h1 {
 .lead {
   margin: 0;
   font-size: 1rem;
-  color: color-mix(in srgb, var(--color-on-accent) 90%, transparent);
+  color: color-mix(in srgb, var(--color-accent-soft-ink) 90%, transparent);
 }
 
 .cta {
@@ -67,7 +67,7 @@ h1 {
   font-weight: 600;
   text-decoration: none;
   background: var(--color-surface);
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 .hero-image {
@@ -97,16 +97,16 @@ h1 {
 .arrow {
   width: 32px;
   height: 32px;
-  border: 1px solid color-mix(in srgb, var(--color-on-accent) 40%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-accent-soft-ink) 40%, transparent);
   border-radius: var(--radius);
   background: transparent;
-  color: var(--color-on-accent);
+  color: var(--color-accent-soft-ink);
   font-size: 1.125rem;
   line-height: 1;
   cursor: pointer;
 
   &:hover {
-    background: color-mix(in srgb, var(--color-on-accent) 15%, transparent);
+    background: color-mix(in srgb, var(--color-accent-soft-ink) 15%, transparent);
   }
 }
 
@@ -121,18 +121,17 @@ h1 {
   padding: 0;
   border: 0;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--color-on-accent) 40%, transparent);
+  background: color-mix(in srgb, var(--color-accent-soft-ink) 40%, transparent);
   cursor: pointer;
 
   &.active {
-    background: var(--color-on-accent);
+    background: var(--color-accent-soft-ink);
   }
 }
 
 @media (max-width: 720px) {
   .hero {
     min-height: 420px;
-    margin-inline: var(--space-2);
     padding: var(--space-4) var(--space-4) var(--space-6);
     flex-wrap: wrap;
   }

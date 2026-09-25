@@ -23,7 +23,7 @@ h1 {
   color: color-mix(in srgb, var(--color-ink) 70%, transparent);
 
   &.error {
-    color: #b3261e;
+    color: var(--color-status-error);
   }
 }
 
@@ -73,7 +73,7 @@ select {
 .issue {
   margin: var(--space-1) 0 0;
   font-size: 0.8125rem;
-  color: #b3261e;
+  color: var(--color-status-error);
 }
 
 .summary {
@@ -101,6 +101,10 @@ select {
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--color-ink);
+
+  span:last-child {
+    font-family: var(--font-mono);
+  }
 }
 
 .primary {
@@ -122,7 +126,7 @@ select {
 .success {
   margin: 0;
   font-size: 0.8125rem;
-  color: #1a8a4a;
+  color: var(--color-status-ok);
 }
 
 @media (max-width: 780px) {

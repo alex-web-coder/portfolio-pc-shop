@@ -25,6 +25,6 @@
     <rect x="164" y="128" width="16" height="6"/>
     <rect x="164" y="150" width="16" height="6"/>
   </g>
-  <rect x="40" y="40" width="120" height="120" rx="8" fill="#4F46E5"/>
-  <rect x="70" y="70" width="60" height="60" rx="4" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+  <rect x="40" y="40" width="120" height="120" rx="8" fill="#E6E7FB"/>
+  <rect x="70" y="70" width="60" height="60" rx="4" fill="none" stroke="#3730A3" stroke-width="4"/>
 </svg>

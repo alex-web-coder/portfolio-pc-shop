@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-  <rect x="30" y="70" width="140" height="70" rx="10" fill="#4F46E5"/>
-  <rect x="30" y="58" width="34" height="12" rx="3" fill="#4F46E5"/>
-  <circle cx="72" cy="105" r="18" fill="none" stroke="#FFFFFF" stroke-width="4"/>
-  <circle cx="72" cy="105" r="4" fill="#FFFFFF"/>
-  <circle cx="122" cy="105" r="18" fill="none" stroke="#FFFFFF" stroke-width="4"/>
-  <circle cx="122" cy="105" r="4" fill="#FFFFFF"/>
+  <rect x="30" y="70" width="140" height="70" rx="10" fill="#E6E7FB"/>
+  <rect x="30" y="58" width="34" height="12" rx="3" fill="#E6E7FB"/>
+  <circle cx="72" cy="105" r="18" fill="none" stroke="#3730A3" stroke-width="4"/>
+  <circle cx="72" cy="105" r="4" fill="#3730A3"/>
+  <circle cx="122" cy="105" r="18" fill="none" stroke="#3730A3" stroke-width="4"/>
+  <circle cx="122" cy="105" r="4" fill="#3730A3"/>
   <rect x="8" y="90" width="22" height="14" rx="2" fill="#C7CAD1"/>
   <rect x="128" y="145" width="10" height="18" fill="#C7CAD1"/>
   <rect x="148" y="145" width="10" height="18" fill="#C7CAD1"/>

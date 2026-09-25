@@ -11,7 +11,7 @@
 
 .image {
   height: 140px;
-  background: var(--color-bg);
+  background: var(--color-media-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,13 +43,13 @@
   min-height: 2.5em;
 
   &:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
   }
 }
 
 .availability {
   font-size: 0.75rem;
-  color: #1a8a4a;
+  color: var(--color-status-ok);
 
   &.unavailable {
     color: color-mix(in srgb, var(--color-ink) 50%, transparent);
@@ -65,6 +65,7 @@
 }
 
 .price {
+  font-family: var(--font-mono);
   font-weight: 700;
   color: var(--color-ink);
 }

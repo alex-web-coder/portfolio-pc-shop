@@ -17,7 +17,7 @@ h1 {
   color: color-mix(in srgb, var(--color-ink) 70%, transparent);
 
   &.error {
-    color: #b3261e;
+    color: var(--color-status-error);
   }
 }
 

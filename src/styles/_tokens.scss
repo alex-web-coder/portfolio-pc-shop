@@ -7,6 +7,28 @@
   --color-on-ink: #ffffff;
   --color-border: #2227321f;
 
+  // Accent used as inline text/icon color on a neutral surface (nav active state,
+  // hover links). Same as --color-accent in light theme; dark theme gets a
+  // brightened variant so small text still clears WCAG AA on dark surfaces.
+  --color-accent-ink: #4f46e5;
+
+  // Soft tint of the accent hue for large decorative surfaces (hero, banners,
+  // footer, carousel controls, icon plates) — the saturated --color-accent is
+  // reserved for buy buttons and active states only.
+  --color-accent-soft-bg: #e6e7fb;
+  --color-accent-soft-ink: #3730a3;
+
+  // Status colours for stock/compatibility states, tuned for AA contrast on
+  // both --color-surface and --color-bg in each theme.
+  --color-status-ok: #0e6c34;
+  --color-status-warning: #7a5c00;
+  --color-status-error: #b3261e;
+
+  // Image/thumbnail well behind product & category art. Deliberately warm and
+  // hue-neutral (not blue-leaning like --color-bg) so it doesn't visually
+  // merge with the lavender --color-accent-soft-bg icon plates.
+  --color-media-bg: #dcd7d4;
+
   --radius: 8px;
 
   --space-1: 8px;
@@ -15,6 +37,10 @@
   --space-4: 32px;
   --space-5: 40px;
   --space-6: 48px;
+
+  --font-body: 'Archivo', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,6 +51,16 @@
     --color-accent: #6562f7;
     --color-on-ink: #0f1319;
     --color-border: #29313d;
+
+    --color-accent-ink: #8481f9;
+    --color-accent-soft-bg: #1e2040;
+    --color-accent-soft-ink: #c7c9f9;
+
+    --color-status-ok: #22c55e;
+    --color-status-warning: #f59e0b;
+    --color-status-error: #f87171;
+
+    --color-media-bg: #0f1319;
   }
 }
 
@@ -35,6 +71,16 @@
   --color-accent: #6562f7;
   --color-on-ink: #0f1319;
   --color-border: #29313d;
+
+  --color-accent-ink: #8481f9;
+  --color-accent-soft-bg: #1e2040;
+  --color-accent-soft-ink: #c7c9f9;
+
+  --color-status-ok: #22c55e;
+  --color-status-warning: #f59e0b;
+  --color-status-error: #f87171;
+
+  --color-media-bg: #0f1319;
 }
 
 :root[data-theme='light'] {
@@ -44,4 +90,14 @@
   --color-accent: #4f46e5;
   --color-on-ink: #ffffff;
   --color-border: #2227321f;
+
+  --color-accent-ink: #4f46e5;
+  --color-accent-soft-bg: #e6e7fb;
+  --color-accent-soft-ink: #3730a3;
+
+  --color-status-ok: #0e6c34;
+  --color-status-warning: #7a5c00;
+  --color-status-error: #b3261e;
+
+  --color-media-bg: #dcd7d4;
 }

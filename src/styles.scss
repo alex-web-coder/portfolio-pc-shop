@@ -20,7 +20,7 @@ html {
         primary: mat.$violet-palette,
         tertiary: mat.$blue-palette,
       ),
-      typography: Roboto,
+      typography: Archivo,
       density: 0,
     )
   );
@@ -30,6 +30,15 @@ html {
   // accent so those few Material bits match the hand-designed pages.
   --mat-sys-primary: var(--color-accent);
   --mat-sys-on-primary: var(--color-on-accent);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
 }
 
 body {
@@ -48,5 +57,28 @@ body {
   // Reset the user agent margin.
   margin: 0;
   height: 100%;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  accent-color: var(--color-accent);
+}
+
+// MatIcon's ligature mode adds this class and expects the host app to define
+// it (that's what Google's old Material Icons stylesheet did alongside the
+// font file). @fontsource only ships the @font-face, so the rule is recreated
+// here to keep icons self-hosted.
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
 }
 /* You can add global styles to this file, and also import other style files */

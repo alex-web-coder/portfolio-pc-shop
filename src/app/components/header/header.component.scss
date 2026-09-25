@@ -135,11 +135,11 @@
   text-decoration: none;
 
   &:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
   }
 
   &.active {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     font-weight: 700;
   }
 }

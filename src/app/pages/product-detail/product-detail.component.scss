@@ -19,7 +19,7 @@
   a {
     display: inline-block;
     margin-top: var(--space-2);
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     font-weight: 600;
   }
 }
@@ -32,7 +32,7 @@
   font-size: 0.875rem;
 
   &:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
   }
 }
 
@@ -45,7 +45,7 @@
 .image {
   flex: 0 0 320px;
   height: 320px;
-  background: var(--color-bg);
+  background: var(--color-media-bg);
   border-radius: var(--radius);
   display: flex;
   align-items: center;
@@ -85,7 +85,7 @@ h1 {
 .availability {
   display: inline-block;
   font-size: 0.8125rem;
-  color: #1a8a4a;
+  color: var(--color-status-ok);
 
   &.unavailable {
     color: color-mix(in srgb, var(--color-ink) 50%, transparent);
@@ -109,6 +109,7 @@ h1 {
 }
 
 .price {
+  font-family: var(--font-mono);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-ink);
@@ -148,6 +149,7 @@ h2 {
 
   dd {
     margin: 0;
+    font-family: var(--font-mono);
     color: var(--color-ink);
     font-weight: 600;
   }
