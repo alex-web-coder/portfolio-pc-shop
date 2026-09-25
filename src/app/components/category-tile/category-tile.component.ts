@@ -2,7 +2,7 @@ import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Category } from '../../models/category.model';
 import { TranslationService } from '../../services/translation.service';
-import { handleCategoryImageError } from '../../utils/image-paths';
+import { handleCategoryImageError, hideBackdropIfPlaceholder } from '../../utils/image-paths';
 
 @Component({
   imports: [RouterLink],
@@ -24,5 +24,9 @@ export class CategoryTile {
 
   protected onImageError(event: Event): void {
     handleCategoryImageError(event, this.category().slug);
+  }
+
+  protected onPhotoLoad(event: Event): void {
+    hideBackdropIfPlaceholder(event);
   }
 }

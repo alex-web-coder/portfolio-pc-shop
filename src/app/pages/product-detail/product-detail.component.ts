@@ -10,7 +10,7 @@ import { CategoryService } from '../../services/category.service';
 import { CompareService } from '../../services/compare.service';
 import { ProductService } from '../../services/product.service';
 import { TranslationService } from '../../services/translation.service';
-import { handleProductImageError } from '../../utils/image-paths';
+import { handleProductImageError, hideBackdropIfPlaceholder } from '../../utils/image-paths';
 
 const LOCALE_BY_LANGUAGE = { de: 'de-DE', en: 'en-GB' } as const;
 
@@ -115,5 +115,9 @@ export class ProductDetail {
     if (product) {
       handleProductImageError(event, product.id, product.categorySlug);
     }
+  }
+
+  protected onPhotoLoad(event: Event): void {
+    hideBackdropIfPlaceholder(event);
   }
 }

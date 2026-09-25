@@ -14,7 +14,14 @@
     <div class="layout">
       <div class="image" [class.unavailable]="!product()!.available">
         @if (product()!.imageUrl) {
-          <img [src]="product()!.imageUrl" [alt]="name()" (error)="onImageError($event)" />
+          <img class="backdrop" [src]="product()!.imageUrl" alt="" aria-hidden="true" (error)="onImageError($event)" />
+          <img
+            class="photo"
+            [src]="product()!.imageUrl"
+            [alt]="name()"
+            (error)="onImageError($event)"
+            (load)="onPhotoLoad($event)"
+          />
         }
       </div>
 

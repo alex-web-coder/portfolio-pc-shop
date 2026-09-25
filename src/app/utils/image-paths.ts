@@ -63,3 +63,17 @@ export function handleProductImageError(event: Event, id: string, categorySlug: 
     img.src = categoryImagePath(categorySlug, attempt);
   }
 }
+
+/**
+ * `<img (load)>` handler for the sharp foreground image: hides the blurred
+ * backdrop sibling once the resolved src turns out to be the flat .svg
+ * placeholder. Blurring a mostly-transparent vector icon produces dark
+ * fringing artifacts at its edges, so the backdrop is only useful behind a
+ * real raster photo.
+ */
+export function hideBackdropIfPlaceholder(event: Event): void {
+  const img = event.target as HTMLImageElement;
+  if (!img.src.endsWith('.svg')) return;
+  const backdrop = img.previousElementSibling as HTMLElement | null;
+  if (backdrop) backdrop.style.display = 'none';
+}
