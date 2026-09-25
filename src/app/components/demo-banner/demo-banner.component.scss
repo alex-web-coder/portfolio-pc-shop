@@ -1,9 +1,14 @@
 :host {
+  position: relative;
   display: block;
-  background: var(--color-accent-soft-bg);
-  color: var(--color-accent-soft-ink);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
   text-align: center;
-  padding: var(--space-1) var(--space-2);
+  padding: var(--space-1) var(--space-6);
+
+  &.dismissed {
+    display: none;
+  }
 }
 
 p {
@@ -11,4 +16,24 @@ p {
   font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.01em;
+}
+
+.close {
+  position: absolute;
+  top: 50%;
+  right: var(--space-2);
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-on-accent);
+  font-size: 1.125rem;
+  line-height: 1;
+  cursor: pointer;
+
+  &:hover {
+    background: color-mix(in srgb, var(--color-on-accent) 20%, transparent);
+  }
 }
