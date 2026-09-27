@@ -5,6 +5,7 @@ import { Product } from '../../models/product.model';
 import { CompareService } from '../../services/compare.service';
 import { ProductService } from '../../services/product.service';
 import { TranslationService } from '../../services/translation.service';
+import { handleProductImageError } from '../../utils/image-paths';
 
 const LOCALE_BY_LANGUAGE = { de: 'de-DE', en: 'en-GB' } as const;
 
@@ -70,5 +71,9 @@ export class Compare {
 
   protected remove(productId: string): void {
     this.compareService.remove(productId);
+  }
+
+  protected onImageError(event: Event, product: Product): void {
+    handleProductImageError(event, product.id, product.categorySlug);
   }
 }

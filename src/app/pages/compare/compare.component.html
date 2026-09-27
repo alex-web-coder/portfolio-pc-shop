@@ -19,6 +19,11 @@
             @for (product of comparedProducts(); track product.id) {
               <th>
                 <div class="product-head">
+                  @if (product.imageUrl) {
+                    <div class="thumb">
+                      <img [src]="product.imageUrl" [alt]="name(product)" (error)="onImageError($event, product)" />
+                    </div>
+                  }
                   <span class="name">{{ name(product) }}</span>
                   <span class="price">{{ formatPrice(product.priceCents) }}</span>
                   <button type="button" class="remove" (click)="remove(product.id)">
