@@ -13,7 +13,7 @@ const FEATURED_PRODUCT_COUNT = 8;
 
 const HERO_SLIDES: HeroSlide[] = [
   {
-    imageUrl: '/images/hero/hero-configurator.svg',
+    imageUrl: '/images/hero/hero-bg-configurator.jpeg',
     eyebrowKey: 'hero.slide1.eyebrow',
     titleKey: 'hero.slide1.title',
     leadKey: 'hero.slide1.lead',
@@ -21,7 +21,7 @@ const HERO_SLIDES: HeroSlide[] = [
     ctaLink: '/configurator',
   },
   {
-    imageUrl: '/images/hero/hero-graphics.svg',
+    imageUrl: '/images/hero/hero-bg-graphics.jpeg',
     eyebrowKey: 'hero.slide2.eyebrow',
     titleKey: 'hero.slide2.title',
     leadKey: 'hero.slide2.lead',
@@ -29,7 +29,7 @@ const HERO_SLIDES: HeroSlide[] = [
     ctaLink: '/components/graphics-cards',
   },
   {
-    imageUrl: '/images/hero/hero-prebuilt.svg',
+    imageUrl: '/images/hero/hero-bg-prebuilt.jpeg',
     eyebrowKey: 'hero.slide3.eyebrow',
     titleKey: 'hero.slide3.title',
     leadKey: 'hero.slide3.lead',

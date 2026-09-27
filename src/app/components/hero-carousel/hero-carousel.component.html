@@ -6,15 +6,14 @@
     [attr.aria-label]="i18n.t('hero.slideLabel')"
     (keydown)="onKeydown($event)"
   >
+    <img class="hero-bg" [src]="currentSlide().imageUrl" alt="" aria-hidden="true" />
+    <div class="hero-scrim" aria-hidden="true"></div>
+
     <div class="hero-content">
       <p class="eyebrow">{{ i18n.t(currentSlide().eyebrowKey) }}</p>
       <h1>{{ i18n.t(currentSlide().titleKey) }}</h1>
       <p class="lead">{{ i18n.t(currentSlide().leadKey) }}</p>
       <a [routerLink]="currentSlide().ctaLink" class="cta">{{ i18n.t(currentSlide().ctaLabelKey) }}</a>
-    </div>
-
-    <div class="hero-image">
-      <img [src]="currentSlide().imageUrl" alt="" />
     </div>
 
     <div class="hero-nav">
