@@ -113,6 +113,10 @@ export const TRANSLATIONS = {
   },
   'product.backToCategory': { de: 'Zurück zur Übersicht', en: 'Back to overview' },
   'product.viewLargeImage': { de: 'Bild groß anzeigen', en: 'View larger image' },
+  'product.lightboxHint': {
+    de: 'Esc drücken oder daneben klicken, um die Vollbildansicht zu schließen',
+    en: 'Press Esc or click outside to close the fullscreen view',
+  },
 
   'cart.empty': { de: 'Dein Warenkorb ist leer.', en: 'Your cart is empty.' },
   'cart.browseProducts': { de: 'Produkte entdecken', en: 'Browse products' },
