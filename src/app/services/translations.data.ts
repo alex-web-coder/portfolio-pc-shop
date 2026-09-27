@@ -71,6 +71,10 @@ export const TRANSLATIONS = {
   'product.unavailable': { de: 'Nicht verfügbar', en: 'Unavailable' },
   'product.addToCart': { de: 'In den Warenkorb', en: 'Add to cart' },
 
+  'notification.addedToCart': { de: 'Zum Warenkorb hinzugefügt.', en: 'Added to cart.' },
+  'notification.orderPlaced': { de: 'Bestellung erfolgreich aufgegeben.', en: 'Order placed successfully.' },
+  'notification.itemRemoved': { de: 'Artikel entfernt.', en: 'Item removed.' },
+
   'carousel.previous': { de: 'Zurück', en: 'Previous' },
   'carousel.next': { de: 'Weiter', en: 'Next' },
   'carousel.defaultLabel': { de: 'Karussell', en: 'Carousel' },

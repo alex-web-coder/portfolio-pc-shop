@@ -5,6 +5,7 @@ import { CartLine } from '../../models/cart-line.model';
 import { Order, OrderLineSnapshot, PaymentMethod, PlaceOrderRequest } from '../../models/order.model';
 import { CartService } from '../../services/cart.service';
 import { CartViewService } from '../../services/cart-view.service';
+import { NotificationService } from '../../services/notification.service';
 import { OrderService, calculateShippingCents, FREE_SHIPPING_THRESHOLD_CENTS } from '../../services/order.service';
 import { TranslationService } from '../../services/translation.service';
 import { TranslationKey } from '../../services/translations.data';
@@ -43,6 +44,7 @@ export class Checkout {
   private readonly cartService = inject(CartService);
   protected readonly cartView = inject(CartViewService);
   private readonly orderService = inject(OrderService);
+  private readonly notification = inject(NotificationService);
   protected readonly i18n = inject(TranslationService);
   private readonly injector = inject(Injector);
 
@@ -176,6 +178,7 @@ export class Checkout {
         this.placedOrder.set(order);
         this.cartService.clear();
         this.isSubmitting.set(false);
+        this.notification.show(this.i18n.t('notification.orderPlaced'));
       },
       error: () => {
         this.submitError.set(true);

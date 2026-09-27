@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { Product } from '../../models/product.model';
 import { CartService } from '../../services/cart.service';
 import { CompareService } from '../../services/compare.service';
+import { NotificationService } from '../../services/notification.service';
 import { TranslationService } from '../../services/translation.service';
 import { handleProductImageError } from '../../utils/image-paths';
 
@@ -18,6 +19,7 @@ export class ProductCard {
   protected readonly i18n = inject(TranslationService);
   private readonly cartService = inject(CartService);
   protected readonly compareService = inject(CompareService);
+  private readonly notification = inject(NotificationService);
 
   readonly product = input.required<Product>();
 
@@ -40,6 +42,7 @@ export class ProductCard {
 
   protected addToCart(): void {
     this.cartService.add(this.product().id);
+    this.notification.show(this.i18n.t('notification.addedToCart'));
   }
 
   protected toggleCompare(): void {

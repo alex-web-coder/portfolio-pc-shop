@@ -3,6 +3,7 @@ import { forkJoin, map } from 'rxjs';
 import { ComponentSelection, ComponentSlot, CompatibilityIssue } from '../../models/pc-configuration.model';
 import { Product } from '../../models/product.model';
 import { CartService } from '../../services/cart.service';
+import { NotificationService } from '../../services/notification.service';
 import { PcConfigurationStore, SLOT_LABEL_KEYS } from '../../services/pc-configuration-store.service';
 import { REQUIRED_SLOTS, calculateConfigurationTotalCents, checkCompatibility } from '../../services/pc-compatibility';
 import { ProductService } from '../../services/product.service';
@@ -31,6 +32,7 @@ export class Configurator {
   private readonly productService = inject(ProductService);
   private readonly cartService = inject(CartService);
   private readonly configurationStore = inject(PcConfigurationStore);
+  private readonly notification = inject(NotificationService);
   protected readonly i18n = inject(TranslationService);
 
   protected readonly slots = REQUIRED_SLOTS;
@@ -112,5 +114,6 @@ export class Configurator {
     this.cartService.add(product.id);
     this.justAdded.set(true);
     this.selection.set({});
+    this.notification.show(this.i18n.t('configurator.addedToCart'));
   }
 }

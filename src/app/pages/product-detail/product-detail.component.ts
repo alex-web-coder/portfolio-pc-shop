@@ -8,6 +8,7 @@ import { Product } from '../../models/product.model';
 import { CartService } from '../../services/cart.service';
 import { CategoryService } from '../../services/category.service';
 import { CompareService } from '../../services/compare.service';
+import { NotificationService } from '../../services/notification.service';
 import { ProductService } from '../../services/product.service';
 import { TranslationService } from '../../services/translation.service';
 import { handleProductImageError, hideBackdropIfPlaceholder } from '../../utils/image-paths';
@@ -25,6 +26,7 @@ export class ProductDetail {
   private readonly cartService = inject(CartService);
   private readonly categoryService = inject(CategoryService);
   protected readonly compareService = inject(CompareService);
+  private readonly notification = inject(NotificationService);
   protected readonly i18n = inject(TranslationService);
 
   readonly productId = input.required<string>();
@@ -101,6 +103,7 @@ export class ProductDetail {
     const product = this.product();
     if (product) {
       this.cartService.add(product.id);
+      this.notification.show(this.i18n.t('notification.addedToCart'));
     }
   }
 

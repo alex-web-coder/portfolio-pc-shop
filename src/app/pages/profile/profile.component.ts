@@ -2,6 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OrderHistoryEntry } from '../../models/order.model';
 import { CartService } from '../../services/cart.service';
+import { NotificationService } from '../../services/notification.service';
 import { OrderService } from '../../services/order.service';
 import { PcConfigurationStore } from '../../services/pc-configuration-store.service';
 import { DEFAULT_PROFILE, ProfileService } from '../../services/profile.service';
@@ -28,6 +29,7 @@ export class Profile {
   private readonly orderService = inject(OrderService);
   private readonly configurationStore = inject(PcConfigurationStore);
   private readonly profileService = inject(ProfileService);
+  private readonly notification = inject(NotificationService);
   protected readonly i18n = inject(TranslationService);
 
   protected readonly history = this.orderService.history;
@@ -66,6 +68,7 @@ export class Profile {
     this.profileService.save(this.form.getRawValue());
     this.justSaved.set(true);
     this.justReset.set(false);
+    this.notification.show(this.i18n.t('profile.saved'));
   }
 
   protected resetDemoData(): void {
@@ -78,6 +81,7 @@ export class Profile {
     this.form.setValue(DEFAULT_PROFILE);
     this.justSaved.set(false);
     this.justReset.set(true);
+    this.notification.show(this.i18n.t('profile.resetDone'));
   }
 
   protected orderDate(entry: OrderHistoryEntry): string {

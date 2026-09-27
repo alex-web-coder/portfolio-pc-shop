@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { CartLine } from '../../models/cart-line.model';
 import { CartService } from '../../services/cart.service';
 import { CartViewService } from '../../services/cart-view.service';
+import { NotificationService } from '../../services/notification.service';
 import { TranslationService } from '../../services/translation.service';
 
 const LOCALE_BY_LANGUAGE = { de: 'de-DE', en: 'en-GB' } as const;
@@ -16,6 +17,7 @@ const LOCALE_BY_LANGUAGE = { de: 'de-DE', en: 'en-GB' } as const;
 export class Cart {
   private readonly cartService = inject(CartService);
   protected readonly cartView = inject(CartViewService);
+  private readonly notification = inject(NotificationService);
   protected readonly i18n = inject(TranslationService);
 
   protected name(line: CartLine): string {
@@ -36,5 +38,6 @@ export class Cart {
 
   protected remove(productId: string): void {
     this.cartService.remove(productId);
+    this.notification.show(this.i18n.t('notification.itemRemoved'));
   }
 }
