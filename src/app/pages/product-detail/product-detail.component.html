@@ -77,20 +77,17 @@
         [attr.aria-label]="name()"
         (click)="closeLightbox()"
       >
-        <button
-          type="button"
-          class="lightbox-close"
-          [attr.aria-label]="i18n.t('common.close')"
-          (click)="closeLightbox()"
-        >
-          &times;
-        </button>
-        <img
-          [src]="product()!.imageUrl"
-          [alt]="name()"
-          (click)="$event.stopPropagation()"
-          (error)="onImageError($event)"
-        />
+        <div class="lightbox-frame" (click)="$event.stopPropagation()">
+          <img [src]="product()!.imageUrl" [alt]="name()" (error)="onImageError($event)" />
+          <button
+            type="button"
+            class="lightbox-close"
+            [attr.aria-label]="i18n.t('common.close')"
+            (click)="closeLightbox()"
+          >
+            &times;
+          </button>
+        </div>
       </div>
     }
   }

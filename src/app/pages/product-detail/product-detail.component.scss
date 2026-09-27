@@ -196,31 +196,41 @@ h2 {
   justify-content: center;
   background: rgba(0, 0, 0, 0.85);
   padding: var(--space-4);
+}
+
+.lightbox-frame {
+  position: relative;
+  display: inline-flex;
+  max-width: 90vw;
+  max-height: 90vh;
 
   img {
+    display: block;
     max-width: 90vw;
     max-height: 90vh;
     object-fit: contain;
+    border: 6px solid #ffffff;
     border-radius: var(--radius);
   }
 }
 
 .lightbox-close {
   position: absolute;
-  top: var(--space-3);
-  right: var(--space-3);
-  width: 40px;
-  height: 40px;
+  top: -16px;
+  right: -16px;
+  width: 32px;
+  height: 32px;
   border: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  font-size: 1.5rem;
+  background: #ffffff;
+  color: #000000;
+  font-size: 1.25rem;
   line-height: 1;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.22);
+    background: #f0f0f0;
   }
 }
 
