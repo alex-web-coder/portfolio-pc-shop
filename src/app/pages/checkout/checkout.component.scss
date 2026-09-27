@@ -157,6 +157,7 @@ button {
 .order-line-row {
   display: flex;
   justify-content: space-between;
+  gap: var(--space-2);
   font-size: 0.9375rem;
   color: var(--color-ink);
 
