@@ -1,8 +1,8 @@
 <div class="wrap">
-  <app-breadcrumb [items]="breadcrumbItems()" />
-  <h1>{{ category()?.name?.[i18n.language()] ?? categorySlug() }}</h1>
-  @if (!isLoading() && !hasError()) {
-    <div class="sort-row">
+  <div class="page-header">
+    <app-breadcrumb [items]="breadcrumbItems()" />
+    <h1>{{ category()?.name?.[i18n.language()] ?? categorySlug() }}</h1>
+    @if (!isLoading() && !hasError()) {
       <label class="sort">
         {{ i18n.t('catalog.sortBy') }}
         <select [value]="sort()" (change)="onSortChange($any($event.target).value)">
@@ -12,8 +12,8 @@
           <option value="price-desc">{{ i18n.t('catalog.sort.priceDesc') }}</option>
         </select>
       </label>
-    </div>
-  }
+    }
+  </div>
 
   @if (isLoading()) {
     <p class="status">{{ i18n.t('catalog.loading') }}</p>
