@@ -1,6 +1,19 @@
 <div class="wrap">
   <app-breadcrumb [items]="breadcrumbItems()" />
-  <h1>{{ category()?.name?.[i18n.language()] ?? categorySlug() }}</h1>
+  <div class="heading-row">
+    <h1>{{ category()?.name?.[i18n.language()] ?? categorySlug() }}</h1>
+    @if (!isLoading() && !hasError()) {
+      <label class="sort">
+        {{ i18n.t('catalog.sortBy') }}
+        <select [value]="sort()" (change)="onSortChange($any($event.target).value)">
+          <option value="name-asc">{{ i18n.t('catalog.sort.nameAsc') }}</option>
+          <option value="name-desc">{{ i18n.t('catalog.sort.nameDesc') }}</option>
+          <option value="price-asc">{{ i18n.t('catalog.sort.priceAsc') }}</option>
+          <option value="price-desc">{{ i18n.t('catalog.sort.priceDesc') }}</option>
+        </select>
+      </label>
+    }
+  </div>
 
   @if (isLoading()) {
     <p class="status">{{ i18n.t('catalog.loading') }}</p>
@@ -17,6 +30,7 @@
             <input
               type="number"
               min="0"
+              placeholder="0"
               [attr.aria-label]="i18n.t('catalog.minPrice')"
               [value]="minPrice()"
               (change)="onMinPriceChange($any($event.target).value)"
@@ -25,6 +39,7 @@
             <input
               type="number"
               min="0"
+              placeholder="9999"
               [attr.aria-label]="i18n.t('catalog.maxPrice')"
               [value]="maxPrice()"
               (change)="onMaxPriceChange($any($event.target).value)"
@@ -83,18 +98,6 @@
       </details>
 
       <div class="results">
-        <div class="toolbar">
-          <label class="sort">
-            {{ i18n.t('catalog.sortBy') }}
-            <select [value]="sort()" (change)="onSortChange($any($event.target).value)">
-              <option value="name-asc">{{ i18n.t('catalog.sort.nameAsc') }}</option>
-              <option value="name-desc">{{ i18n.t('catalog.sort.nameDesc') }}</option>
-              <option value="price-asc">{{ i18n.t('catalog.sort.priceAsc') }}</option>
-              <option value="price-desc">{{ i18n.t('catalog.sort.priceDesc') }}</option>
-            </select>
-          </label>
-        </div>
-
         @if (visibleProducts().length === 0) {
           <p class="status">{{ i18n.t('catalog.empty') }}</p>
         } @else {

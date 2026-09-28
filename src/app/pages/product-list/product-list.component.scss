@@ -8,9 +8,18 @@
   padding: var(--space-4);
 }
 
+.heading-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
 h1 {
-  margin: 0 0 var(--space-3);
-  color: var(--color-ink);
+  margin: 0;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--color-ink) 75%, transparent);
 }
 
 .status {
@@ -73,6 +82,10 @@ summary {
     border-radius: var(--radius);
     padding: var(--space-1);
     font: inherit;
+
+    &::placeholder {
+      color: color-mix(in srgb, var(--color-ink) 45%, transparent);
+    }
   }
 }
 
@@ -105,24 +118,21 @@ summary {
   min-width: 0;
 }
 
-.toolbar {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: var(--space-3);
-}
-
 .sort {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-1);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--color-ink);
+  white-space: nowrap;
 
   select {
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    padding: var(--space-1) var(--space-2);
+    padding: 4px var(--space-1);
     font: inherit;
+    font-size: 0.8125rem;
   }
 }
 
