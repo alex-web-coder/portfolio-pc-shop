@@ -12,8 +12,8 @@ const TITLE_KEYS: Record<LegalPageKind, TranslationKey> = {
 
 // Only "terms" has real generic content — imprint/privacy need actual operator
 // details (name/address for imprint, real data-handling practices for privacy)
-// that don't exist yet for this project, so they show a placeholder instead of
-// inventing fake real-world information.
+// that don't exist yet for this project, so they show a demo-shop disclaimer
+// instead of inventing fake real-world information.
 const BODY_KEYS: Record<LegalPageKind, TranslationKey | null> = {
   imprint: null,
   terms: 'terms.body',

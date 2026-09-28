@@ -306,9 +306,9 @@ export const TRANSLATIONS = {
     en: 'This website is a portfolio project demonstrating an Angular shop built from scratch — including product catalog, cart, checkout, and PC configurator.',
   },
 
-  'legal.placeholderNotice': {
-    de: 'Platzhalter — dieser Abschnitt wird vor einer echten Veröffentlichung noch mit den tatsächlichen Angaben ergänzt.',
-    en: 'Placeholder — this section will be filled in with real details before any real publication.',
+  'legal.demoDisclaimer': {
+    de: 'Dies ist ein Demo-Shop für ein Portfolio-Projekt. Es handelt sich um keinen echten Anbieter — es werden keine echten Daten verarbeitet und es kommen keine echten Verträge zustande.',
+    en: 'This is a demo shop for a portfolio project. It is not a real business — no real data is processed and no real contracts are formed.',
   },
   'terms.body': {
     de: 'Da dieser Shop ausschließlich zu Demonstrationszwecken dient, kommen keine Kaufverträge zustande und es gelten keine echten Geschäftsbedingungen. Alle Interaktionen sind simuliert.',
