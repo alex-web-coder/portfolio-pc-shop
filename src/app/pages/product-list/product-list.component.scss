@@ -11,9 +11,13 @@
 .page-header {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  align-items: center;
+  align-items: end;
   gap: var(--space-3);
   margin-bottom: var(--space-3);
+}
+
+.page-header app-breadcrumb {
+  margin-bottom: 0;
 }
 
 h1 {
