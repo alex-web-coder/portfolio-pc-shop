@@ -188,7 +188,7 @@ const RAW_PRODUCTS: Product[] = [
   {
     id: 'gpu-5',
     categorySlug: 'graphics-cards',
-    name: { de: 'GeForce RTX 4070 Ti SUPER 16 GB', en: 'GeForce RTX 4070 Ti SUPER 16 GB' },
+    name: { de: 'GeForce RTX 4070 Ti 16 GB', en: 'GeForce RTX 4070 Ti 16 GB' },
     description: {
       de: 'Leistungsstarke Karte für 4K-Gaming und Creator-Workloads.',
       en: 'High-performance card for 4K gaming and creator workloads.',
