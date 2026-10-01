@@ -30,6 +30,13 @@
   // merge with the lavender --color-accent-soft-bg icon plates.
   --color-media-bg: #9b9794;
 
+  // Deliberately NOT theme-adaptive: for intentional always-dark brand panels
+  // (hero text side, footer) that should look the same regardless of the
+  // light/dark toggle, unlike --color-ink/--color-on-ink which invert in dark
+  // mode because their job there is "readable text colour", not "dark panel".
+  --color-ink-fixed: #171923;
+  --color-on-ink-fixed: #ffffff;
+
   // Button/control radius. Cards use the larger --radius-lg instead.
   --radius: 8px;
   --radius-lg: 12px;

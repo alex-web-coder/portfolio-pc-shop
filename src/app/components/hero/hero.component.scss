@@ -15,7 +15,7 @@
   min-height: 420px;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: var(--color-ink);
+  background: var(--color-ink-fixed);
 }
 
 // A soft purple bloom sitting at the seam between the dark text panel and
@@ -40,7 +40,7 @@
   justify-content: center;
   gap: var(--space-3);
   padding: var(--space-6) var(--space-5);
-  color: var(--color-on-ink);
+  color: var(--color-on-ink-fixed);
 }
 
 h1 {
@@ -56,7 +56,7 @@ h1 {
   margin: 0;
   max-width: 420px;
   font-size: 1rem;
-  color: color-mix(in srgb, var(--color-on-ink) 75%, transparent);
+  color: color-mix(in srgb, var(--color-on-ink-fixed) 75%, transparent);
 }
 
 .hero-actions {
@@ -83,12 +83,12 @@ h1 {
   font-size: 0.9375rem;
   font-weight: 600;
   text-decoration: none;
-  color: var(--color-on-ink);
-  border-bottom: 1px solid color-mix(in srgb, var(--color-on-ink) 40%, transparent);
+  color: var(--color-on-ink-fixed);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-on-ink-fixed) 40%, transparent);
   padding-bottom: 2px;
 
   &:hover {
-    border-color: var(--color-on-ink);
+    border-color: var(--color-on-ink-fixed);
   }
 }
 

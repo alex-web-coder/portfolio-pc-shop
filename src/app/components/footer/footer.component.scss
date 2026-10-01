@@ -1,8 +1,8 @@
 :host {
   display: block;
-  background: var(--color-accent-soft-bg);
-  color: var(--color-accent-soft-ink);
-  margin-top: var(--space-6);
+  background: var(--color-ink-fixed);
+  color: var(--color-on-ink-fixed);
+  margin-top: var(--space-4);
 }
 
 .content {
@@ -33,7 +33,7 @@
 p {
   margin: 0;
   font-size: 0.875rem;
-  color: color-mix(in srgb, var(--color-accent-soft-ink) 80%, transparent);
+  color: color-mix(in srgb, var(--color-on-ink-fixed) 75%, transparent);
 }
 
 h3 {
@@ -41,7 +41,7 @@ h3 {
   font-size: 0.8125rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: color-mix(in srgb, var(--color-accent-soft-ink) 70%, transparent);
+  color: color-mix(in srgb, var(--color-on-ink-fixed) 55%, transparent);
 }
 
 .link {
@@ -63,8 +63,8 @@ h3 {
   margin-inline: auto;
   padding: var(--space-2) var(--space-4) 0;
   font-size: 0.75rem;
-  color: color-mix(in srgb, var(--color-accent-soft-ink) 70%, transparent);
-  border-top: 1px solid color-mix(in srgb, var(--color-accent-soft-ink) 20%, transparent);
+  color: color-mix(in srgb, var(--color-on-ink-fixed) 60%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--color-on-ink-fixed) 15%, transparent);
 }
 
 .trademark {
@@ -72,5 +72,5 @@ h3 {
   margin: var(--space-1) auto 0;
   padding: 0 var(--space-4) var(--space-4);
   font-size: 0.6875rem;
-  color: color-mix(in srgb, var(--color-accent-soft-ink) 55%, transparent);
+  color: color-mix(in srgb, var(--color-on-ink-fixed) 45%, transparent);
 }
