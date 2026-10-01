@@ -27,6 +27,16 @@ export class ProductCard {
 
   protected readonly name = computed(() => this.product().name[this.i18n.language()]);
 
+  // The first two specs are consistently each category's most defining
+  // attributes (chipset+VRAM, socket+cores, capacity+type, ...), so they
+  // double as a short "at a glance" line without needing a category lookup.
+  protected readonly coreSpecs = computed(() =>
+    this.product()
+      .specs.slice(0, 2)
+      .map((spec) => spec.value)
+      .join(' · '),
+  );
+
   protected readonly detailLink = computed<[string, string, ...string[]]>(() => {
     const product = this.product();
     return product.categorySlug === 'prebuilt-pcs'

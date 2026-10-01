@@ -7,26 +7,30 @@
 <div class="body">
   <a class="name" [routerLink]="detailLink()">{{ name() }}</a>
 
-  <span class="availability" [class.unavailable]="!product().available">
-    {{ product().available ? i18n.t('product.inStock') : i18n.t('product.unavailable') }}
-  </span>
+  <p class="specs-line">{{ coreSpecs() }}</p>
 
-  <div class="footer">
+  <div class="availability" [class.unavailable]="!product().available">
+    <span class="dot" aria-hidden="true"></span>
+    <span>{{ product().available ? i18n.t('product.inStock') : i18n.t('product.unavailable') }}</span>
+  </div>
+
+  <div class="purchase">
     <span class="price">{{ formattedPrice() }}</span>
+
     <button class="add" type="button" [disabled]="!product().available" (click)="addToCart()">
       {{ i18n.t('product.addToCart') }}
     </button>
-  </div>
 
-  @if (isComparable()) {
-    <label class="compare">
-      <input
-        type="checkbox"
-        [checked]="compareService.isSelected(product().id)"
-        [disabled]="!compareService.isSelected(product().id) && compareService.isFull()"
-        (change)="toggleCompare()"
-      />
-      {{ i18n.t('compare.add') }}
-    </label>
-  }
+    @if (isComparable()) {
+      <label class="compare">
+        <input
+          type="checkbox"
+          [checked]="compareService.isSelected(product().id)"
+          [disabled]="!compareService.isSelected(product().id) && compareService.isFull()"
+          (change)="toggleCompare()"
+        />
+        {{ i18n.t('compare.add') }}
+      </label>
+    }
+  </div>
 </div>

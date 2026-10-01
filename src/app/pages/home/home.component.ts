@@ -1,6 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Carousel } from '../../components/carousel/carousel.component';
+import { RouterLink } from '@angular/router';
 import { CategoryTile } from '../../components/category-tile/category-tile.component';
 import { Hero } from '../../components/hero/hero.component';
 import { ProductCard } from '../../components/product-card/product-card.component';
@@ -8,10 +8,10 @@ import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
 import { TranslationService } from '../../services/translation.service';
 
-const FEATURED_PRODUCT_COUNT = 8;
+const FEATURED_PRODUCT_COUNT = 4;
 
 @Component({
-  imports: [Hero, Carousel, CategoryTile, ProductCard],
+  imports: [Hero, CategoryTile, ProductCard, RouterLink],
   selector: 'app-home',
   styleUrl: './home.component.scss',
   templateUrl: './home.component.html',

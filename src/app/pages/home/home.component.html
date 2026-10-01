@@ -10,9 +10,13 @@
 </section>
 
 <section class="section">
-  <app-carousel [heading]="i18n.t('home.productsHeading')">
+  <div class="section-header">
+    <h2>{{ i18n.t('home.productsHeading') }}</h2>
+    <a class="view-all" routerLink="/components">{{ i18n.t('home.viewAllProducts') }}</a>
+  </div>
+  <div class="product-grid">
     @for (product of featuredProducts(); track product.id) {
       <app-product-card [product]="product" />
     }
-  </app-carousel>
+  </div>
 </section>

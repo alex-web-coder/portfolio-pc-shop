@@ -31,3 +31,43 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.view-all {
+  flex-shrink: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-accent-ink);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+.product-grid app-product-card {
+  width: auto;
+}
+
+@media (min-width: 860px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

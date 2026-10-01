@@ -49,6 +49,7 @@ export const TRANSLATIONS = {
 
   'home.categoriesHeading': { de: 'Kategorien', en: 'Categories' },
   'home.productsHeading': { de: 'Ausgewählte Produkte', en: 'Featured products' },
+  'home.viewAllProducts': { de: 'Alle Produkte ansehen', en: 'View all products' },
 
   'product.inStock': { de: 'Auf Lager', en: 'In stock' },
   'product.unavailable': { de: 'Nicht verfügbar', en: 'Unavailable' },
@@ -57,10 +58,6 @@ export const TRANSLATIONS = {
   'notification.addedToCart': { de: 'Zum Warenkorb hinzugefügt.', en: 'Added to cart.' },
   'notification.orderPlaced': { de: 'Bestellung erfolgreich aufgegeben.', en: 'Order placed successfully.' },
   'notification.itemRemoved': { de: 'Artikel entfernt.', en: 'Item removed.' },
-
-  'carousel.previous': { de: 'Zurück', en: 'Previous' },
-  'carousel.next': { de: 'Weiter', en: 'Next' },
-  'carousel.defaultLabel': { de: 'Karussell', en: 'Carousel' },
 
   'common.backToHome': { de: 'Zur Startseite', en: 'Back to homepage' },
   'common.close': { de: 'Schließen', en: 'Close' },
