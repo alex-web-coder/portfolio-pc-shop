@@ -1,7 +1,7 @@
 :host {
   display: block;
-  width: 200px;
-  flex-shrink: 0;
+  width: 100%;
+  min-width: 0;
 }
 
 .tile {
@@ -10,31 +10,37 @@
   gap: var(--space-2);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   padding: var(--space-2);
   text-decoration: none;
+  transition: border-color 0.15s ease;
 
-  &:hover .name {
-    color: var(--color-accent-ink);
+  &:hover {
+    border-color: var(--color-accent);
   }
-}
 
-.name {
-  font-weight: 600;
-  color: var(--color-ink);
+  &:hover .image img {
+    transform: translateY(-4px);
+  }
 }
 
 .image {
-  height: 80px;
-  background: var(--color-media-bg);
-  border-radius: var(--radius);
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
-  img {
-    max-width: 70%;
-    max-height: 70%;
-    object-fit: contain;
-  }
+.image img {
+  max-width: 82%;
+  max-height: 82%;
+  object-fit: contain;
+  transition: transform 0.15s ease;
+}
+
+.name {
+  text-align: center;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink);
 }

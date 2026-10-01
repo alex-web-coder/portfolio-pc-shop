@@ -1,11 +1,12 @@
 <app-hero />
 
 <section class="section">
-  <app-carousel [heading]="i18n.t('home.categoriesHeading')">
+  <h2>{{ i18n.t('home.categoriesHeading') }}</h2>
+  <div class="category-grid">
     @for (category of categories(); track category.id) {
       <app-category-tile [category]="category" />
     }
-  </app-carousel>
+  </div>
 </section>
 
 <section class="section">

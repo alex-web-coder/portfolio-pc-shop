@@ -21,9 +21,14 @@ export class Home {
   private readonly productService = inject(ProductService);
   protected readonly i18n = inject(TranslationService);
 
-  protected readonly categories = toSignal(this.categoryService.getCategories(), {
+  private readonly allCategories = toSignal(this.categoryService.getCategories(), {
     initialValue: [],
   });
+  // Prebuilt PCs already has its own top-level nav entry — showing it again
+  // as a "component category" tile would duplicate that entry point.
+  protected readonly categories = computed(() =>
+    this.allCategories().filter((category) => category.slug !== 'prebuilt-pcs'),
+  );
   private readonly products = toSignal(this.productService.getProducts(), {
     initialValue: [],
   });
