@@ -1,16 +1,17 @@
 :root {
   --color-surface: #ffffff;
-  --color-bg: #ebedf2;
-  --color-ink: #222732;
-  --color-accent: #4f46e5;
+  --color-bg: #f6f7fa;
+  --color-ink: #171923;
+  --color-ink-secondary: #626879;
+  --color-accent: #5b4ae8;
   --color-on-accent: #ffffff;
   --color-on-ink: #ffffff;
-  --color-border: #2227321f;
+  --color-border: #e3e5ec;
 
   // Accent used as inline text/icon color on a neutral surface (nav active state,
   // hover links). Same as --color-accent in light theme; dark theme gets a
   // brightened variant so small text still clears WCAG AA on dark surfaces.
-  --color-accent-ink: #4f46e5;
+  --color-accent-ink: #5b4ae8;
 
   // Soft tint of the accent hue for large decorative surfaces (hero, banners,
   // footer, carousel controls, icon plates) — the saturated --color-accent is
@@ -29,18 +30,23 @@
   // merge with the lavender --color-accent-soft-bg icon plates.
   --color-media-bg: #9b9794;
 
+  // Button/control radius. Cards use the larger --radius-lg instead.
   --radius: 8px;
+  --radius-lg: 12px;
 
   --space-1: 8px;
   --space-2: 16px;
   --space-3: 24px;
   --space-4: 32px;
-  --space-5: 40px;
-  --space-6: 48px;
+  --space-5: 48px;
+  --space-6: 64px;
 
+  // One type family, three weights (400/600/700) — --font-heading and
+  // --font-mono keep their own names so call sites stay semantic (heading,
+  // tabular price) without pulling in a second or third typeface.
   --font-body: 'Archivo', sans-serif;
-  --font-heading: 'Space Grotesk', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-heading: 'Archivo', sans-serif;
+  --font-mono: 'Archivo', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -48,6 +54,7 @@
     --color-surface: #181d26;
     --color-bg: #0f1319;
     --color-ink: #dce2ea;
+    --color-ink-secondary: #9aa3b2;
     --color-accent: #6562f7;
     --color-on-ink: #0f1319;
     --color-border: #29313d;
@@ -68,6 +75,7 @@
   --color-surface: #181d26;
   --color-bg: #0f1319;
   --color-ink: #dce2ea;
+  --color-ink-secondary: #9aa3b2;
   --color-accent: #6562f7;
   --color-on-ink: #0f1319;
   --color-border: #29313d;
@@ -85,13 +93,14 @@
 
 :root[data-theme='light'] {
   --color-surface: #ffffff;
-  --color-bg: #ebedf2;
-  --color-ink: #222732;
-  --color-accent: #4f46e5;
+  --color-bg: #f6f7fa;
+  --color-ink: #171923;
+  --color-ink-secondary: #626879;
+  --color-accent: #5b4ae8;
   --color-on-ink: #ffffff;
-  --color-border: #2227321f;
+  --color-border: #e3e5ec;
 
-  --color-accent-ink: #4f46e5;
+  --color-accent-ink: #5b4ae8;
   --color-accent-soft-bg: #e6e7fb;
   --color-accent-soft-ink: #3730a3;
 
