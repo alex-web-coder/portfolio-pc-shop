@@ -13,7 +13,7 @@
   min-height: 420px;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: var(--color-ink-fixed);
+  background: var(--color-surface);
 }
 
 .hero-bg {
@@ -28,21 +28,6 @@
   object-position: right center;
 }
 
-// Dark on the left for text contrast, fading through a purple-tinted
-// mid-tone (the "light accent" bridging image and copy) to fully
-// transparent on the right, so the photo itself stays bright there.
-.hero-scrim {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    90deg,
-    var(--color-ink-fixed) 0%,
-    color-mix(in srgb, var(--color-ink-fixed) 65%, var(--color-accent) 35%) 38%,
-    transparent 75%
-  );
-}
-
 .hero-text {
   position: relative;
   z-index: 2;
@@ -53,7 +38,7 @@
   max-width: 560px;
   min-height: 420px;
   padding: var(--space-6) var(--space-5);
-  color: var(--color-on-ink-fixed);
+  color: var(--color-ink-fixed);
 }
 
 h1 {
@@ -69,7 +54,7 @@ h1 {
   margin: 0;
   max-width: 420px;
   font-size: 1rem;
-  color: color-mix(in srgb, var(--color-on-ink-fixed) 75%, transparent);
+  color: color-mix(in srgb, var(--color-ink-fixed) 75%, transparent);
 }
 
 .hero-actions {
@@ -96,34 +81,41 @@ h1 {
   font-size: 0.9375rem;
   font-weight: 600;
   text-decoration: none;
-  color: var(--color-on-ink-fixed);
-  border-bottom: 1px solid color-mix(in srgb, var(--color-on-ink-fixed) 40%, transparent);
+  color: var(--color-ink-fixed);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ink-fixed) 40%, transparent);
   padding-bottom: 2px;
 
   &:hover {
-    border-color: var(--color-on-ink-fixed);
+    border-color: var(--color-ink-fixed);
   }
 }
 
 @media (max-width: 720px) {
+  // No room for the image and text to share one frame at this width without
+  // a scrim, so stack them instead: solid text block, then the photo below.
+  .hero {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .hero-bg {
+    position: static;
+    order: 2;
+    height: 220px;
+    object-position: center;
+  }
+
   .hero-text {
+    position: static;
+    order: 1;
+    z-index: auto;
     max-width: none;
-    min-height: 320px;
+    min-height: 0;
     padding: var(--space-4);
   }
 
   h1 {
     font-size: 1.75rem;
-  }
-
-  // Narrower viewports can't afford to lose the photo to a heavy scrim, so
-  // darken the whole frame evenly instead of a left-to-right gradient.
-  .hero-scrim {
-    background: linear-gradient(
-      180deg,
-      var(--color-ink-fixed) 0%,
-      color-mix(in srgb, var(--color-ink-fixed) 55%, var(--color-accent) 25%) 55%,
-      color-mix(in srgb, var(--color-ink-fixed) 70%, transparent) 100%
-    );
   }
 }
