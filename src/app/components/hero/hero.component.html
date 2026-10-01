@@ -1,41 +1,21 @@
 <div class="wrap">
-  <section
-    class="hero"
-    tabindex="0"
-    role="region"
-    [attr.aria-label]="i18n.t('hero.slideLabel')"
-    (keydown)="onKeydown($event)"
-  >
-    <img class="hero-bg" [src]="currentSlide().imageUrl" alt="" aria-hidden="true" />
-    <div class="hero-scrim" aria-hidden="true"></div>
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
 
-    <div class="hero-content">
-      <p class="eyebrow">{{ i18n.t(currentSlide().eyebrowKey) }}</p>
-      <h1>{{ i18n.t(currentSlide().titleKey) }}</h1>
-      <p class="lead">{{ i18n.t(currentSlide().leadKey) }}</p>
-      <a [routerLink]="currentSlide().ctaLink" class="cta">{{ i18n.t(currentSlide().ctaLabelKey) }}</a>
+    <div class="hero-text">
+      <h1>
+        <span>{{ i18n.t('hero.titleLine1') }}</span>
+        <span>{{ i18n.t('hero.titleLine2') }}</span>
+      </h1>
+      <p class="lead">{{ i18n.t('hero.lead') }}</p>
+      <div class="hero-actions">
+        <a routerLink="/configurator" class="cta-primary">{{ i18n.t('hero.ctaPrimary') }} &rarr;</a>
+        <a routerLink="/prebuilt-pcs" class="cta-secondary">{{ i18n.t('hero.ctaSecondary') }}</a>
+      </div>
     </div>
 
-    <div class="hero-nav">
-      <button type="button" class="arrow" [attr.aria-label]="i18n.t('carousel.previous')" (click)="previous()">
-        &#8249;
-      </button>
-
-      <div class="dots">
-        @for (slide of slides(); track $index) {
-          <button
-            type="button"
-            class="dot"
-            [class.active]="$index === currentIndex()"
-            [attr.aria-label]="dotLabel($index)"
-            (click)="goTo($index)"
-          ></button>
-        }
-      </div>
-
-      <button type="button" class="arrow" [attr.aria-label]="i18n.t('carousel.next')" (click)="next()">
-        &#8250;
-      </button>
+    <div class="hero-visual">
+      <img src="/images/hero/hero-pc.jpeg" alt="" />
     </div>
   </section>
 </div>
