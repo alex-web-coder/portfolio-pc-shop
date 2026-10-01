@@ -267,8 +267,14 @@ export const TRANSLATIONS = {
     de: 'Demo-Versandregel — es handelt sich um eine Simulation, es findet kein echter Versand statt:',
     en: 'Demo shipping rule — this is a simulation, nothing is actually shipped:',
   },
-  'shipping.flatRateLabel': { de: 'Pauschale Versandkosten', en: 'Flat shipping rate' },
-  'shipping.freeFromLabel': { de: 'Kostenlos ab einem Bestellwert von', en: 'Free from an order value of' },
+  'shipping.flatRateLabel': {
+    de: 'Pauschale Versandkosten – Demo-Shop, kein echter Betrag',
+    en: 'Flat shipping rate — demo shop, not a real amount',
+  },
+  'shipping.freeFromLabel': {
+    de: 'Kostenlose Lieferung ab einem Bestellwert – Demo-Shop, kein echter Betrag',
+    en: 'Free delivery above a certain order value — demo shop, not a real amount',
+  },
   'shipping.paymentHeading': { de: 'Zahlung', en: 'Payment' },
   'shipping.paymentText': {
     de: 'Beim simulierten Checkout stehen drei Demo-Zahlungsarten zur Auswahl: Kreditkarte, PayPal und Rechnung. Es werden zu keinem Zeitpunkt echte Zahlungsdaten abgefragt oder Zahlungen ausgelöst.',
