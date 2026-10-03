@@ -11,7 +11,7 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: var(--space-2);
+  padding: var(--space-1);
   text-decoration: none;
   transition: border-color 0.15s ease;
 
@@ -32,9 +32,10 @@
 }
 
 .image img {
-  max-width: 82%;
-  max-height: 82%;
+  max-width: 96%;
+  max-height: 96%;
   object-fit: contain;
+  border-radius: var(--radius);
   transition: transform 0.15s ease;
 }
 
