@@ -31,17 +31,8 @@ backend, no real orders or payments. Fully bilingual (German/English).
 
 ## Getting started
 
-This repo pins Node via `.nvmrc` (Angular 22's CLI needs Node 22.22.3+/24.15+/26+):
-
 ```bash
-nvm use          # switches to the pinned Node version
-npm install
-npm start        # http://localhost:4200
-```
-
-```bash
-npm run build    # production build, output in dist/
-npm test         # unit tests (Vitest)
+nvm use && npm install && npm start   # http://localhost:4200
 ```
 
 ## Architecture
