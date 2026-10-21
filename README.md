@@ -4,9 +4,6 @@ A portfolio project: a fictional PC-hardware shop — components, prebuilt PCs, 
 compatibility-checking PC configurator — built end to end in Angular 22. No login, no real
 backend, no real orders or payments. Fully bilingual (German/English).
 
-**Live demo:** not deployed yet — static hosting (GitHub Pages or Cloudflare Pages) is a pending
-decision, tracked in [`docs/mvp.md`](docs/mvp.md). Everything below runs locally.
-
 ## Screenshots
 
 | Home | Catalog filters |
