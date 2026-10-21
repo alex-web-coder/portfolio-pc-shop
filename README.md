@@ -17,7 +17,7 @@ compatibility-checking PC configurator — built end to end in Angular 22. Fully
 ## What this demonstrates
 
 - A full Angular 22 app built from scratch: standalone components, signals for state, typed
-  Reactive Forms, lazy-loaded routes, a functional `HttpInterceptor` standing in for a backend.
+  Reactive Forms, lazy-loaded routes, a functional `HttpInterceptor` for the data layer.
 - A product catalog with category browsing, filtering, sorting, and URL-persisted state.
 - A cart and multi-step guest checkout, including order confirmation with a generated order number.
 - A PC configurator that checks socket, RAM type, form factor, cooler clearance, GPU length, and
@@ -44,12 +44,10 @@ Full rationale lives in [`docs/mvp.md`](docs/mvp.md#architecture-notes); the sho
 - **State**: Angular signals in plain services (`CartService`, `TranslationService`, …) — no
   external state library. `CartViewService` and `PcConfigurationStore` show the pattern for
   joining/deriving state without duplicating it.
-- **Data access**: services call `HttpClient` against fake paths like `/api/products`, answered by
+- **Data access**: services call `HttpClient` against paths like `/api/products`, answered by
   [`mock-api.interceptor.ts`](src/app/interceptors/mock-api.interceptor.ts) with simulated latency
   and a documented, deterministic failure trigger (checkout with the email `fehler@beispiel.de`
-  simulates a failed order — never a random failure). Because the request/response shape is
-  already real, pointing this at an actual backend later means deleting the interceptor, not
-  rewriting services or components.
+  simulates a failed order — never a random failure).
 - **i18n**: a custom signal-based `TranslationService` + flat dictionary
   ([`translations.data.ts`](src/app/services/translations.data.ts)), not `@angular/localize`.
   Localize's per-locale-build model can't switch language at runtime without a reload, which would
