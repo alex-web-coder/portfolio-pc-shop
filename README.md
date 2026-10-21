@@ -4,6 +4,8 @@ A portfolio project: a fictional PC-hardware shop — components, prebuilt PCs, 
 compatibility-checking PC configurator — built end to end in Angular 22. Fully bilingual
 (German/English).
 
+**Live demo:** https://alex-web-coder.github.io/portfolio-pc-shop/
+
 ## Screenshots
 
 | Home | Catalog filters |

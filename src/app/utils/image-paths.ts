@@ -12,11 +12,14 @@ export const PRODUCT_IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg'] as const;
 export const CATEGORY_IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'svg'] as const;
 
 export function categoryImagePath(slug: string, extensionIndex = 0): string {
-  return `/images/categories/${slug}.${CATEGORY_IMAGE_EXTENSIONS[extensionIndex]}`;
+  // Relative (no leading slash) so it resolves against <base href>, not the
+  // domain root — required for hosting under a sub-path (e.g. GitHub Pages
+  // project sites at /<repo-name>/).
+  return `images/categories/${slug}.${CATEGORY_IMAGE_EXTENSIONS[extensionIndex]}`;
 }
 
 export function productImagePath(id: string, extensionIndex = 0): string {
-  return `/images/products/${id}.${PRODUCT_IMAGE_EXTENSIONS[extensionIndex]}`;
+  return `images/products/${id}.${PRODUCT_IMAGE_EXTENSIONS[extensionIndex]}`;
 }
 
 /**
