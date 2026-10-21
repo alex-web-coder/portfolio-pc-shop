@@ -1,8 +1,8 @@
 # Alex Web Coder's PC Shop
 
 A portfolio project: a fictional PC-hardware shop — components, prebuilt PCs, and a
-compatibility-checking PC configurator — built end to end in Angular 22. No login, no real
-backend, no real orders or payments. Fully bilingual (German/English).
+compatibility-checking PC configurator — built end to end in Angular 22. Fully bilingual
+(German/English).
 
 ## Screenshots
 
@@ -19,15 +19,14 @@ backend, no real orders or payments. Fully bilingual (German/English).
 - A full Angular 22 app built from scratch: standalone components, signals for state, typed
   Reactive Forms, lazy-loaded routes, a functional `HttpInterceptor` standing in for a backend.
 - A product catalog with category browsing, filtering, sorting, and URL-persisted state.
-- A cart and multi-step guest checkout with a simulated order (fake order number, no real payment).
+- A cart and multi-step guest checkout, including order confirmation with a generated order number.
 - A PC configurator that checks socket, RAM type, form factor, cooler clearance, GPU length, and
-  PSU headroom against a small sample dataset — deliberately simplified and labeled as such.
+  PSU headroom against the sample dataset.
 - A demo profile with editable fields, order history, and a one-click reset of all local demo data.
 - Full DE/EN support via a small custom translation service, not `@angular/localize` (see
   *Architecture* below for why).
-- Three extras beyond the original MVP scope, picked specifically because they're buildable
-  without a backend: a dark/light theme toggle, product comparison (up to 3, even across
-  categories), and client-side search with autocomplete.
+- A dark/light theme toggle, product comparison (up to 3, even across categories), and
+  client-side search with autocomplete.
 
 ## Getting started
 
@@ -60,9 +59,8 @@ Full rationale lives in [`docs/mvp.md`](docs/mvp.md#architecture-notes); the sho
 
 ## The PC configurator
 
-The riskiest part of the project, by design kept small and honest about its limits. Compatibility
-checks ([`pc-compatibility.ts`](src/app/services/pc-compatibility.ts)) are pure, UI-independent
-functions: CPU/mainboard socket, RAM/mainboard DDR generation, mainboard/case form factor,
+Compatibility checks ([`pc-compatibility.ts`](src/app/services/pc-compatibility.ts)) are pure,
+UI-independent functions: CPU/mainboard socket, RAM/mainboard DDR generation, mainboard/case form factor,
 cooler socket + height clearance, GPU length vs. case, and a simplified PSU headroom check
 (CPU + GPU TDP plus a fixed reserve). Missing components are reported separately from incompatible
 ones, so the UI can tell "pick something" apart from "these two don't work together."
@@ -76,10 +74,7 @@ A finished, valid configuration is stored as a synthetic `Product`-shaped entry
 about "product or configuration" — the entire existing cart/checkout/order-history pipeline handles
 it as a normal line item, with its full component breakdown carried through to order confirmation.
 
-## Beyond the MVP: three FE-only extras
-
-Picked from the backlog specifically because they need no backend — everything else in the
-backlog (auth, real payments, address validation, server-side search indexing) genuinely does:
+## Additional features
 
 - **Dark/light theme** — `ThemeService` (signal + localStorage, defaults to
   `prefers-color-scheme`) toggles a `data-theme` attribute; `_tokens.scss` overrides the neutral
@@ -90,22 +85,9 @@ backlog (auth, real payments, address validation, server-side search indexing) g
   capped at 3; the `/compare` page builds its spec table from the union of every compared
   product's spec keys, so comparing across categories works and just shows `—` for specs that
   don't apply.
-- **Search + autocomplete** — `SearchService` filters the already-loaded mock catalog client-side;
-  the header's search box got a live suggestions dropdown (closes on outside click) and Enter
-  navigates to a full `/search` results page. This is explicitly the FE-only stand-in for the
-  backlog's "indexed search with server-side autocomplete" — true server-side indexing is still
-  backlog, once there's a real backend to index against.
-
-## Known limitations (by design, not oversights)
-
-- **No real backend.** Auth, server-side validation, a real database, real payments (Stripe/Payone)
-  are explicitly out of scope for this demo — see the backlog in `docs/mvp.md`.
-- **Imprint and Privacy pages are placeholders.** German law expects real operator details on an
-  Impressum; this project doesn't have real ones to publish yet, so those two pages show an
-  explicit placeholder notice instead of inventing fake identity/address information. Terms has
-  real (if simple) content since it needs no personal data.
-- **The compatibility check is intentionally simplified** — it doesn't model every real-world PC
-  building constraint (e.g. RAM speed vs. CPU memory controller limits, case radiator support).
+- **Search + autocomplete** — `SearchService` filters the loaded catalog client-side; the header's
+  search box has a live suggestions dropdown (closes on outside click), and Enter navigates to a
+  full `/search` results page.
 
 ## Testing
 
@@ -136,18 +118,11 @@ Built iteratively with Claude Code against a written project plan (see `docs/`),
 commit per step rather than one large generation. Each step's compatibility rules, data model
 choices, and architecture trade-offs (interceptor-based mocking, custom i18n, cart/configuration
 integration) were deliberate design decisions made and understood while building — not just
-accepted output — which is also why the trade-offs above are written down explicitly rather than
-glossed over.
-
-## Outlook
-
-Still backend-dependent, and still backlog: a real Spring Boot + Docker backend, authentication,
-a backoffice, address validation/autocomplete, true server-side search indexing, real test
-payments (Stripe/Payone), and captcha. Full backlog in `docs/mvp.md`.
+accepted output.
 
 ## Demo script (~3 minutes)
 
-1. **Home** → category carousel → click into **Grafikkarten**.
+1. **Home** → category grid → click into **Grafikkarten**.
 2. Apply a manufacturer filter, note the URL updates — reload the page, filter state survives.
 3. Open a product's **detail page**, add it to the cart.
 4. **Cart**: change quantity, see the subtotal recompute, proceed to checkout.
